@@ -9,9 +9,12 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var userItem: UITabBarItem!
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("hello")
+        print("favorite")
+        
+        
     
         // Do any additional setup after loading the view.
     }
