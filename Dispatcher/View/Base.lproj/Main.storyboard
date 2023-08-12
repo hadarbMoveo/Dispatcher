@@ -3,59 +3,11 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
-        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
-            <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Dispatcher" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Homepage" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ry-ir-oNU">
-                                <rect key="frame" x="120" y="407" width="153" height="39"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
-                                <nil key="textColor"/>
-                            </label>
-                            <tabBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xE7-lF-ZoF">
-                                <rect key="frame" x="0.0" y="769" width="393" height="49"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <items>
-                                    <tabBarItem systemItem="favorites" id="3cu-Uf-nn1"/>
-                                    <tabBarItem systemItem="favorites" id="DW8-xT-RFV"/>
-                                    <tabBarItem systemItem="more" id="ZC3-W8-x1G"/>
-                                </items>
-                            </tabBar>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="OjM-KE-W3S"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </view>
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" id="Cve-sS-RXW">
-                        <rightBarButtonItems>
-                            <barButtonItem title="Item" id="NEG-q1-FrU">
-                                <imageReference key="image" image="bell.badge" catalog="system" renderingMode="original" variableValue="1"/>
-                                <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </barButtonItem>
-                            <barButtonItem title="Item" id="aKO-fi-tdp">
-                                <imageReference key="image" image="magnifyingglass" catalog="system" renderingMode="template"/>
-                                <color key="tintColor" systemColor="systemGray2Color"/>
-                            </barButtonItem>
-                        </rightBarButtonItems>
-                    </navigationItem>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3828.2442748091603" y="-2.1126760563380285"/>
-        </scene>
         <!--Launch Screen View Controller-->
         <scene sceneID="81g-03-1Lg">
             <objects>
@@ -75,7 +27,7 @@
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ZJz-d7-va3"/>
-                        <color key="backgroundColor" red="0.14901961389999999" green="0.12549020350000001" blue="0.26666668059999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" red="0.15294116739999999" green="0.1294117719" blue="0.26666668059999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="ZJz-d7-va3" firstAttribute="trailing" secondItem="vqh-Er-nkX" secondAttribute="trailing" constant="85" id="1Y0-IF-Bwr"/>
                             <constraint firstItem="SYw-Sp-9WF" firstAttribute="leading" secondItem="HQc-fe-SVP" secondAttribute="leadingMargin" constant="108" id="4sS-SP-KWN"/>
@@ -92,31 +44,36 @@
             </objects>
             <point key="canvasLocation" x="14.503816793893129" y="-2.1126760563380285"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="lYf-h0-STh">
-            <objects>
-                <navigationController storyboardIdentifier="NavigationController" automaticallyAdjustsScrollViewInsets="NO" id="kbf-D6-9Nd" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="IEB-2H-ZsY">
-                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <navigationBarAppearance key="scrollEdgeAppearance">
-                            <color key="backgroundColor" red="0.14901961389999999" green="0.12549020350000001" blue="0.26666668059999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                        </navigationBarAppearance>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="j22-M5-4Zn"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="tjQ-GK-F4K" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2901.5267175572517" y="-2.1126760563380285"/>
-        </scene>
         <!--View Controller-->
+        <scene sceneID="LQh-9M-Qpx">
+            <objects>
+                <viewController id="97g-YO-8Jj" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Scy-H6-qrm">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5JZ-RF-lSp">
+                                <rect key="frame" x="0.0" y="48" width="393" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Title" largeTitleDisplayMode="always" id="v7Q-gw-yE4">
+                                        <barButtonItem key="leftBarButtonItem" title="Item" image="magnifyingglass" id="Je8-9X-iUz"/>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="V0G-yx-UcX"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2JD-5N-rKu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1497" y="-237"/>
+        </scene>
+        <!--Home Page View Controller-->
         <scene sceneID="kxo-GK-696">
             <objects>
-                <viewController id="KK7-bb-qSz" sceneMemberID="viewController">
+                <viewController id="KK7-bb-qSz" customClass="HomePageViewController" customModule="Dispatcher" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Wmf-hK-0D5">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -136,12 +93,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="akc-yY-r2g" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1015" y="1177"/>
+            <point key="canvasLocation" x="1123" y="1342"/>
         </scene>
-        <!--View Controller-->
+        <!--User Page View Controller-->
         <scene sceneID="BfS-D3-1Hh">
             <objects>
-                <viewController id="M8g-QZ-iYA" sceneMemberID="viewController">
+                <viewController id="M8g-QZ-iYA" customClass="UserPageViewController" customModule="Dispatcher" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="v1w-nh-ERp">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -184,10 +141,10 @@
             </objects>
             <point key="canvasLocation" x="111" y="873"/>
         </scene>
-        <!--View Controller-->
+        <!--Favorite Page View Controller-->
         <scene sceneID="sph-Iz-AMV">
             <objects>
-                <viewController id="cdR-rz-KXE" sceneMemberID="viewController">
+                <viewController id="cdR-rz-KXE" customClass="FavoritePageViewController" customModule="Dispatcher" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UWS-if-G8f">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -212,17 +169,13 @@
     </scenes>
     <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
     <resources>
-        <image name="bell.badge" catalog="system" width="125" height="128"/>
         <image name="house" catalog="system" width="128" height="104"/>
         <image name="logo" width="40" height="31.333333969116211"/>
-        <image name="magnifyingglass" catalog="system" width="128" height="117"/>
+        <image name="magnifyingglass" width="128" height="128"/>
         <image name="person" catalog="system" width="128" height="121"/>
         <image name="star" catalog="system" width="128" height="116"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemGray2Color">
-            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
