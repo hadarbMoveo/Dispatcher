@@ -1,6 +1,6 @@
 import UIKit
 
-class UserPageViewController:UIViewController {
+class UserPageViewController:HeaderViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

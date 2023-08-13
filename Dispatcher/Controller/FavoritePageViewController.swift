@@ -1,6 +1,6 @@
 import UIKit
 
-class FavoritePageViewController:UIViewController {
+class FavoritePageViewController:HeaderViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

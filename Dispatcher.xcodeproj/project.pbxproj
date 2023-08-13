@@ -16,6 +16,7 @@
 		6FD49B0C2A87FD6800BF85EB /* HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FD49B0B2A87FD6800BF85EB /* HomePageViewController.swift */; };
 		6FD49B0E2A87FD7D00BF85EB /* UserPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FD49B0D2A87FD7D00BF85EB /* UserPageViewController.swift */; };
 		6FD49B102A87FDB100BF85EB /* FavoritePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FD49B0F2A87FDB100BF85EB /* FavoritePageViewController.swift */; };
+		6FD49B162A88A5D500BF85EB /* HeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FD49B152A88A5D500BF85EB /* HeaderViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		6FD49B0B2A87FD6800BF85EB /* HomePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewController.swift; sourceTree = "<group>"; };
 		6FD49B0D2A87FD7D00BF85EB /* UserPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPageViewController.swift; sourceTree = "<group>"; };
 		6FD49B0F2A87FDB100BF85EB /* FavoritePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePageViewController.swift; sourceTree = "<group>"; };
+		6FD49B152A88A5D500BF85EB /* HeaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +96,7 @@
 				6FD49B0B2A87FD6800BF85EB /* HomePageViewController.swift */,
 				6FD49B0D2A87FD7D00BF85EB /* UserPageViewController.swift */,
 				6FD49B0F2A87FDB100BF85EB /* FavoritePageViewController.swift */,
+				6FD49B152A88A5D500BF85EB /* HeaderViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -191,6 +194,7 @@
 				6F39C1802A84E8E400B2403F /* AppDelegate.swift in Sources */,
 				6F39C18A2A84E8E400B2403F /* Dispatcher.xcdatamodeld in Sources */,
 				6F39C19C2A86893100B2403F /* LaunchScreenViewController.swift in Sources */,
+				6FD49B162A88A5D500BF85EB /* HeaderViewController.swift in Sources */,
 				6FD49B0C2A87FD6800BF85EB /* HomePageViewController.swift in Sources */,
 				6F39C1822A84E8E400B2403F /* SceneDelegate.swift in Sources */,
 			);

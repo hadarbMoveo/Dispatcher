@@ -44,32 +44,6 @@
             </objects>
             <point key="canvasLocation" x="14.503816793893129" y="-2.1126760563380285"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="LQh-9M-Qpx">
-            <objects>
-                <viewController id="97g-YO-8Jj" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Scy-H6-qrm">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5JZ-RF-lSp">
-                                <rect key="frame" x="0.0" y="48" width="393" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <items>
-                                    <navigationItem title="Title" largeTitleDisplayMode="always" id="v7Q-gw-yE4">
-                                        <barButtonItem key="leftBarButtonItem" title="Item" image="magnifyingglass" id="Je8-9X-iUz"/>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="V0G-yx-UcX"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2JD-5N-rKu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1497" y="-237"/>
-        </scene>
         <!--Home Page View Controller-->
         <scene sceneID="kxo-GK-696">
             <objects>
@@ -118,7 +92,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RUY-4K-N3M" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1015" y="568"/>
+            <point key="canvasLocation" x="1014.5038167938931" y="567.6056338028169"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="GHE-Ie-cbe">
@@ -171,7 +145,6 @@
     <resources>
         <image name="house" catalog="system" width="128" height="104"/>
         <image name="logo" width="40" height="31.333333969116211"/>
-        <image name="magnifyingglass" width="128" height="128"/>
         <image name="person" catalog="system" width="128" height="121"/>
         <image name="star" catalog="system" width="128" height="116"/>
         <systemColor name="systemBackgroundColor">
