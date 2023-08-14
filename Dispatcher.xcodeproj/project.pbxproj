@@ -17,6 +17,7 @@
 		6FD49B0E2A87FD7D00BF85EB /* UserPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FD49B0D2A87FD7D00BF85EB /* UserPageViewController.swift */; };
 		6FD49B102A87FDB100BF85EB /* FavoritePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FD49B0F2A87FDB100BF85EB /* FavoritePageViewController.swift */; };
 		6FD49B182A890C0E00BF85EB /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FD49B172A890C0E00BF85EB /* NavigationBar.swift */; };
+		6FD49B1C2A8A27D700BF85EB /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FD49B1B2A8A27D700BF85EB /* DataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		6FD49B0D2A87FD7D00BF85EB /* UserPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPageViewController.swift; sourceTree = "<group>"; };
 		6FD49B0F2A87FDB100BF85EB /* FavoritePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePageViewController.swift; sourceTree = "<group>"; };
 		6FD49B172A890C0E00BF85EB /* NavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
+		6FD49B1B2A8A27D700BF85EB /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				6F39C1882A84E8E400B2403F /* Dispatcher.xcdatamodeld */,
+				6FD49B1B2A8A27D700BF85EB /* DataSource.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -192,6 +195,7 @@
 				6FD49B102A87FDB100BF85EB /* FavoritePageViewController.swift in Sources */,
 				6FD49B0E2A87FD7D00BF85EB /* UserPageViewController.swift in Sources */,
 				6F39C1802A84E8E400B2403F /* AppDelegate.swift in Sources */,
+				6FD49B1C2A8A27D700BF85EB /* DataSource.swift in Sources */,
 				6F39C18A2A84E8E400B2403F /* Dispatcher.xcdatamodeld in Sources */,
 				6F39C19C2A86893100B2403F /* SplashViewController.swift in Sources */,
 				6FD49B182A890C0E00BF85EB /* NavigationBar.swift in Sources */,
