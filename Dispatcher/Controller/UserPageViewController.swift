@@ -1,10 +1,20 @@
 import UIKit
 
-class UserPageViewController: UIViewController {
-
+class UserPageViewController: UIViewController, HeaderDelegate {
+    let navigationBar = NavigationBar()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        NavigationBar.setupNavigationBar(for: self)
+        navigationBar.delegate = self
+        navigationBar.setupNavigationBar(for: self)
+    }
+    
+    func alertButtonTapped() {
+        print("Alert button tapped")
+    }
+
+    func searchButtonTapped() {
+        print("Search button tapped")
     }
     
     
