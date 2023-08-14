@@ -1,6 +1,6 @@
 import UIKit
 
-class UserPageViewController: UIViewController, HeaderDelegate {
+class UserPageViewController: UIViewController {
     let navigationBar = NavigationBar()
     
     override func viewDidLoad() {
@@ -9,6 +9,10 @@ class UserPageViewController: UIViewController, HeaderDelegate {
         navigationBar.setupNavigationBar(for: self)
     }
     
+}
+
+extension UserPageViewController:HeaderDelegate {
+    
     func alertButtonTapped() {
         print("Alert button tapped")
     }
@@ -16,6 +20,4 @@ class UserPageViewController: UIViewController, HeaderDelegate {
     func searchButtonTapped() {
         print("Search button tapped")
     }
-    
-    
 }
