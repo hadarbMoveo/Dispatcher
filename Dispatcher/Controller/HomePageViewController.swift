@@ -10,6 +10,7 @@ class HomePageViewController: UIViewController {
         super.viewDidLoad()
         tableView.dataSource=self
         tableView.delegate=self
+        tableView.register(UINib(nibName:"ArticleCell", bundle: nil), forCellReuseIdentifier: "ReusableCell")
         
     }
     
@@ -24,6 +25,7 @@ extension HomePageViewController: UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ReusableCell", for: indexPath)
+             as! ArticleCell
         let item = data[indexPath.row]
         
         if let article = item as? Article {
