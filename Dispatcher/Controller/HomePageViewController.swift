@@ -4,20 +4,20 @@ class HomePageViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    var data: [Item] = DataSource.getData()
+    var data: [Card] = DataSource.getData()
+    let navigationBar = NavigationBar()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.dataSource=self
-        tableView.delegate=self
+        tableView.dataSource = self
+        tableView.delegate = self
         tableView.register(UINib(nibName:"ArticleCell", bundle: nil), forCellReuseIdentifier: "ReusableCell")
-        
+        navigationBar.delegate = self
+        navigationBar.setupNavigationBar(for: self)
     }
-    
-
 }
 
-extension HomePageViewController: UITableViewDataSource{
+extension HomePageViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return data.count
@@ -25,21 +25,28 @@ extension HomePageViewController: UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ReusableCell", for: indexPath)
-             as! ArticleCell
+        as! ArticleCell
         let item = data[indexPath.row]
         
         if let article = item as? Article {
             cell.textLabel?.text = article.title
         }
         
-        return cell;
+        return cell
     }
     
-    
-}
-
-extension HomePageViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(indexPath.row)
+    }
+}
+
+extension HomePageViewController: HeaderDelegate {
+    
+    func alertButtonTapped() {
+        print("Alert button tapped")
+    }
+    
+    func searchButtonTapped() {
+        print("Search button tapped")
     }
 }

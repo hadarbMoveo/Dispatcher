@@ -1,9 +1,9 @@
 import Foundation
 
-protocol Item{
+protocol Card{
 }
 
-struct Article: Item {
+struct Article: Card {
     var imgUrl: String
     var title: String
     var summary: String
@@ -15,12 +15,12 @@ struct Article: Item {
 
 
 class DataSource {
-    var articels:[Item]=[Article(imgUrl:"lala",title:"mama",summary:"lala",author:"lala",date:"lala",tag:"lala"),
+    var articels:[Card]=[Article(imgUrl:"lala",title:"mama",summary:"lala",author:"lala",date:"lala",tag:"lala"),
                          Article(imgUrl:"lala",title:"lala",summary:"lala",author:"lala",date:"lala",tag:"lala"),Article(imgUrl:"lala",title:"lala",summary:"lala",author:"lala",date:"lala",tag:"lala"),Article(imgUrl:"lala",title:"lala",summary:"lala",author:"lala",date:"lala",tag:"lala")]
     
     static let singletonDataSource = DataSource()
     
-    static func getData () -> [Item]{
+    static func getData () -> [Card]{
         return singletonDataSource.articels
     }
     
