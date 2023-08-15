@@ -14,6 +14,8 @@ class HomePageViewController: UIViewController {
         tableView.register(UINib(nibName:"ArticleCell", bundle: nil), forCellReuseIdentifier: "ReusableCell")
         navigationBar.delegate = self
         navigationBar.setupNavigationBar(for: self)
+        tableView.rowHeight = 449 // Set the desired cell height
+       
     }
 }
 
@@ -29,7 +31,6 @@ extension HomePageViewController: UITableViewDataSource, UITableViewDelegate {
         let item = data[indexPath.row]
         
         if let article = item as? Article {
-            cell.textLabel?.text = article.title
         }
         
         return cell

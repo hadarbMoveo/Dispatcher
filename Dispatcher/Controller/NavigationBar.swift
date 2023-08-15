@@ -19,6 +19,7 @@ class NavigationBar {
         
         viewController.navigationItem.rightBarButtonItems = [alertButton, searchButton]
         viewController.navigationItem.leftBarButtonItems = [iconBarButton]
+    
     }
     
     @objc private func alertButtonTapped() {

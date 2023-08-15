@@ -23,7 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		6F39C17C2A84E8E400B2403F /* Dispatcher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dispatcher.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		68D861A1C64684313A351D1B /* Pods_Dispatcher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Dispatcher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F39C17F2A84E8E400B2403F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6F39C1812A84E8E400B2403F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		6F39C1862A84E8E400B2403F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -31,6 +31,7 @@
 		6F39C18B2A84E8E500B2403F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6F39C1902A84E8E500B2403F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6F39C19B2A86893100B2403F /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		6F7B11222A8BB1340033060E /* Dispatcher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dispatcher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FD49B0B2A87FD6800BF85EB /* HomePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewController.swift; sourceTree = "<group>"; };
 		6FD49B0D2A87FD7D00BF85EB /* UserPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPageViewController.swift; sourceTree = "<group>"; };
 		6FD49B0F2A87FDB100BF85EB /* FavoritePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePageViewController.swift; sourceTree = "<group>"; };
@@ -38,6 +39,8 @@
 		6FD49B1B2A8A27D700BF85EB /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
 		6FD49B1D2A8A5E6500BF85EB /* ArticleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCell.swift; sourceTree = "<group>"; };
 		6FD49B1E2A8A5E6500BF85EB /* ArticleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArticleCell.xib; sourceTree = "<group>"; };
+		CBA5BC3FDD4FA8C3342B8A67 /* Pods-Dispatcher.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dispatcher.debug.xcconfig"; path = "Target Support Files/Pods-Dispatcher/Pods-Dispatcher.debug.xcconfig"; sourceTree = "<group>"; };
+		E05673577CF587AE97D1D8EF /* Pods-Dispatcher.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dispatcher.release.xcconfig"; path = "Target Support Files/Pods-Dispatcher/Pods-Dispatcher.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,20 +54,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		327694E4B39C36F780714E1F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CBA5BC3FDD4FA8C3342B8A67 /* Pods-Dispatcher.debug.xcconfig */,
+				E05673577CF587AE97D1D8EF /* Pods-Dispatcher.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		4223EC8A461E3A41E3B55DA5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				68D861A1C64684313A351D1B /* Pods_Dispatcher.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		6F39C1732A84E8E400B2403F = {
 			isa = PBXGroup;
 			children = (
 				6F39C17E2A84E8E400B2403F /* Dispatcher */,
-				6F39C17D2A84E8E400B2403F /* Products */,
+				6F7B11222A8BB1340033060E /* Dispatcher.app */,
+				327694E4B39C36F780714E1F /* Pods */,
+				4223EC8A461E3A41E3B55DA5 /* Frameworks */,
 			);
-			sourceTree = "<group>";
-		};
-		6F39C17D2A84E8E400B2403F /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				6F39C17C2A84E8E400B2403F /* Dispatcher.app */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		6F39C17E2A84E8E400B2403F /* Dispatcher */ = {
@@ -135,6 +149,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6F39C1932A84E8E500B2403F /* Build configuration list for PBXNativeTarget "Dispatcher" */;
 			buildPhases = (
+				91A2D0AAE66CF050649E9317 /* [CP] Check Pods Manifest.lock */,
 				6F39C1782A84E8E400B2403F /* Sources */,
 				6F39C1792A84E8E400B2403F /* Frameworks */,
 				6F39C17A2A84E8E400B2403F /* Resources */,
@@ -145,7 +160,7 @@
 			);
 			name = Dispatcher;
 			productName = Dispatcher;
-			productReference = 6F39C17C2A84E8E400B2403F /* Dispatcher.app */;
+			productReference = 6F7B11222A8BB1340033060E /* Dispatcher.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -172,7 +187,7 @@
 				Base,
 			);
 			mainGroup = 6F39C1732A84E8E400B2403F;
-			productRefGroup = 6F39C17D2A84E8E400B2403F /* Products */;
+			productRefGroup = 6F39C1732A84E8E400B2403F;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -193,6 +208,31 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		91A2D0AAE66CF050649E9317 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Dispatcher-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		6F39C1782A84E8E400B2403F /* Sources */ = {
@@ -342,6 +382,7 @@
 		};
 		6F39C1942A84E8E500B2403F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CBA5BC3FDD4FA8C3342B8A67 /* Pods-Dispatcher.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -369,6 +410,7 @@
 		};
 		6F39C1952A84E8E500B2403F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E05673577CF587AE97D1D8EF /* Pods-Dispatcher.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

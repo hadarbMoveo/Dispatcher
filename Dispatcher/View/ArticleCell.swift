@@ -1,14 +1,14 @@
-//
-//  ArticleCell.swift
-//  Dispatcher
-//
-//  Created by Hadar Basson on 14/08/2023.
-//
-
 import UIKit
 
 class ArticleCell: UITableViewCell {
 
+    @IBOutlet weak var tagCard: UILabel!
+    @IBOutlet weak var summaryCard: UITextView!
+    @IBOutlet weak var authorCard: UILabel!
+    @IBOutlet weak var dateCard: UILabel!
+    @IBOutlet weak var imageUrlCard: UIImageView!
+    @IBOutlet weak var titleCard: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
