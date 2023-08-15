@@ -12,7 +12,7 @@ class HomePageViewController: UIViewController {
     
 }
 
-extension HomePageViewController:HeaderDelegate {
+extension HomePageViewController: HeaderDelegate {
     
     func alertButtonTapped() {
         print("Alert button tapped")

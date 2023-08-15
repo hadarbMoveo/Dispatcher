@@ -12,7 +12,7 @@ class FavoritePageViewController: UIViewController {
     
 }
 
-extension FavoritePageViewController:HeaderDelegate {
+extension FavoritePageViewController: HeaderDelegate {
     
     func alertButtonTapped() {
         print("Alert button tapped")

@@ -11,7 +11,7 @@ class UserPageViewController: UIViewController {
     
 }
 
-extension UserPageViewController:HeaderDelegate {
+extension UserPageViewController: HeaderDelegate {
     
     func alertButtonTapped() {
         print("Alert button tapped")
