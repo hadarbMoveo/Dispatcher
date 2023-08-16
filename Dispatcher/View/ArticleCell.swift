@@ -2,6 +2,7 @@ import UIKit
 
 class ArticleCell: UITableViewCell {
 
+    @IBOutlet weak var Viewcard: UIView!
     @IBOutlet weak var tagCard: UILabel!
     @IBOutlet weak var summaryCard: UITextView!
     @IBOutlet weak var authorCard: UILabel!
@@ -11,6 +12,8 @@ class ArticleCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        Viewcard.layer.cornerRadius = 30  // You can adjust the radius value as needed
+        Viewcard.layer.masksToBounds = true // This ensures the content stays within rounded corners
         // Initialization code
     }
 

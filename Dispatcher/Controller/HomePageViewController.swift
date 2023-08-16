@@ -14,7 +14,7 @@ class HomePageViewController: UIViewController {
         tableView.register(UINib(nibName:"ArticleCell", bundle: nil), forCellReuseIdentifier: "ReusableCell")
         navigationBar.delegate = self
         navigationBar.setupNavigationBar(for: self)
-        tableView.rowHeight = 449 // Set the desired cell height
+        tableView.rowHeight = 449
        
     }
 }
@@ -37,7 +37,6 @@ extension HomePageViewController: UITableViewDataSource, UITableViewDelegate {
             cell.authorCard.text=article.author
             cell.dateCard.text=article.date
             cell.titleCard.text=article.title
-//            cell.imageUrlCard.image=UIImage("metaData-img")
         }
         
         
