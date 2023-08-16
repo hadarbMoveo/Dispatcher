@@ -118,7 +118,7 @@
                             <constraint firstItem="kPt-T7-06o" firstAttribute="top" secondItem="wVn-Mc-zwS" secondAttribute="top" id="snw-ZU-T0J"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="iji-oW-UVC"/>
+                    <navigationItem key="navigationItem" id="66C-fG-inB"/>
                     <connections>
                         <outlet property="tableView" destination="kPt-T7-06o" id="ABs-uR-LDU"/>
                     </connections>
@@ -209,6 +209,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="kKX-mO-0H8">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <navigationBarAppearance key="scrollEdgeAppearance">
                             <color key="backgroundColor" red="0.15294116739999999" green="0.1294117719" blue="0.26666668059999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <textAttributes key="titleTextAttributes"/>

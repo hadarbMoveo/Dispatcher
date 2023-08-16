@@ -15,7 +15,6 @@ class HomePageViewController: UIViewController {
         navigationBar.delegate = self
         navigationBar.setupNavigationBar(for: self)
         tableView.rowHeight = 449
-       
     }
 }
 
@@ -25,7 +24,6 @@ extension HomePageViewController: UITableViewDataSource, UITableViewDelegate {
         return data.count
     }
     
-
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ReusableCell", for: indexPath)
         as! ArticleCell
@@ -38,8 +36,6 @@ extension HomePageViewController: UITableViewDataSource, UITableViewDelegate {
             cell.dateCard.text=article.date
             cell.titleCard.text=article.title
         }
-        
-        
         return cell
     }
     
