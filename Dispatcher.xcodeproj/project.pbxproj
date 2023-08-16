@@ -13,11 +13,11 @@
 		6F39C18A2A84E8E400B2403F /* Dispatcher.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6F39C1882A84E8E400B2403F /* Dispatcher.xcdatamodeld */; };
 		6F39C18C2A84E8E500B2403F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F39C18B2A84E8E500B2403F /* Assets.xcassets */; };
 		6F39C19C2A86893100B2403F /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F39C19B2A86893100B2403F /* SplashViewController.swift */; };
+		6FB15C462A8D1B9100756F6A /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB15C452A8D1B9100756F6A /* Article.swift */; };
 		6FD49B0C2A87FD6800BF85EB /* HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FD49B0B2A87FD6800BF85EB /* HomePageViewController.swift */; };
 		6FD49B0E2A87FD7D00BF85EB /* UserPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FD49B0D2A87FD7D00BF85EB /* UserPageViewController.swift */; };
 		6FD49B102A87FDB100BF85EB /* FavoritePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FD49B0F2A87FDB100BF85EB /* FavoritePageViewController.swift */; };
 		6FD49B182A890C0E00BF85EB /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FD49B172A890C0E00BF85EB /* NavigationBar.swift */; };
-		6FD49B1C2A8A27D700BF85EB /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FD49B1B2A8A27D700BF85EB /* DataSource.swift */; };
 		6FD49B1F2A8A5E6500BF85EB /* ArticleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FD49B1D2A8A5E6500BF85EB /* ArticleCell.swift */; };
 		6FD49B202A8A5E6500BF85EB /* ArticleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FD49B1E2A8A5E6500BF85EB /* ArticleCell.xib */; };
 /* End PBXBuildFile section */
@@ -31,11 +31,11 @@
 		6F39C1902A84E8E500B2403F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6F39C19B2A86893100B2403F /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		6FB15C432A8BBF7300756F6A /* Dispatcher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dispatcher.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6FB15C452A8D1B9100756F6A /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		6FD49B0B2A87FD6800BF85EB /* HomePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewController.swift; sourceTree = "<group>"; };
 		6FD49B0D2A87FD7D00BF85EB /* UserPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPageViewController.swift; sourceTree = "<group>"; };
 		6FD49B0F2A87FDB100BF85EB /* FavoritePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePageViewController.swift; sourceTree = "<group>"; };
 		6FD49B172A890C0E00BF85EB /* NavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
-		6FD49B1B2A8A27D700BF85EB /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
 		6FD49B1D2A8A5E6500BF85EB /* ArticleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCell.swift; sourceTree = "<group>"; };
 		6FD49B1E2A8A5E6500BF85EB /* ArticleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArticleCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -64,9 +64,9 @@
 			children = (
 				6F39C19A2A8684EA00B2403F /* Resources */,
 				6F39C1992A86845C00B2403F /* AppDelegate */,
-				6F39C1982A86844500B2403F /* Controller */,
-				6F39C1972A86843600B2403F /* View */,
+				6FB15C502A8D1F4800756F6A /* UI */,
 				6F39C1962A86840B00B2403F /* Model */,
+				6FB15C472A8D1BF500756F6A /* Repository */,
 			);
 			path = Dispatcher;
 			sourceTree = "<group>";
@@ -75,31 +75,9 @@
 			isa = PBXGroup;
 			children = (
 				6F39C1882A84E8E400B2403F /* Dispatcher.xcdatamodeld */,
-				6FD49B1B2A8A27D700BF85EB /* DataSource.swift */,
+				6FB15C452A8D1B9100756F6A /* Article.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		6F39C1972A86843600B2403F /* View */ = {
-			isa = PBXGroup;
-			children = (
-				6F39C1852A84E8E400B2403F /* Main.storyboard */,
-				6FD49B1D2A8A5E6500BF85EB /* ArticleCell.swift */,
-				6FD49B1E2A8A5E6500BF85EB /* ArticleCell.xib */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		6F39C1982A86844500B2403F /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				6F39C19B2A86893100B2403F /* SplashViewController.swift */,
-				6FD49B0B2A87FD6800BF85EB /* HomePageViewController.swift */,
-				6FD49B0D2A87FD7D00BF85EB /* UserPageViewController.swift */,
-				6FD49B0F2A87FDB100BF85EB /* FavoritePageViewController.swift */,
-				6FD49B172A890C0E00BF85EB /* NavigationBar.swift */,
-			);
-			path = Controller;
 			sourceTree = "<group>";
 		};
 		6F39C1992A86845C00B2403F /* AppDelegate */ = {
@@ -118,6 +96,84 @@
 				6F39C18B2A84E8E500B2403F /* Assets.xcassets */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		6FB15C472A8D1BF500756F6A /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		6FB15C492A8D1CB400756F6A /* HomePage */ = {
+			isa = PBXGroup;
+			children = (
+				6FD49B0B2A87FD6800BF85EB /* HomePageViewController.swift */,
+			);
+			path = HomePage;
+			sourceTree = "<group>";
+		};
+		6FB15C4A2A8D1D1E00756F6A /* SplashPage */ = {
+			isa = PBXGroup;
+			children = (
+				6F39C19B2A86893100B2403F /* SplashViewController.swift */,
+			);
+			path = SplashPage;
+			sourceTree = "<group>";
+		};
+		6FB15C4B2A8D1D4000756F6A /* UserPage */ = {
+			isa = PBXGroup;
+			children = (
+				6FD49B0D2A87FD7D00BF85EB /* UserPageViewController.swift */,
+			);
+			path = UserPage;
+			sourceTree = "<group>";
+		};
+		6FB15C4C2A8D1D5C00756F6A /* FavoritePage */ = {
+			isa = PBXGroup;
+			children = (
+				6FD49B0F2A87FDB100BF85EB /* FavoritePageViewController.swift */,
+			);
+			path = FavoritePage;
+			sourceTree = "<group>";
+		};
+		6FB15C4D2A8D1D9900756F6A /* ArticleCell */ = {
+			isa = PBXGroup;
+			children = (
+				6FD49B1D2A8A5E6500BF85EB /* ArticleCell.swift */,
+				6FD49B1E2A8A5E6500BF85EB /* ArticleCell.xib */,
+			);
+			path = ArticleCell;
+			sourceTree = "<group>";
+		};
+		6FB15C502A8D1F4800756F6A /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				6FB15C522A8D220200756F6A /* CustomCells */,
+				6FB15C512A8D1F6D00756F6A /* Screens */,
+				6F39C1852A84E8E400B2403F /* Main.storyboard */,
+				6FD49B172A890C0E00BF85EB /* NavigationBar.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		6FB15C512A8D1F6D00756F6A /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				6FB15C4C2A8D1D5C00756F6A /* FavoritePage */,
+				6FB15C4B2A8D1D4000756F6A /* UserPage */,
+				6FB15C4A2A8D1D1E00756F6A /* SplashPage */,
+				6FB15C492A8D1CB400756F6A /* HomePage */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		6FB15C522A8D220200756F6A /* CustomCells */ = {
+			isa = PBXGroup;
+			children = (
+				6FB15C4D2A8D1D9900756F6A /* ArticleCell */,
+			);
+			path = CustomCells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -191,10 +247,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6FB15C462A8D1B9100756F6A /* Article.swift in Sources */,
 				6FD49B102A87FDB100BF85EB /* FavoritePageViewController.swift in Sources */,
 				6FD49B0E2A87FD7D00BF85EB /* UserPageViewController.swift in Sources */,
 				6F39C1802A84E8E400B2403F /* AppDelegate.swift in Sources */,
-				6FD49B1C2A8A27D700BF85EB /* DataSource.swift in Sources */,
 				6F39C18A2A84E8E400B2403F /* Dispatcher.xcdatamodeld in Sources */,
 				6F39C19C2A86893100B2403F /* SplashViewController.swift in Sources */,
 				6FD49B182A890C0E00BF85EB /* NavigationBar.swift in Sources */,

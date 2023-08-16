@@ -8,6 +8,7 @@ protocol HeaderDelegate: AnyObject {
 class NavigationBar {
     weak var delegate: HeaderDelegate?
     
+    
     func setupNavigationBar(for viewController: UIViewController) {
         let iconImage = UIImage(named: "logo")
         let iconImageView = UIImageView(image: iconImage)

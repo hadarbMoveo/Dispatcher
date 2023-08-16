@@ -1,7 +1,8 @@
 import UIKit
 
 class ArticleCell: UITableViewCell {
-
+    
+    static let identifier = "ArticleCell"
     @IBOutlet weak var Viewcard: UIView!
     @IBOutlet weak var tagCard: UILabel!
     @IBOutlet weak var summaryCard: UITextView!
@@ -12,15 +13,16 @@ class ArticleCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        Viewcard.layer.cornerRadius = 30  // You can adjust the radius value as needed
-        Viewcard.layer.masksToBounds = true // This ensures the content stays within rounded corners
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+        Viewcard.layer.cornerRadius = 30
+        Viewcard.layer.masksToBounds = true
     }
     
+    func initCell(article: Article?) {
+        guard let article else { return }
+        tagCard.text = article.tag
+        summaryCard.text = article.summary
+        authorCard.text = article.author
+        dateCard.text = article.date
+        titleCard.text = article.title
+    }
 }

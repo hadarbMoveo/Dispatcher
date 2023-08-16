@@ -3,6 +3,7 @@ import UIKit
 class FavoritePageViewController: UIViewController {
 
     let navigationBar = NavigationBar()
+   // let viewModel = FavoritePageViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()

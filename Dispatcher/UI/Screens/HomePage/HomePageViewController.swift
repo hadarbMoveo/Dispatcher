@@ -9,11 +9,19 @@ class HomePageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.register(UINib(nibName:"ArticleCell", bundle: nil), forCellReuseIdentifier: "ReusableCell")
+        initNavigationBar()
+        initTableView()
+    }
+    
+    func initNavigationBar() {
         navigationBar.delegate = self
         navigationBar.setupNavigationBar(for: self)
+    }
+    
+    func initTableView() {
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.register(UINib(nibName:String(describing: ArticleCell.self), bundle: nil), forCellReuseIdentifier: ArticleCell.identifier)
         tableView.rowHeight = 449
     }
 }
@@ -25,18 +33,11 @@ extension HomePageViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ReusableCell", for: indexPath)
-        as! ArticleCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: ArticleCell.identifier, for: indexPath)
+        as? ArticleCell
         let item = data[indexPath.row]
-        
-        if let article = item as? Article {
-            cell.tagCard.text=article.tag
-            cell.summaryCard.text=article.summary
-            cell.authorCard.text=article.author
-            cell.dateCard.text=article.date
-            cell.titleCard.text=article.title
-        }
-        return cell
+        cell?.initCell(article: item as? Article)
+        return cell ?? UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
