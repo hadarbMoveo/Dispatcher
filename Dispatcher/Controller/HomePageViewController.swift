@@ -25,13 +25,21 @@ extension HomePageViewController: UITableViewDataSource, UITableViewDelegate {
         return data.count
     }
     
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ReusableCell", for: indexPath)
         as! ArticleCell
         let item = data[indexPath.row]
         
         if let article = item as? Article {
+            cell.tagCard.text=article.tag
+            cell.summaryCard.text=article.summary
+            cell.authorCard.text=article.author
+            cell.dateCard.text=article.date
+            cell.titleCard.text=article.title
+//            cell.imageUrlCard.image=UIImage("metaData-img")
         }
+        
         
         return cell
     }
