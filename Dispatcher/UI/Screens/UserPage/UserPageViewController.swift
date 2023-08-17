@@ -5,10 +5,13 @@ class UserPageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        initNavigationBar()
+    }
+    
+    func initNavigationBar() {
         navigationBar.delegate = self
         navigationBar.setupNavigationBar(for: self)
     }
-    
 }
 
 extension UserPageViewController: HeaderDelegate {
