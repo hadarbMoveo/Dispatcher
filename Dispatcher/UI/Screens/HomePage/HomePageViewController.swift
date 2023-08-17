@@ -4,12 +4,10 @@ class HomePageViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     var viewModel: HomePageViewModel = HomePageViewModel(repository: MockArticleRepository())
-    var mockArticles:[Card] = []
     let navigationBar = NavigationBar()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        mockArticles = viewModel.repository.getArticles()
         initNavigationBar()
         initTableView()
     }
@@ -23,26 +21,25 @@ class HomePageViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(UINib(nibName:String(describing: ArticleCell.self), bundle: nil), forCellReuseIdentifier: ArticleCell.identifier)
-        tableView.rowHeight = 449
     }
 }
 
 extension HomePageViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return mockArticles.count
+        return viewModel.articles.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ArticleCell.identifier, for: indexPath)
         as? ArticleCell
-        let item = mockArticles[indexPath.row]
+        let item = viewModel.articles[indexPath.row]
         cell?.initCell(article: item as? Article)
         return cell ?? UITableViewCell()
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.row)
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 449
     }
 }
 

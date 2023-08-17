@@ -32,7 +32,7 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vWg-Ce-MO2">
                                 <rect key="frame" x="12" y="270.66666666666669" width="315" height="162.33333333333331"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" red="0.35294118520000001" green="0.35294118520000001" blue="0.52549022440000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -88,13 +88,13 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="Viewcard" destination="cro-ma-db1" id="h1J-Nd-5ZP"/>
                 <outlet property="authorCard" destination="Igf-f7-LLL" id="ITX-3b-A6Q"/>
                 <outlet property="dateCard" destination="dFb-1g-zDx" id="ppQ-2v-hGR"/>
                 <outlet property="imageUrlCard" destination="NQj-8y-wWO" id="aOg-yc-qs2"/>
                 <outlet property="summaryCard" destination="vWg-Ce-MO2" id="y58-rS-sja"/>
                 <outlet property="tagCard" destination="ocP-Zu-j7Y" id="fQ6-ve-1wJ"/>
                 <outlet property="titleCard" destination="hW7-Z5-ngE" id="5Z4-YA-PAs"/>
+                <outlet property="viewcard" destination="cro-ma-db1" id="h1J-Nd-5ZP"/>
             </connections>
             <point key="canvasLocation" x="301.52671755725191" y="141.19718309859155"/>
         </tableViewCell>

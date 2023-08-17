@@ -3,7 +3,7 @@ import UIKit
 class ArticleCell: UITableViewCell {
     
     static let identifier = "ArticleCell"
-    @IBOutlet weak var Viewcard: UIView!
+    @IBOutlet weak var viewcard: UIView!
     @IBOutlet weak var tagCard: UILabel!
     @IBOutlet weak var summaryCard: UITextView!
     @IBOutlet weak var authorCard: UILabel!
@@ -13,8 +13,8 @@ class ArticleCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        Viewcard.layer.cornerRadius = 30
-        Viewcard.layer.masksToBounds = true
+        viewcard.layer.cornerRadius = 30
+        viewcard.layer.masksToBounds = true
     }
     
     func initCell(article: Article?) {
