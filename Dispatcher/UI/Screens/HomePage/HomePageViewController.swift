@@ -3,7 +3,7 @@ import UIKit
 class HomePageViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    var viewModel: HomePageViewModel = HomePageViewModel(repository: MockArticleRepository())
+    let viewModel: HomePageViewModel = HomePageViewModel(repository: MockArticleRepository())
     let navigationBar = NavigationBar()
     
     override func viewDidLoad() {

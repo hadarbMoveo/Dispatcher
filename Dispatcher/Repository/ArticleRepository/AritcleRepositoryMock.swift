@@ -1,8 +1,11 @@
-import Foundation
+//
+//  AritcleRepositoryMock.swift
+//  Dispatcher
+//
+//  Created by Hadar Basson on 17/08/2023.
+//
 
-protocol ArticleRepositoryProtocol  {
- func getArticles()->[Card]
-}
+import Foundation
 
 class MockArticleRepository: ArticleRepositoryProtocol  {
     func getArticles() -> [Card] {

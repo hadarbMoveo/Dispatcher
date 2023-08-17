@@ -2,8 +2,8 @@ import Foundation
 
 class HomePageViewModel {
 
-    let repository:ArticleRepositoryProtocol 
-    var articles:[Card] = []
+    let repository: ArticleRepositoryProtocol
+    var articles: [Card] = []
     
     init(repository: ArticleRepositoryProtocol ) {
       self.repository = repository
