@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="451" id="KGk-i7-Jjw" customClass="ArticleCell" customModule="Dispatcher" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="343" height="449"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="343" height="449"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cro-ma-db1">
+                        <rect key="frame" x="0.0" y="0.0" width="343" height="449"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="748" image="mock-image-homepage-table" translatesAutoresizingMaskIntoConstraints="NO" id="NQj-8y-wWO">
+                                <rect key="frame" x="0.0" y="0.0" width="343" height="183"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" horizontalCompressionResistancePriority="751" text="date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dFb-1g-zDx">
+                                <rect key="frame" x="16" y="191" width="29" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vWg-Ce-MO2">
+                                <rect key="frame" x="12" y="270.66666666666669" width="315" height="162.33333333333331"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="textColor" red="0.35294118520000001" green="0.35294118520000001" blue="0.52549022440000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="author" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Igf-f7-LLL">
+                                <rect key="frame" x="16" y="245.66666666666666" width="42" height="16.999999999999972"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="tag" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="6" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ocP-Zu-j7Y">
+                                <rect key="frame" x="300" y="191" width="27" height="14.333333333333343"/>
+                                <color key="backgroundColor" red="0.9529411793" green="0.9529411793" blue="0.99607843159999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" red="0.35294118520000001" green="0.35294118520000001" blue="0.52549022440000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="hW7-Z5-ngE">
+                                <rect key="frame" x="16" y="216" width="311" height="21.666666666666657"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <color key="textColor" red="0.078431375319999996" green="0.078431375319999996" blue="0.1607843041" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="NQj-8y-wWO" firstAttribute="top" secondItem="cro-ma-db1" secondAttribute="top" id="4Ae-z5-PYG"/>
+                            <constraint firstItem="vWg-Ce-MO2" firstAttribute="top" secondItem="Igf-f7-LLL" secondAttribute="bottom" constant="8" id="8DD-yj-5gu"/>
+                            <constraint firstItem="vWg-Ce-MO2" firstAttribute="leading" secondItem="cro-ma-db1" secondAttribute="leading" constant="12" id="EBG-of-QEe"/>
+                            <constraint firstAttribute="trailing" secondItem="NQj-8y-wWO" secondAttribute="trailing" id="JMI-Vl-392"/>
+                            <constraint firstItem="Igf-f7-LLL" firstAttribute="top" secondItem="hW7-Z5-ngE" secondAttribute="bottom" constant="8" id="MFz-gU-GKs"/>
+                            <constraint firstAttribute="bottom" secondItem="vWg-Ce-MO2" secondAttribute="bottom" constant="16" id="PBW-cY-5Qi"/>
+                            <constraint firstItem="Igf-f7-LLL" firstAttribute="leading" secondItem="cro-ma-db1" secondAttribute="leading" constant="16" id="Q5C-Pb-yU2"/>
+                            <constraint firstItem="dFb-1g-zDx" firstAttribute="leading" secondItem="cro-ma-db1" secondAttribute="leading" constant="16" id="S2z-U5-xH3"/>
+                            <constraint firstAttribute="trailing" secondItem="hW7-Z5-ngE" secondAttribute="trailing" constant="16" id="fSm-lf-XcW"/>
+                            <constraint firstAttribute="trailing" secondItem="ocP-Zu-j7Y" secondAttribute="trailing" constant="16" id="iXM-QT-Y7i"/>
+                            <constraint firstItem="dFb-1g-zDx" firstAttribute="top" secondItem="NQj-8y-wWO" secondAttribute="bottom" constant="8" id="j1L-Ke-Zjs"/>
+                            <constraint firstItem="ocP-Zu-j7Y" firstAttribute="top" secondItem="NQj-8y-wWO" secondAttribute="bottom" constant="8" id="oxw-rd-BAh"/>
+                            <constraint firstItem="hW7-Z5-ngE" firstAttribute="leading" secondItem="cro-ma-db1" secondAttribute="leading" constant="16" id="rwH-3U-eo5"/>
+                            <constraint firstAttribute="trailing" secondItem="vWg-Ce-MO2" secondAttribute="trailing" constant="16" id="t0B-DH-ANT"/>
+                            <constraint firstItem="hW7-Z5-ngE" firstAttribute="top" secondItem="dFb-1g-zDx" secondAttribute="bottom" constant="8" id="tpe-Ph-IWi"/>
+                            <constraint firstItem="ocP-Zu-j7Y" firstAttribute="leading" secondItem="dFb-1g-zDx" secondAttribute="trailing" constant="255" id="vgd-hC-F68"/>
+                            <constraint firstItem="NQj-8y-wWO" firstAttribute="leading" secondItem="cro-ma-db1" secondAttribute="leading" id="xVT-Ix-Vm9"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="cro-ma-db1" secondAttribute="bottom" id="EPq-KQ-2PC"/>
+                    <constraint firstItem="cro-ma-db1" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="MUe-GI-zsD"/>
+                    <constraint firstItem="cro-ma-db1" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="cFZ-f4-Jdz"/>
+                    <constraint firstAttribute="trailing" secondItem="cro-ma-db1" secondAttribute="trailing" id="lTK-Fg-KtW"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="authorCard" destination="Igf-f7-LLL" id="ITX-3b-A6Q"/>
+                <outlet property="dateCard" destination="dFb-1g-zDx" id="ppQ-2v-hGR"/>
+                <outlet property="imageUrlCard" destination="NQj-8y-wWO" id="aOg-yc-qs2"/>
+                <outlet property="summaryCard" destination="vWg-Ce-MO2" id="y58-rS-sja"/>
+                <outlet property="tagCard" destination="ocP-Zu-j7Y" id="fQ6-ve-1wJ"/>
+                <outlet property="titleCard" destination="hW7-Z5-ngE" id="5Z4-YA-PAs"/>
+                <outlet property="viewcard" destination="cro-ma-db1" id="h1J-Nd-5ZP"/>
+            </connections>
+            <point key="canvasLocation" x="301.52671755725191" y="141.19718309859155"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="mock-image-homepage-table" width="325.33334350585938" height="183"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

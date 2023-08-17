@@ -104,18 +104,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="HomePage" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zgl-hQ-cvm">
-                                <rect key="frame" x="154" y="416" width="84" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="1" estimatedSectionFooterHeight="-1" contentViewInsetsToSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kPt-T7-06o">
+                                <rect key="frame" x="0.0" y="103" width="393" height="666"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="wVn-Mc-zwS"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="kPt-T7-06o" firstAttribute="leading" secondItem="wVn-Mc-zwS" secondAttribute="leading" id="7Mr-lV-A4i"/>
+                            <constraint firstItem="kPt-T7-06o" firstAttribute="bottom" secondItem="wVn-Mc-zwS" secondAttribute="bottom" id="Eam-2Z-I9J"/>
+                            <constraint firstItem="kPt-T7-06o" firstAttribute="trailing" secondItem="wVn-Mc-zwS" secondAttribute="trailing" id="iiE-Jb-9mv"/>
+                            <constraint firstItem="kPt-T7-06o" firstAttribute="top" secondItem="wVn-Mc-zwS" secondAttribute="top" id="snw-ZU-T0J"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="iji-oW-UVC"/>
+                    <navigationItem key="navigationItem" id="66C-fG-inB"/>
+                    <connections>
+                        <outlet property="tableView" destination="kPt-T7-06o" id="ABs-uR-LDU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="akc-yY-r2g" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -203,6 +209,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="kKX-mO-0H8">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <navigationBarAppearance key="scrollEdgeAppearance">
                             <color key="backgroundColor" red="0.15294116739999999" green="0.1294117719" blue="0.26666668059999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <textAttributes key="titleTextAttributes"/>
