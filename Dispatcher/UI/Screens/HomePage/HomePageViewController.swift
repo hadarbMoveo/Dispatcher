@@ -1,6 +1,6 @@
 import UIKit
 
-class HomePageViewController: UIViewController {
+class HomePageViewController: UIViewController{
     
     @IBOutlet weak var tableView: UITableView!
     let viewModel: HomePageViewModel = HomePageViewModel(repository: ArticleRepository())
@@ -10,6 +10,8 @@ class HomePageViewController: UIViewController {
         super.viewDidLoad()
         initNavigationBar()
         initTableView()
+        viewModel.delegate = self
+        viewModel.getData()
     }
     
     func initNavigationBar() {
@@ -52,5 +54,11 @@ extension HomePageViewController: HeaderDelegate {
     
     func searchButtonTapped() {
         print("Search button tapped")
+    }
+}
+
+extension HomePageViewController: HomePageDelegate {    
+    func reloadData(){
+        self.tableView.reloadData()
     }
 }
