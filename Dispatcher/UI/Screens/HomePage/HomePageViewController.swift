@@ -3,7 +3,7 @@ import UIKit
 class HomePageViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    let viewModel: HomePageViewModel = HomePageViewModel(repository: MockArticleRepository())
+    let viewModel: HomePageViewModel = HomePageViewModel(repository: ArticleRepository())
     let navigationBar = NavigationBar()
     
     override func viewDidLoad() {
@@ -34,7 +34,8 @@ extension HomePageViewController: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: ArticleCell.identifier, for: indexPath)
         as? ArticleCell
         let item = viewModel.articles[indexPath.row]
-        cell?.initCell(article: item as? Article)
+        //cell?.initCell(article: item as? Article)
+        cell?.initCellNewArticle(article: item as? NewsArticle)
         return cell ?? UITableViewCell()
     }
     

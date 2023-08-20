@@ -5,8 +5,10 @@ class HomePageViewModel {
     let repository: ArticleRepositoryProtocol
     var articles: [Card] = []
     
-    init(repository: ArticleRepositoryProtocol ) {
+    init(repository: ArticleRepositoryProtocol) {
       self.repository = repository
-      articles = repository.getArticles()
+      repository.getArticles{ data in
+          self.articles = data
+        }
     }
 }

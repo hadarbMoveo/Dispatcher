@@ -1,5 +1,5 @@
 import Foundation
 
 protocol ArticleRepositoryProtocol  {
- func getArticles()->[Card]
+ func getArticles(completion:@escaping([Card])->Void)
 }

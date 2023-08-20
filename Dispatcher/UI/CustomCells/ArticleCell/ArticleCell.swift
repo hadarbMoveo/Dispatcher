@@ -19,10 +19,21 @@ class ArticleCell: UITableViewCell {
     
     func initCell(article: Article?) {
         guard let article else { return }
-        tagCard.text = article.tag
+//        tagCard.text = article.tag
         summaryCard.text = article.summary
         authorCard.text = article.author
         dateCard.text = article.date
+        titleCard.text = article.title
+    }
+    
+    
+    
+    func initCellNewArticle(article: NewsArticle?) {
+        guard let article else { return }
+        tagCard.text = "Sport"
+        summaryCard.text = article.description
+        authorCard.text = article.author
+        dateCard.text = article.publishedAt
         titleCard.text = article.title
     }
 }
