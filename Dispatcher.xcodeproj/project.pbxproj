@@ -193,8 +193,8 @@
 		6FB15C512A8D1F6D00756F6A /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				6FB15C4C2A8D1D5C00756F6A /* FavoritePage */,
 				6FB15C4B2A8D1D4000756F6A /* UserPage */,
+				6FB15C4C2A8D1D5C00756F6A /* FavoritePage */,
 				6FB15C4A2A8D1D1E00756F6A /* SplashPage */,
 				6FB15C492A8D1CB400756F6A /* HomePage */,
 			);

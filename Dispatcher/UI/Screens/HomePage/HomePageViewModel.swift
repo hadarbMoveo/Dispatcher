@@ -2,6 +2,8 @@ import Foundation
 
 protocol HomePageDelegate: AnyObject {
     func reloadData()
+    func startLoading()
+    func stopLoading()
 }
 
 class HomePageViewModel {
@@ -12,15 +14,14 @@ class HomePageViewModel {
     
     init(repository: ArticleRepositoryProtocol) {
       self.repository = repository
-//      repository.getArticles{ data in
-//          self.articles = data
-//        }
     }
     
-    func getData(){
+    func reloadData(){
+        self.delegate?.startLoading()
         repository.getArticles{ data in
             self.articles = data
             self.delegate?.reloadData()
+            self.delegate?.stopLoading()
         }
     }
 }

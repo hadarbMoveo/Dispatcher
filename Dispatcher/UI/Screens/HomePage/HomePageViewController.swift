@@ -2,6 +2,7 @@ import UIKit
 
 class HomePageViewController: UIViewController{
     
+    @IBOutlet weak var loader: UIActivityIndicatorView!
     @IBOutlet weak var tableView: UITableView!
     let viewModel: HomePageViewModel = HomePageViewModel(repository: ArticleRepository())
     let navigationBar = NavigationBar()
@@ -11,7 +12,7 @@ class HomePageViewController: UIViewController{
         initNavigationBar()
         initTableView()
         viewModel.delegate = self
-        viewModel.getData()
+        viewModel.reloadData()
     }
     
     func initNavigationBar() {
@@ -60,5 +61,14 @@ extension HomePageViewController: HeaderDelegate {
 extension HomePageViewController: HomePageDelegate {    
     func reloadData(){
         self.tableView.reloadData()
+    }
+    
+    func startLoading(){
+        loader.startAnimating()
+    }
+    
+    func stopLoading(){
+        loader.stopAnimating()
+        loader.isHidden = true
     }
 }
