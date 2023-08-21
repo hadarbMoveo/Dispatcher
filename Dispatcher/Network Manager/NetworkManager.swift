@@ -8,8 +8,6 @@
 import Foundation
 import Alamofire
 
-
-
 class NetworkManager {
     let apiKey = "ef5133dd364c41719494a74ce614d679"
     func fetchNews(completion:@escaping([NewsArticle])->Void) {
