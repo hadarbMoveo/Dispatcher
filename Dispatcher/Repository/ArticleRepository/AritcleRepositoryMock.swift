@@ -40,5 +40,5 @@ class MockArticleRepository: ArticleRepositoryProtocol  {
         completion(articels)
     }
 }
-    
+
 

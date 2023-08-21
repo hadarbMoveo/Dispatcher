@@ -56,7 +56,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="666"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <activityIndicatorView key="tableFooterView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" id="98S-vU-sSv">
-                                    <rect key="frame" x="0.0" y="0.0" width="393" height="64"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="468"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </activityIndicatorView>
                             </tableView>
@@ -111,7 +111,7 @@
         <scene sceneID="GHE-Ie-cbe">
             <objects>
                 <tabBarController storyboardIdentifier="TabBarController" id="0xN-ft-6YR" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="y08-u2-N6r">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" itemPositioning="fill" id="y08-u2-N6r">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.14901961389999999" green="0.12549020350000001" blue="0.26666668059999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>

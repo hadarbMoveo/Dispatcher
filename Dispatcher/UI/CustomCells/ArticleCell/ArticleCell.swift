@@ -27,8 +27,6 @@ class ArticleCell: UITableViewCell {
         titleCard.text = article.title
     }
     
-    
-    
     func initCellNewArticle(article: NewsArticle?) {
         guard let article else { return }
         tagCard.text = "Sport"

@@ -7,16 +7,16 @@ protocol HomePageDelegate: AnyObject {
 }
 
 class HomePageViewModel {
-
+    
     let repository: ArticleRepositoryProtocol
     var articles: [Card] = []
     weak var delegate: HomePageDelegate?
     
     init(repository: ArticleRepositoryProtocol) {
-      self.repository = repository
+        self.repository = repository
     }
     
-    func reloadData(){
+    func reloadData() {
         self.delegate?.startLoading()
         repository.getArticles{ data in
             self.articles = data

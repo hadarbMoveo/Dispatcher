@@ -11,8 +11,7 @@ class HomePageViewController: UIViewController{
         super.viewDidLoad()
         initNavigationBar()
         initTableView()
-        viewModel.delegate = self
-        viewModel.reloadData()
+        initViewModel()
     }
     
     func initNavigationBar() {
@@ -24,6 +23,11 @@ class HomePageViewController: UIViewController{
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(UINib(nibName:String(describing: ArticleCell.self), bundle: nil), forCellReuseIdentifier: ArticleCell.identifier)
+    }
+    
+    func initViewModel(){
+        viewModel.delegate = self
+        viewModel.reloadData()
     }
 }
 
@@ -37,7 +41,6 @@ extension HomePageViewController: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: ArticleCell.identifier, for: indexPath)
         as? ArticleCell
         let item = viewModel.articles[indexPath.row]
-        //cell?.initCell(article: item as? Article)
         cell?.initCellNewArticle(article: item as? NewsArticle)
         return cell ?? UITableViewCell()
     }
@@ -59,16 +62,18 @@ extension HomePageViewController: HeaderDelegate {
 }
 
 extension HomePageViewController: HomePageDelegate {    
-    func reloadData(){
+    func reloadData() {
         self.tableView.reloadData()
     }
     
-    func startLoading(){
+    func startLoading() {
         loader.startAnimating()
     }
     
-    func stopLoading(){
+    func stopLoading() {
         loader.stopAnimating()
         loader.isHidden = true
     }
 }
+
+
