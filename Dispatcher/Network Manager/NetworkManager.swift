@@ -10,8 +10,9 @@ import Alamofire
 
 class NetworkManager {
     let apiKey = "ef5133dd364c41719494a74ce614d679"
+    let articlesNumber = 7
     func fetchNews(completion:@escaping([NewsArticle])->Void) {
-        let url = "https://newsapi.org/v2/top-headlines?country=us&apiKey=\(apiKey)&pageSize=5"
+        let url = "https://newsapi.org/v2/top-headlines?country=us&apiKey=\(apiKey)&pageSize=\(articlesNumber)"
         AF.request(url, method: .get)
             .response { resp in
                 switch resp.result {
