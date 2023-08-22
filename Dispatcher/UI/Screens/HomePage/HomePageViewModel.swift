@@ -16,7 +16,7 @@ class HomePageViewModel {
         self.repository = repository
     }
     
-    func reloadData() {
+    func getData() {
         repository.getArticles{ data in
             self.articles = data
             self.delegate?.reloadUI()

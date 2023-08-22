@@ -1,4 +1,5 @@
 import UIKit
+import Kingfisher
 
 class HomePageViewController: UIViewController{
     
@@ -28,7 +29,7 @@ class HomePageViewController: UIViewController{
     func initViewModel(){
         viewModel.delegate = self
         self.startLoading()
-        viewModel.reloadData()
+        viewModel.getData()
     }
 }
 
@@ -43,11 +44,16 @@ extension HomePageViewController: UITableViewDataSource, UITableViewDelegate {
         as? ArticleCell
         let newArticle = viewModel.articles[indexPath.row] as? NewsArticle
         cell?.initCell(with: newArticle)
+        setImage(cell,url:URL(string: newArticle?.urlToImage ?? ""))
         return cell ?? UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 449
+    }
+    
+    func setImage(_ cell:ArticleCell?,url :URL?){
+        cell?.imageUrlCard.kf.setImage(with:url)
     }
 }
 
@@ -62,7 +68,7 @@ extension HomePageViewController: HeaderDelegate {
     }
 }
 
-extension HomePageViewController: HomePageDelegate {    
+extension HomePageViewController: HomePageDelegate {
     func reloadUI() {
         DispatchQueue.main.async {
             self.tableView.reloadData()
@@ -78,5 +84,4 @@ extension HomePageViewController: HomePageDelegate {
         loader.isHidden = true
     }
 }
-
 

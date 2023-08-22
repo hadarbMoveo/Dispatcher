@@ -1,5 +1,6 @@
 import UIKit
 import Alamofire
+import Kingfisher
 
 class ArticleCell: UITableViewCell {
     
@@ -32,9 +33,10 @@ class ArticleCell: UITableViewCell {
         tagCard.text = "Sport"
         summaryCard.text = article.description
         authorCard.text = article.author
-        dateCard.text = convertDateString(article.publishedAt)
+        dateCard.text = convertDateString(article.publishedAt ?? "")
         titleCard.text = article.title
-        imageBackgrount(article.urlToImage ?? "")
+//        let url = URL(string: article.urlToImage ?? "")
+//        imageUrlCard.kf.setImage(with: url)
     }
     
     func convertDateString(_ dateString: String) -> String? {
@@ -49,15 +51,5 @@ class ArticleCell: UITableViewCell {
             return ""
         }
     }
-    
-    func imageBackgrount(_ url: String){
-        let imageUrl = URL(string: url)
-        AF.request(imageUrl!).responseData { response in
-            if let imageData = response.data {
-                if let image = UIImage(data: imageData) {
-                    self.imageUrlCard.image = image
-                }
-            }
-        }
-    }
+
 }
