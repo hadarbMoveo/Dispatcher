@@ -22,4 +22,10 @@ class HomePageViewModel {
             self.delegate?.stopLoading()
         }
     }
+
+    func getData() async throws {
+            self.articles = try await repository.getArticles()
+            delegate?.reloadUI()
+            delegate?.stopLoading()
+    }
 }
