@@ -1,9 +1,7 @@
 import UIKit
 import Kingfisher
 
-class HomePageViewController: UIViewController{
-    
-    @IBOutlet weak var loader: UIActivityIndicatorView!
+class HomePageViewController: BaseActivityView{
     @IBOutlet weak var tableView: UITableView!
     let viewModel: HomePageViewModel = HomePageViewModel(repository: ArticleRepository())
     let navigationBar = NavigationBar()
@@ -76,12 +74,11 @@ extension HomePageViewController: HomePageDelegate {
     }
     
     func startLoading() {
-        loader.startAnimating()
+        showActivityIndicator()
     }
     
     func stopLoading() {
-        loader.stopAnimating()
-        loader.isHidden = true
+        hideActivityIndicator()
     }
 }
 

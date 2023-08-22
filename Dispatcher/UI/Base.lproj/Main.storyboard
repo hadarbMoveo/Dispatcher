@@ -56,10 +56,6 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="1" estimatedSectionFooterHeight="-1" contentViewInsetsToSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kPt-T7-06o">
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="666"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <activityIndicatorView key="tableFooterView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" id="98S-vU-sSv">
-                                    <rect key="frame" x="0.0" y="0.0" width="393" height="460"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                </activityIndicatorView>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="wVn-Mc-zwS"/>
@@ -73,7 +69,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="66C-fG-inB"/>
                     <connections>
-                        <outlet property="loader" destination="98S-vU-sSv" id="OY4-ce-tWN"/>
                         <outlet property="tableView" destination="kPt-T7-06o" id="ABs-uR-LDU"/>
                     </connections>
                 </viewController>
