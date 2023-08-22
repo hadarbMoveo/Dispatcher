@@ -11,13 +11,13 @@ struct Article: Card {
     var tag: String
 }
 
-struct NewsResponse: Codable {
+struct NewsResponse: Decodable {
     let status: String
     let totalResults: Int
     let articles: [NewsArticle]
 }
 
-struct NewsArticle: Codable,Card {
+struct NewsArticle: Decodable,Card {
     let author: String?
     let title: String
     let description: String

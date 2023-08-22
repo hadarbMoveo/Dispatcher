@@ -1,7 +1,7 @@
 import Foundation
 
 protocol HomePageDelegate: AnyObject {
-    func reloadData()
+    func reloadUI()
     func startLoading()
     func stopLoading()
 }
@@ -17,10 +17,9 @@ class HomePageViewModel {
     }
     
     func reloadData() {
-        self.delegate?.startLoading()
         repository.getArticles{ data in
             self.articles = data
-            self.delegate?.reloadData()
+            self.delegate?.reloadUI()
             self.delegate?.stopLoading()
         }
     }

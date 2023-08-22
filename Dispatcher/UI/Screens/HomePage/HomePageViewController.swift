@@ -27,6 +27,7 @@ class HomePageViewController: UIViewController{
     
     func initViewModel(){
         viewModel.delegate = self
+        self.startLoading()
         viewModel.reloadData()
     }
 }
@@ -40,8 +41,8 @@ extension HomePageViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ArticleCell.identifier, for: indexPath)
         as? ArticleCell
-        let item = viewModel.articles[indexPath.row]
-        cell?.initCellNewArticle(article: item as? NewsArticle)
+        let newArticle = viewModel.articles[indexPath.row] as? NewsArticle
+        cell?.initCell(with: newArticle)
         return cell ?? UITableViewCell()
     }
     
@@ -62,8 +63,10 @@ extension HomePageViewController: HeaderDelegate {
 }
 
 extension HomePageViewController: HomePageDelegate {    
-    func reloadData() {
-        self.tableView.reloadData()
+    func reloadUI() {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
     
     func startLoading() {
