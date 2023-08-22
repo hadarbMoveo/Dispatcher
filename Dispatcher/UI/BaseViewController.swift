@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class BaseActivityView: UIViewController {
+class BaseViewController: UIViewController {
     private var activityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {

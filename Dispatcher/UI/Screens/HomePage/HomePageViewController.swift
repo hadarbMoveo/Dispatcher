@@ -1,7 +1,7 @@
 import UIKit
 import Kingfisher
 
-class HomePageViewController: BaseActivityView{
+class HomePageViewController: BaseViewController {
     @IBOutlet weak var tableView: UITableView!
     let viewModel: HomePageViewModel = HomePageViewModel(repository: ArticleRepository())
     let navigationBar = NavigationBar()

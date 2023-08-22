@@ -35,8 +35,6 @@ class ArticleCell: UITableViewCell {
         authorCard.text = article.author
         dateCard.text = convertDateString(article.publishedAt ?? "")
         titleCard.text = article.title
-//        let url = URL(string: article.urlToImage ?? "")
-//        imageUrlCard.kf.setImage(with: url)
     }
     
     func convertDateString(_ dateString: String) -> String? {
@@ -47,9 +45,9 @@ class ArticleCell: UITableViewCell {
             let outputFormatter = DateFormatter()
             outputFormatter.dateFormat = "dd/MM/yy"
             return outputFormatter.string(from: date)
-        } else {
-            return ""
         }
+        
+        return ""
     }
-
+    
 }
