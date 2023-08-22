@@ -8,6 +8,7 @@
 import Foundation
 
 class ArticleRepository: ArticleRepositoryProtocol {
+
     let manager: NetworkManager = NetworkManager()
     let articlesNumber = 7
     
@@ -17,6 +18,11 @@ class ArticleRepository: ArticleRepositoryProtocol {
         manager.request(url: url,method: "get") { (newsResponse: NewsResponse) in
             completion(newsResponse.articles)
         }
+    }
+    
+    func getArticles() async throws -> [Card] {
+        let url = "/top-headlines?country=us&apiKey=\(NetworkManager.apiKey)&pageSize=\(self.articlesNumber)"
+        return try await manager.request(url: url, method: "get", type: NewsResponse.self).articles
     }
 }
 

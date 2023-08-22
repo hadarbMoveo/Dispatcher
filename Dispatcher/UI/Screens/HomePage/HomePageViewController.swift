@@ -27,7 +27,9 @@ class HomePageViewController: BaseViewController {
     func initViewModel(){
         viewModel.delegate = self
         self.startLoading()
-        viewModel.getData()
+        Task {
+            try await viewModel.getData()
+        }
     }
 }
 
