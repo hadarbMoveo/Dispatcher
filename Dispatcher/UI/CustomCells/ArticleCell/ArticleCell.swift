@@ -35,6 +35,7 @@ class ArticleCell: UITableViewCell {
         authorCard.text = article.author
         dateCard.text = convertDateString(article.publishedAt ?? "")
         titleCard.text = article.title
+        
     }
     
     func convertDateString(_ dateString: String) -> String? {
@@ -48,6 +49,11 @@ class ArticleCell: UITableViewCell {
         }
         
         return ""
+    }
+    
+    func setImage(urlImage:String){
+        let url = URL(string: urlImage)
+        imageUrlCard.kf.setImage(with: url)
     }
     
 }

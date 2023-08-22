@@ -42,16 +42,12 @@ extension HomePageViewController: UITableViewDataSource, UITableViewDelegate {
         as? ArticleCell
         let newArticle = viewModel.articles[indexPath.row] as? NewsArticle
         cell?.initCell(with: newArticle)
-        setImage(cell,url:URL(string: newArticle?.urlToImage ?? ""))
+        cell?.setImage(urlImage: newArticle?.urlToImage ?? "")
         return cell ?? UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 449
-    }
-    
-    func setImage(_ cell:ArticleCell?,url :URL?){
-        cell?.imageUrlCard.kf.setImage(with:url)
     }
 }
 

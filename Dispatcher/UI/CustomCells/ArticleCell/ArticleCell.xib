@@ -24,7 +24,6 @@
                                 <rect key="frame" x="0.0" y="0.0" width="343" height="183"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="183" id="ta5-99-Kp5"/>
-                                    <constraint firstAttribute="width" constant="343" id="xgQ-tI-FZx"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" horizontalCompressionResistancePriority="751" text="date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dFb-1g-zDx">
