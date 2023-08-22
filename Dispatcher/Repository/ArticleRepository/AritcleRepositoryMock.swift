@@ -8,8 +8,9 @@
 import Foundation
 
 class MockArticleRepository: ArticleRepositoryProtocol  {
-    func getArticles() -> [Card] {
-        var articels: [Card] = [
+    
+    func getArticles(completion: @escaping ([Card]) -> Void) {
+        let articels: [Card] = [
             Article(imgUrl:"",
                     title:"UBS to pay $1.4 bn to settle US fraud charges on subprime loans",
                     summary:"UBS will pay $1.4 billion to settle US charges that it defrauded investors in the sale of mortgage-backed securities, resolving the last big case stemming from the 2008 financial crisis, the Justice Department announced Monday.",
@@ -35,6 +36,9 @@ class MockArticleRepository: ArticleRepositoryProtocol  {
                     date:"16/07/23",
                     tag:"Business")
         ]
-        return articels
+        
+        completion(articels)
     }
 }
+
+

@@ -1,4 +1,6 @@
 import UIKit
+import Alamofire
+import Kingfisher
 
 class ArticleCell: UITableViewCell {
     
@@ -25,4 +27,33 @@ class ArticleCell: UITableViewCell {
         dateCard.text = article.date
         titleCard.text = article.title
     }
+    
+    func initCell(with article: NewsArticle?) {
+        guard let article else { return }
+        tagCard.text = "Sport"
+        summaryCard.text = article.description
+        authorCard.text = article.author
+        dateCard.text = convertDateString(article.publishedAt ?? "")
+        titleCard.text = article.title
+        
+    }
+    
+    func convertDateString(_ dateString: String) -> String? {
+        let inputFormatter = DateFormatter()
+        inputFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        
+        if let date = inputFormatter.date(from: dateString) {
+            let outputFormatter = DateFormatter()
+            outputFormatter.dateFormat = "dd/MM/yy"
+            return outputFormatter.string(from: date)
+        }
+        
+        return ""
+    }
+    
+    func setImage(urlImage:String){
+        let url = URL(string: urlImage)
+        imageUrlCard.kf.setImage(with: url)
+    }
+    
 }

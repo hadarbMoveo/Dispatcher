@@ -1,15 +1,16 @@
 import UIKit
+import Kingfisher
 
-class HomePageViewController: UIViewController {
-    
+class HomePageViewController: BaseViewController {
     @IBOutlet weak var tableView: UITableView!
-    let viewModel: HomePageViewModel = HomePageViewModel(repository: MockArticleRepository())
+    let viewModel: HomePageViewModel = HomePageViewModel(repository: ArticleRepository())
     let navigationBar = NavigationBar()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         initNavigationBar()
         initTableView()
+        initViewModel()
     }
     
     func initNavigationBar() {
@@ -22,6 +23,12 @@ class HomePageViewController: UIViewController {
         tableView.delegate = self
         tableView.register(UINib(nibName:String(describing: ArticleCell.self), bundle: nil), forCellReuseIdentifier: ArticleCell.identifier)
     }
+    
+    func initViewModel(){
+        viewModel.delegate = self
+        self.startLoading()
+        viewModel.getData()
+    }
 }
 
 extension HomePageViewController: UITableViewDataSource, UITableViewDelegate {
@@ -33,8 +40,9 @@ extension HomePageViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ArticleCell.identifier, for: indexPath)
         as? ArticleCell
-        let item = viewModel.articles[indexPath.row]
-        cell?.initCell(article: item as? Article)
+        let newArticle = viewModel.articles[indexPath.row] as? NewsArticle
+        cell?.initCell(with: newArticle)
+        cell?.setImage(urlImage: newArticle?.urlToImage ?? "")
         return cell ?? UITableViewCell()
     }
     
@@ -53,3 +61,20 @@ extension HomePageViewController: HeaderDelegate {
         print("Search button tapped")
     }
 }
+
+extension HomePageViewController: HomePageDelegate {
+    func reloadUI() {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+    
+    func startLoading() {
+        showActivityIndicator()
+    }
+    
+    func stopLoading() {
+        hideActivityIndicator()
+    }
+}
+

@@ -23,7 +23,7 @@ class NavigationBar {
         let appearance = UINavigationBarAppearance()
         appearance.backgroundColor = UIColor(named: "Primary")
         appearance.titleTextAttributes = [.foregroundColor: UIColor(named: "TextColor") ?? .white]
-              
+        
         viewController.navigationController?.navigationBar.scrollEdgeAppearance = appearance
         viewController.navigationController?.navigationBar.standardAppearance = appearance
     }
