@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 
 class BaseViewController: UIViewController {
+    let navigationBar = NavigationBar()
     private lazy var activityIndicator: UIActivityIndicatorView = {
         var activityIndicator = UIActivityIndicatorView(style: .large)
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
@@ -16,10 +17,10 @@ class BaseViewController: UIViewController {
         activityIndicator.hidesWhenStopped = true
         return activityIndicator
     }()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        initNavigationBar()
         view.addSubview(activityIndicator)
         NSLayoutConstraint.activate([
             activityIndicator.topAnchor.constraint(equalTo: view.topAnchor),
@@ -27,6 +28,11 @@ class BaseViewController: UIViewController {
             activityIndicator.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             activityIndicator.trailingAnchor.constraint(equalTo: view.trailingAnchor),
         ])
+    }
+    
+    func initNavigationBar() {
+        navigationBar.delegate = self
+        navigationBar.setupNavigationBar(for: self)
     }
     
     func showActivityIndicator() {
@@ -39,6 +45,20 @@ class BaseViewController: UIViewController {
         DispatchQueue.main.async {
             self.activityIndicator.stopAnimating()
         }
+    }
+}
+
+
+extension BaseViewController: HeaderDelegate {
+    
+    func alertButtonTapped() {
+        print("Alert button tapped")
+    }
+    
+    func searchButtonTapped() {
+        print("Search button tapped")
+        let customViewController = SearchPageViewController()
+        navigationController?.pushViewController(customViewController, animated: true)
     }
 }
 

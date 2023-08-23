@@ -4,19 +4,19 @@ import Kingfisher
 class HomePageViewController: BaseViewController {
     @IBOutlet weak var tableView: UITableView!
     let viewModel: HomePageViewModel = HomePageViewModel(repository: ArticleRepository())
-    let navigationBar = NavigationBar()
+//    let navigationBar = NavigationBar()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        initNavigationBar()
+//        initNavigationBar()
         initTableView()
         initViewModel()
     }
     
-    func initNavigationBar() {
-        navigationBar.delegate = self
-        navigationBar.setupNavigationBar(for: self)
-    }
+//    func initNavigationBar() {
+//        navigationBar.delegate = self
+//        navigationBar.setupNavigationBar(for: self)
+//    }
     
     func initTableView() {
         tableView.dataSource = self
@@ -53,16 +53,6 @@ extension HomePageViewController: UITableViewDataSource, UITableViewDelegate {
     }
 }
 
-extension HomePageViewController: HeaderDelegate {
-    
-    func alertButtonTapped() {
-        print("Alert button tapped")
-    }
-    
-    func searchButtonTapped() {
-        print("Search button tapped")
-    }
-}
 
 extension HomePageViewController: HomePageDelegate {
     func reloadUI() {
