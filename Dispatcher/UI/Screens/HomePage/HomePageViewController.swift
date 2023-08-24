@@ -2,7 +2,7 @@ import UIKit
 import Kingfisher
 
 class HomePageViewController: BaseViewController {
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableView: UITableView?
     let viewModel: HomePageViewModel = HomePageViewModel(repository: ArticleRepository())
 //    let navigationBar = NavigationBar()
     
@@ -13,15 +13,16 @@ class HomePageViewController: BaseViewController {
         initViewModel()
     }
     
+    
 //    func initNavigationBar() {
 //        navigationBar.delegate = self
 //        navigationBar.setupNavigationBar(for: self)
 //    }
     
     func initTableView() {
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.register(UINib(nibName:String(describing: ArticleCell.self), bundle: nil), forCellReuseIdentifier: ArticleCell.identifier)
+        tableView?.dataSource = self
+        tableView?.delegate = self
+        tableView?.register(UINib(nibName:String(describing: ArticleCell.self), bundle: nil), forCellReuseIdentifier: ArticleCell.identifier)
     }
     
     func initViewModel(){
@@ -57,7 +58,7 @@ extension HomePageViewController: UITableViewDataSource, UITableViewDelegate {
 extension HomePageViewController: HomePageDelegate {
     func reloadUI() {
         DispatchQueue.main.async {
-            self.tableView.reloadData()
+            self.tableView?.reloadData()
         }
     }
     

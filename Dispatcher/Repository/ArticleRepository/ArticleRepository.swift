@@ -24,5 +24,10 @@ class ArticleRepository: ArticleRepositoryProtocol {
         let url = "/top-headlines?country=us&apiKey=\(NetworkManager.apiKey)&pageSize=\(self.articlesNumber)"
         return try await manager.request(url: url, method: "get", type: NewsResponse.self).articles
     }
+    
+    func getArticlesBySearch(word:String) async throws -> [Card] {
+        let url = "verything?q=\(word)&apiKey=\(NetworkManager.apiKey)"
+        return try await manager.request(url: url, method: "get", type: NewsResponse.self).articles
+    }
 }
 

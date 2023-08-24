@@ -28,6 +28,13 @@ class BaseViewController: UIViewController {
             activityIndicator.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             activityIndicator.trailingAnchor.constraint(equalTo: view.trailingAnchor),
         ])
+        
+
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(false, animated: false)
+        tabBarController?.tabBar.isHidden = false
     }
     
     func initNavigationBar() {
@@ -58,7 +65,7 @@ extension BaseViewController: HeaderDelegate {
     func searchButtonTapped() {
         print("Search button tapped")
         let customViewController = SearchPageViewController()
-        navigationController?.pushViewController(customViewController, animated: true)
+        navigationController?.pushViewController(customViewController, animated: false)
     }
 }
 

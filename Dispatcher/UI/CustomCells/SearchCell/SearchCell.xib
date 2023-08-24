@@ -19,23 +19,24 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8W6-zf-Nlz">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="56"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="X" translatesAutoresizingMaskIntoConstraints="NO" id="Q5R-5i-fTw">
-                                <rect key="frame" x="366" y="20" width="12" height="12"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9e1-RZ-8m1">
-                                <rect key="frame" x="8" y="16" width="35.333333333333336" height="24"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="label" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9e1-RZ-8m1">
+                                <rect key="frame" x="10" y="16" width="35.333333333333336" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="0.35294118520000001" green="0.35294118520000001" blue="0.52549022440000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" pointerInteraction="YES" id="CDy-w3-JYV">
+                                <rect key="frame" x="352" y="16" width="33" height="23"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="X"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.97254902119999997" green="0.97254902119999997" blue="0.99607843159999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="9e1-RZ-8m1" firstAttribute="centerY" secondItem="8W6-zf-Nlz" secondAttribute="centerY" id="C6L-Y8-mZg"/>
-                            <constraint firstItem="9e1-RZ-8m1" firstAttribute="leading" secondItem="8W6-zf-Nlz" secondAttribute="leading" constant="8" id="EoN-vu-0Me"/>
-                            <constraint firstAttribute="trailing" secondItem="Q5R-5i-fTw" secondAttribute="trailing" constant="15" id="jhT-ZG-o7J"/>
+                            <constraint firstItem="9e1-RZ-8m1" firstAttribute="leading" secondItem="8W6-zf-Nlz" secondAttribute="leading" constant="10" id="EoN-vu-0Me"/>
                             <constraint firstItem="9e1-RZ-8m1" firstAttribute="top" secondItem="8W6-zf-Nlz" secondAttribute="top" constant="16" id="oZY-AC-EHr"/>
-                            <constraint firstItem="Q5R-5i-fTw" firstAttribute="top" secondItem="8W6-zf-Nlz" secondAttribute="top" constant="20" id="qqo-NN-Mh5"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -47,6 +48,10 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="removeSearchButton" destination="CDy-w3-JYV" id="WGj-z2-TGV"/>
+                <outlet property="searchLable" destination="9e1-RZ-8m1" id="WDY-8v-OI2"/>
+            </connections>
             <point key="canvasLocation" x="183.96946564885496" y="-28.169014084507044"/>
         </tableViewCell>
     </objects>
