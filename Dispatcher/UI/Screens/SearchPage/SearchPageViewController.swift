@@ -7,10 +7,25 @@
 import UIKit
 class SearchPageViewController: UIViewController, UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate, SearchDelegate {
     let viewModel: SearchPageViewModel = SearchPageViewModel()
-    
+    weak var delegate: HomePageDelegate?
     // MARK: - Properties
     let customColor = UIColor(red: 0.973, green: 0.973, blue: 1, alpha: 1)
-    let searchBar = UISearchBar()
+    
+//    let vcView = SearchPageView()
+//    override func loadView() {
+//        self.view = vcView
+//    }
+    
+    lazy var searchBar: UISearchBar = {
+        var searchBar = UISearchBar()
+        searchBar.translatesAutoresizingMaskIntoConstraints = false
+        searchBar.placeholder = "Search"
+        searchBar.searchTextField.backgroundColor = .white
+        searchBar.backgroundColor = .white
+        searchBar.searchTextField.leftViewMode = .never
+        return searchBar
+    }()
+    
     let recentSearchesView = UIView()
     let tableView = UITableView()
     let searchButton = UIButton(type: .system)
@@ -26,15 +41,12 @@ class SearchPageViewController: UIViewController, UISearchBarDelegate, UITableVi
         navigationController?.setNavigationBarHidden(true, animated: false)
         tabBarController?.tabBar.isHidden = true
         setupUI()
+        setupConstraints()
     }
     
     // MARK: - UI Setup
     private func setupUI() {
         searchBar.delegate = self
-        searchBar.placeholder = "Search"
-        searchBar.searchTextField.backgroundColor = .white
-        searchBar.backgroundColor = .white
-        searchBar.searchTextField.leftViewMode = .never
         container.backgroundColor = .white
         clearButton.backgroundColor = .lightGray
         clearButton.setTitle("CLEAR", for:. normal)
@@ -66,24 +78,22 @@ class SearchPageViewController: UIViewController, UISearchBarDelegate, UITableVi
         tableView.delegate = self
         tableView.register(UINib(nibName:String(describing: SearchCell.self), bundle: nil), forCellReuseIdentifier: SearchCell.identifier)
         view.addSubview(tableView)
-        setupConstraints()
+
     }
     
     @objc func searchButtonTapped() {
-        //        if let searchText = searchBar.text {
-        //            print("Performing search for: \(searchText)")
-        //            viewModel.searches.append(searchText)
-        //        }
         if let searchText = searchBar.text, !searchText.isEmpty {
             viewModel.addSearchEntry(keyword: searchText)
-            tableView.reloadData()
-            searchBar.text=""
+//            tableView.reloadData()
+//            searchBar.text=""
+             delegate?.search(word: searchText)
+            navigationController?.popViewController(animated: false)
         }
         
     }
     
     @objc func backButtonTapped() {
-        navigationController?.pushViewController(HomePageViewController(), animated: false)
+        navigationController?.popViewController(animated: false)
     }
     
     @objc func clearButtonTapped() {

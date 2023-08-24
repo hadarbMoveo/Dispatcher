@@ -3,6 +3,7 @@ import Foundation
 protocol HomePageDelegate: AnyObject {
     func reloadUI()
     func stopLoading()
+    func search(word:String)
 }
 
 class HomePageViewModel {
@@ -27,5 +28,22 @@ class HomePageViewModel {
             self.articles = try await repository.getArticles()
             delegate?.reloadUI()
             delegate?.stopLoading()
+    }
+    
+    func getData(isPaginationOn:Bool) async throws {
+            self.articles = try await repository.getArticles()
+            delegate?.reloadUI()
+            delegate?.stopLoading()
+    }
+    
+    
+    func getMoreArticles(page: Int) async throws {
+    }
+    
+    func search(word:String) async throws {
+        self.articles = try await repository.getArticlesBySearch(word: word)
+//        print(articles)
+        delegate?.reloadUI()
+        delegate?.stopLoading()
     }
 }

@@ -4,20 +4,12 @@ import Kingfisher
 class HomePageViewController: BaseViewController {
     @IBOutlet weak var tableView: UITableView?
     let viewModel: HomePageViewModel = HomePageViewModel(repository: ArticleRepository())
-//    let navigationBar = NavigationBar()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        initNavigationBar()
         initTableView()
         initViewModel()
     }
-    
-    
-//    func initNavigationBar() {
-//        navigationBar.delegate = self
-//        navigationBar.setupNavigationBar(for: self)
-//    }
     
     func initTableView() {
         tableView?.dataSource = self
@@ -31,6 +23,12 @@ class HomePageViewController: BaseViewController {
         Task {
             try await viewModel.getData()
         }
+    }
+    
+    override func searchButtonTapped() {
+        let searchScreen = SearchPageViewController()
+        searchScreen.delegate = self
+        navigationController?.pushViewController(searchScreen, animated: false)
     }
 }
 
@@ -69,5 +67,19 @@ extension HomePageViewController: HomePageDelegate {
     func stopLoading() {
         hideActivityIndicator()
     }
+    
+    @MainActor
+    func search(word:String){
+        Task {
+            do {
+                self.startLoading()
+                try await viewModel.search(word: word)
+            } catch let e {
+                print(e)
+            }
+            
+        }
+    }
 }
+
 

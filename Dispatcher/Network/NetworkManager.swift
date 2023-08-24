@@ -30,6 +30,7 @@ class NetworkManager {
     
     
     
+    
     func request<T: Decodable>(url: String, method: String, type: T.Type) async throws -> T {
         let finalUrl = "\(baseUrl)\(url)"
         let response = AF.request(finalUrl, method: HTTPMethod(rawValue: method))

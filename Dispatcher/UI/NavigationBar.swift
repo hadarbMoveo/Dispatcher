@@ -16,7 +16,10 @@ class NavigationBar {
         
         let alertButton = UIBarButtonItem(image: UIImage(systemName: "bell.badge"), style: .plain, target: self, action: #selector(self.alertButtonTapped))
         let searchButton = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(self.searchButtonTapped))
-        
+        searchButton.isHidden = true
+        if let homeViewController = viewController as? HomePageViewController {
+            searchButton.isHidden = false
+        }
         viewController.navigationItem.rightBarButtonItems = [alertButton, searchButton]
         viewController.navigationItem.leftBarButtonItems = [iconBarButton]
         
@@ -35,6 +38,7 @@ class NavigationBar {
     @objc private func searchButtonTapped() {
         delegate?.searchButtonTapped()
     }
+
 }
 
 

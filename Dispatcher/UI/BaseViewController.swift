@@ -8,25 +8,40 @@
 import Foundation
 import UIKit
 
-class BaseViewController: UIViewController {
+class BaseViewController: UIViewController, HeaderDelegate {
     let navigationBar = NavigationBar()
+//    let searchScreen : SearchPageViewController? = nil
     private lazy var activityIndicator: UIActivityIndicatorView = {
         var activityIndicator = UIActivityIndicatorView(style: .large)
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
-        activityIndicator.color = .gray
+        activityIndicator.color = .black
         activityIndicator.hidesWhenStopped = true
         return activityIndicator
+    }()
+    
+    private lazy var backgroundView: UIView = {
+        var view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .white
+        view.alpha = 0.7
+        return view
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         initNavigationBar()
-        view.addSubview(activityIndicator)
+ 
+        view.addSubview(backgroundView)
+        backgroundView.addSubview(activityIndicator)
         NSLayoutConstraint.activate([
-            activityIndicator.topAnchor.constraint(equalTo: view.topAnchor),
-            activityIndicator.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            activityIndicator.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            activityIndicator.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            
+            backgroundView.topAnchor.constraint(equalTo: view.topAnchor),
+            backgroundView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            backgroundView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            backgroundView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            
+            activityIndicator.centerXAnchor.constraint(equalTo: backgroundView.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: backgroundView.centerYAnchor)
         ])
         
 
@@ -44,19 +59,17 @@ class BaseViewController: UIViewController {
     
     func showActivityIndicator() {
         DispatchQueue.main.async {
+            self.backgroundView.isHidden = false
             self.activityIndicator.startAnimating()
         }
     }
     
     func hideActivityIndicator() {
         DispatchQueue.main.async {
+            self.backgroundView.isHidden = true
             self.activityIndicator.stopAnimating()
         }
     }
-}
-
-
-extension BaseViewController: HeaderDelegate {
     
     func alertButtonTapped() {
         print("Alert button tapped")
@@ -64,8 +77,5 @@ extension BaseViewController: HeaderDelegate {
     
     func searchButtonTapped() {
         print("Search button tapped")
-        let customViewController = SearchPageViewController()
-        navigationController?.pushViewController(customViewController, animated: false)
     }
 }
-

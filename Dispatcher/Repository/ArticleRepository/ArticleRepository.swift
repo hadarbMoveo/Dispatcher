@@ -26,8 +26,11 @@ class ArticleRepository: ArticleRepositoryProtocol {
     }
     
     func getArticlesBySearch(word:String) async throws -> [Card] {
-        let url = "verything?q=\(word)&apiKey=\(NetworkManager.apiKey)"
+        let url = "/everything?q=\(word)&apiKey=\(NetworkManager.apiKey)"
         return try await manager.request(url: url, method: "get", type: NewsResponse.self).articles
     }
 }
+
+//https://newsapi.org/v2/verything?q=sport&apiKey=ef5133dd364c41719494a74ce614d679
+//https://newsapi.org/v2/everything?q=sport&apiKey=ef5133dd364c41719494a74ce614d679
 
