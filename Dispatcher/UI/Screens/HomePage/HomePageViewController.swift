@@ -4,11 +4,25 @@ import Kingfisher
 class HomePageViewController: BaseViewController {
     @IBOutlet weak var tableView: UITableView?
     let viewModel: HomePageViewModel = HomePageViewModel(repository: ArticleRepository())
+    var isFirstRun: Bool = true
+    var isSearching: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         initTableView()
         initViewModel()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if !isFirstRun && !isSearching {
+            self.startLoading()
+            Task {
+                try await viewModel.getData()
+            }
+        }
+
+        isFirstRun = false
+        isSearching = false
     }
     
     func initTableView() {
@@ -47,6 +61,10 @@ extension HomePageViewController: UITableViewDataSource, UITableViewDelegate {
         return cell ?? UITableViewCell()
     }
     
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+    //    if indexPath.row == 7 
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 449
     }
@@ -70,6 +88,7 @@ extension HomePageViewController: HomePageDelegate {
     
     @MainActor
     func search(word:String){
+        isSearching = true
         Task {
             do {
                 self.startLoading()

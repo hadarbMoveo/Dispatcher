@@ -9,8 +9,9 @@ import Foundation
 import UIKit
 
 class BaseViewController: UIViewController, HeaderDelegate {
+    
     let navigationBar = NavigationBar()
-//    let searchScreen : SearchPageViewController? = nil
+    
     private lazy var activityIndicator: UIActivityIndicatorView = {
         var activityIndicator = UIActivityIndicatorView(style: .large)
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
@@ -24,6 +25,7 @@ class BaseViewController: UIViewController, HeaderDelegate {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .white
         view.alpha = 0.7
+        view.isHidden = true
         return view
     }()
 

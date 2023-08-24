@@ -25,7 +25,7 @@ class ArticleRepository: ArticleRepositoryProtocol {
         return try await manager.request(url: url, method: "get", type: NewsResponse.self).articles
     }
     
-    func getArticlesBySearch(word:String) async throws -> [Card] {
+    func getArticlesBySearch(word: String) async throws -> [Card] {
         let url = "/everything?q=\(word)&apiKey=\(NetworkManager.apiKey)"
         return try await manager.request(url: url, method: "get", type: NewsResponse.self).articles
     }
