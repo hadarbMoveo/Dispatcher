@@ -11,9 +11,11 @@ class HomePageViewModel {
     let repository: ArticleRepositoryProtocol
     var articles: [Card] = []
     weak var delegate: HomePageDelegate?
-    
+    var page:Int
+
     init(repository: ArticleRepositoryProtocol) {
         self.repository = repository
+        self.page = 1
     }
     
     func getData() {
@@ -24,10 +26,32 @@ class HomePageViewModel {
         }
     }
 
+    
+
+//    func getData() async throws {
+//            self.articles = try await repository.getArticles()
+//            delegate?.reloadUI()
+//            delegate?.stopLoading()
+//    }
+    
+    func reset(){
+        self.articles = []
+        self.page = 1
+    }
+    
+    
     func getData() async throws {
-            self.articles = try await repository.getArticles()
-            delegate?.reloadUI()
-            delegate?.stopLoading()
+            let newsArticles = try await repository.getArticles(page: self.page)
+            if !newsArticles.isEmpty {
+                self.articles.append(contentsOf: newsArticles)
+                self.page += 1
+                delegate?.reloadUI()
+                delegate?.stopLoading()
+                return
+            }
+            else{
+                delegate?.stopLoading()
+            }
     }
     
     func getData(isPaginationOn:Bool) async throws {
@@ -37,12 +61,12 @@ class HomePageViewModel {
     }
     
     
-    func getMoreArticles(page: Int) async throws {
+    func getMoreArticles() async throws {
+        
     }
     
     func search(word:String) async throws {
         self.articles = try await repository.getArticlesBySearch(word: word)
-//        print(articles)
         delegate?.reloadUI()
         delegate?.stopLoading()
     }

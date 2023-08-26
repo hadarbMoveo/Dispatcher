@@ -8,7 +8,8 @@ import Foundation
 import Alamofire
 
 class NetworkManager {
-    static let apiKey = "ef5133dd364c41719494a74ce614d679"
+    static let apiKey = "1a679827a9184c5e85b06241c6b49955"
+    //ef5133dd364c41719494a74ce614d679
     let baseUrl = "https://newsapi.org/v2"
     func request<T: Decodable>(url: String, method:String, completion: @escaping (T) -> Void) {
         let finalUrl = String("\(baseUrl)\(url)")
@@ -43,5 +44,6 @@ class NetworkManager {
         }
     }
 }
+
 
 

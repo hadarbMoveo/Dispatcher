@@ -17,6 +17,7 @@ class HomePageViewController: BaseViewController {
         if !isFirstRun && !isSearching {
             self.startLoading()
             Task {
+                viewModel.reset()
                 try await viewModel.getData()
             }
         }
@@ -58,13 +59,16 @@ extension HomePageViewController: UITableViewDataSource, UITableViewDelegate {
         let newArticle = viewModel.articles[indexPath.row] as? NewsArticle
         cell?.initCell(with: newArticle)
         cell?.setImage(urlImage: newArticle?.urlToImage ?? "")
+        if(indexPath.row == viewModel.articles.count-1 && isSearching==false){
+            self.startLoading()
+            Task {
+                try await viewModel.getData()
+            }
+        }
         return cell ?? UITableViewCell()
     }
     
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-    //    if indexPath.row == 7 
-    }
-    
+        
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 449
     }
