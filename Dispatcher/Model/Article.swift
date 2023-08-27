@@ -12,8 +12,8 @@ struct Article: Card {
 }
 
 struct NewsResponse: Decodable {
-    let status: String
-    let totalResults: Int
+    let status: String?
+    let totalResults: Int?
     let articles: [NewsArticle]
 }
 
