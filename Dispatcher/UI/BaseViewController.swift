@@ -31,10 +31,17 @@ class BaseViewController: UIViewController, HeaderDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUpUI()
+        setUpConstraints()
+    }
+    
+    func setUpUI(){
         initNavigationBar()
- 
         view.addSubview(backgroundView)
         backgroundView.addSubview(activityIndicator)
+    }
+    
+    func setUpConstraints(){
         NSLayoutConstraint.activate([
             
             backgroundView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -45,8 +52,6 @@ class BaseViewController: UIViewController, HeaderDelegate {
             activityIndicator.centerXAnchor.constraint(equalTo: backgroundView.centerXAnchor),
             activityIndicator.centerYAnchor.constraint(equalTo: backgroundView.centerYAnchor)
         ])
-        
-
     }
     
     override func viewDidAppear(_ animated: Bool) {

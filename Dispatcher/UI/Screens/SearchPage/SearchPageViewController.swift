@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SearchPageViewController: BaseViewController, UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate, SearchDelegate {
+class SearchPageViewController: BaseViewController, UISearchBarDelegate, SearchDelegate {
     
     let viewModel: SearchPageViewModel = SearchPageViewModel()
     weak var delegate: HomePageDelegate?
@@ -17,27 +17,32 @@ class SearchPageViewController: BaseViewController, UISearchBarDelegate, UITable
         self.view = vcView
     }
     
-    // MARK: - View Controller Lifecycle
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.setNavigationBarHidden(true, animated: false)
-        tabBarController?.tabBar.isHidden = true
-        vcView.searchBar.delegate = self
-        vcView.tableView.dataSource = self
-        vcView.tableView.delegate = self
-        vcView.tableView.register(UINib(nibName:String(describing: SearchCell.self), bundle: nil), forCellReuseIdentifier: SearchCell.identifier)
+        initView()
+        initTableView()
         setTargets()
     }
     
+    func initTableView() {
+        vcView.tableView.dataSource = self
+        vcView.tableView.delegate = self
+        vcView.tableView.register(UINib(nibName:String(describing: SearchCell.self), bundle: nil), forCellReuseIdentifier: SearchCell.identifier)
+    }
     
-    func setTargets(){
+    func initView() {
+        navigationController?.setNavigationBarHidden(true, animated: false)
+        tabBarController?.tabBar.isHidden = true
+        vcView.searchBar.delegate = self
+    }
+    
+    
+    func setTargets() {
         vcView.searchButton.addTarget(self, action: #selector(searchButtonTapped), for: .touchUpInside)
         vcView.backButton.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
         vcView.clearButton.addTarget(self, action: #selector(clearButtonTapped), for: .touchUpInside)
     }
     
-    // MARK: - UI Setup
     
     func search(word: String) {
         delegate?.search(word: word)
@@ -52,19 +57,21 @@ class SearchPageViewController: BaseViewController, UISearchBarDelegate, UITable
         }
     }
     
-    @objc func backButtonTapped() {
+    @objc
+    func backButtonTapped() {
         navigationController?.popViewController(animated: false)
     }
     
-    @objc func clearButtonTapped() {
+    @objc
+    func clearButtonTapped() {
         viewModel.clearAll()
         DispatchQueue.main.async {
             self.vcView.tableView.reloadData()
         }
     }
-    
-    
-    // MARK: - Table View Data Source
+}
+
+extension SearchPageViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.recentSearches.count

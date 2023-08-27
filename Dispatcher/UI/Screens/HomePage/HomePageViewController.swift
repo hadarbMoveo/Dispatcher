@@ -4,26 +4,19 @@ import Kingfisher
 class HomePageViewController: BaseViewController {
     @IBOutlet weak var tableView: UITableView?
     let viewModel: HomePageViewModel = HomePageViewModel(repository: ArticleRepository())
-    var isFirstRun: Bool = true
-    var isSearching: Bool = false
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         initTableView()
         initViewModel()
     }
     
+    
     override func viewWillAppear(_ animated: Bool) {
-        if !isFirstRun && !isSearching {
-            self.startLoading()
-            Task {
-                viewModel.reset()
-                try await viewModel.getData()
-            }
+        super.viewWillAppear(animated)
+        Task {
+            try await viewModel.willAppear()
         }
-
-        isFirstRun = false
-        isSearching = false
     }
     
     func initTableView() {
@@ -32,9 +25,10 @@ class HomePageViewController: BaseViewController {
         tableView?.register(UINib(nibName:String(describing: ArticleCell.self), bundle: nil), forCellReuseIdentifier: ArticleCell.identifier)
     }
     
-    func initViewModel(){
+    func initViewModel() {
         viewModel.delegate = self
         self.startLoading()
+        
         Task {
             try await viewModel.getData()
         }
@@ -59,7 +53,7 @@ extension HomePageViewController: UITableViewDataSource, UITableViewDelegate {
         let newArticle = viewModel.articles[indexPath.row] as? NewsArticle
         cell?.initCell(with: newArticle)
         cell?.setImage(urlImage: newArticle?.urlToImage ?? "")
-        if(indexPath.row == viewModel.articles.count-1 && isSearching==false){
+        if(indexPath.row == viewModel.articles.count-1 && viewModel.isSearching==false) {
             self.startLoading()
             Task {
                 try await viewModel.getData()
@@ -68,7 +62,7 @@ extension HomePageViewController: UITableViewDataSource, UITableViewDelegate {
         return cell ?? UITableViewCell()
     }
     
-        
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 449
     }
@@ -91,8 +85,7 @@ extension HomePageViewController: HomePageDelegate {
     }
     
     @MainActor
-    func search(word:String){
-        isSearching = true
+    func search(word:String) {
         Task {
             do {
                 self.startLoading()
@@ -100,7 +93,6 @@ extension HomePageViewController: HomePageDelegate {
             } catch let e {
                 print(e)
             }
-            
         }
     }
 }

@@ -8,7 +8,8 @@
 import UIKit
 
 class SearchPageView : UIView {
-    let customColor = UIColor(red: 0.973, green: 0.973, blue: 1, alpha: 1)
+    
+    let customColor = UIColor(named: "search-page-color")
     
     lazy var searchBar: UISearchBar = {
         var searchBar = UISearchBar()
@@ -82,7 +83,7 @@ class SearchPageView : UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setUpUI(){
+    func setUpUI() {
         container.addSubview(searchButton)
         container.addSubview(searchBar)
         container.addSubview(backButton)
@@ -93,7 +94,7 @@ class SearchPageView : UIView {
         addSubview(tableView)
     }
     
-    func setUpConstraints(){
+    func setUpConstraints() {
         NSLayoutConstraint.activate([
             container.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
             container.leadingAnchor.constraint(equalTo: leadingAnchor),

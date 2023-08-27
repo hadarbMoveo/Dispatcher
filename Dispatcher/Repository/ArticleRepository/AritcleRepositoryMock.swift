@@ -8,6 +8,7 @@
 import Foundation
 
 class MockArticleRepository: ArticleRepositoryProtocol  {
+    
     func getArticles(page: Int) async throws -> [Card] {
         let articels: [Card] = [
             Article(imgUrl:"",
