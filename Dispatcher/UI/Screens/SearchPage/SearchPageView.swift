@@ -85,13 +85,16 @@ class SearchPageView : UIView {
     
     func setUpUI() {
         addSubview(container)
-        addSubview(recentSearchesView)
-        addSubview(tableView)
         container.addSubview(searchButton)
         container.addSubview(searchBar)
         container.addSubview(backButton)
+        
+        addSubview(recentSearchesView)
         recentSearchesView.addSubview(clearButton)
         recentSearchesView.addSubview(lable)
+        
+        addSubview(tableView)
+
     }
     
     func setUpConstraints() {
