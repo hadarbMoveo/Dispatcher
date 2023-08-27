@@ -2,8 +2,14 @@ import UIKit
 import Kingfisher
 
 class HomePageViewController: BaseViewController {
-    @IBOutlet weak var tableView: UITableView?
+    
     let viewModel: HomePageViewModel = HomePageViewModel(repository: ArticleRepository())
+    
+    @IBOutlet weak var tableView: UITableView?
+    
+    override var isSearchHidden: Bool {
+        return false
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -15,7 +21,7 @@ class HomePageViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         Task {
-            try await viewModel.willAppear()
+            try await viewModel.prepareForDisplay()
         }
     }
     
@@ -53,12 +59,7 @@ extension HomePageViewController: UITableViewDataSource, UITableViewDelegate {
         let newArticle = viewModel.articles[indexPath.row] as? NewsArticle
         cell?.initCell(with: newArticle)
         cell?.setImage(urlImage: newArticle?.urlToImage ?? "")
-        if(indexPath.row == viewModel.articles.count-1 && viewModel.isSearching==false) {
-            self.startLoading()
-            Task {
-                try await viewModel.getData()
-            }
-        }
+
         return cell ?? UITableViewCell()
     }
     
@@ -66,10 +67,24 @@ extension HomePageViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 449
     }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        loadMoreDataIfNeeded(for: indexPath.row)
+    }
+    
+    func loadMoreDataIfNeeded(for index: Int) {
+        let didReachPaginationCell = index == viewModel.articles.count-1
+        if didReachPaginationCell && !viewModel.isSearching {
+            self.startLoading()
+            Task {
+                try await viewModel.getData()
+            }
+        }
+    }
 }
 
 
-extension HomePageViewController: HomePageDelegate {
+extension HomePageViewController: HomePageViewControllerDelegate {
     func reloadUI() {
         DispatchQueue.main.async {
             self.tableView?.reloadData()
@@ -85,6 +100,7 @@ extension HomePageViewController: HomePageDelegate {
     }
     
     @MainActor
+    
     func search(word:String) {
         Task {
             do {

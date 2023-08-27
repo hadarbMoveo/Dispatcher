@@ -7,10 +7,10 @@
 
 import UIKit
 
-class SearchPageViewController: BaseViewController, UISearchBarDelegate, SearchDelegate {
+class SearchPageViewController: BaseViewController, UISearchBarDelegate, SearchPageViewControllerDelegate {
     
     let viewModel: SearchPageViewModel = SearchPageViewModel()
-    weak var delegate: HomePageDelegate?
+    weak var delegate: HomePageViewControllerDelegate?
 
     let vcView = SearchPageView()
     override func loadView() {
@@ -36,6 +36,10 @@ class SearchPageViewController: BaseViewController, UISearchBarDelegate, SearchD
         vcView.searchBar.delegate = self
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(false, animated: false)
+        tabBarController?.tabBar.isHidden = false
+    }
     
     func setTargets() {
         vcView.searchButton.addTarget(self, action: #selector(searchButtonTapped), for: .touchUpInside)

@@ -1,6 +1,6 @@
 import Foundation
 
-protocol HomePageDelegate: AnyObject {
+protocol HomePageViewControllerDelegate: AnyObject {
     func reloadUI()
     func stopLoading()
     func search(word:String)
@@ -11,7 +11,7 @@ class HomePageViewModel {
     
     let repository: ArticleRepositoryProtocol
     var articles: [Card] = []
-    weak var delegate: HomePageDelegate?
+    weak var delegate: HomePageViewControllerDelegate?
     var page:Int
     var isFirstRun: Bool = true
     var isSearching: Bool = false
@@ -21,7 +21,7 @@ class HomePageViewModel {
         self.page = 1
     }
     
-    func willAppear() async throws {
+    func prepareForDisplay() async throws {
         if !isFirstRun && !isSearching {
             delegate?.startLoading()
             resetNewsList()
@@ -51,12 +51,10 @@ class HomePageViewModel {
             reloadUI()
             return
         }
-        else {
             delegate?.stopLoading()
-        }
     }
         
-    func search(word:String) async throws {
+    func search(word: String) async throws {
         isSearching = true
         self.articles = try await repository.getArticlesBySearch(word: word)
         reloadUI()

@@ -12,6 +12,10 @@ class BaseViewController: UIViewController, HeaderDelegate {
     
     let navigationBar = NavigationBar()
     
+    var isSearchHidden: Bool {
+        return true
+    }
+    
     private lazy var activityIndicator: UIActivityIndicatorView = {
         var activityIndicator = UIActivityIndicatorView(style: .large)
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
@@ -28,7 +32,7 @@ class BaseViewController: UIViewController, HeaderDelegate {
         view.isHidden = true
         return view
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
@@ -52,16 +56,12 @@ class BaseViewController: UIViewController, HeaderDelegate {
             activityIndicator.centerXAnchor.constraint(equalTo: backgroundView.centerXAnchor),
             activityIndicator.centerYAnchor.constraint(equalTo: backgroundView.centerYAnchor)
         ])
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        navigationController?.setNavigationBarHidden(false, animated: false)
-        tabBarController?.tabBar.isHidden = false
-    }
+    }    
     
     func initNavigationBar() {
         navigationBar.delegate = self
         navigationBar.setupNavigationBar(for: self)
+        navigationBar.searchButton.isHidden = isSearchHidden
     }
     
     func showActivityIndicator() {
@@ -77,7 +77,7 @@ class BaseViewController: UIViewController, HeaderDelegate {
             self.activityIndicator.stopAnimating()
         }
     }
-    
+
     func alertButtonTapped() {
         print("Alert button tapped")
     }
