@@ -30,10 +30,6 @@ class ArticleDetailsPageViewController: UIViewController {
         dataInjection()
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        navigationController?.popViewController(animated: false)
-    }
-    
     func dataInjection() {
         setImage()
         vcView.date.text = convertDateString(viewModel.article?.publishedAt ?? "")
