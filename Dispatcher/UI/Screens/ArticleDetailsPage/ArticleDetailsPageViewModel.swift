@@ -6,6 +6,7 @@
 //
 
 import Foundation
+
 class ArticleDetailsPageViewModel {
     let article: NewsArticle?
     
