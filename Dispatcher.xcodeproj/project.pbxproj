@@ -13,6 +13,10 @@
 		6F39C18A2A84E8E400B2403F /* Dispatcher.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6F39C1882A84E8E400B2403F /* Dispatcher.xcdatamodeld */; };
 		6F39C18C2A84E8E500B2403F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F39C18B2A84E8E500B2403F /* Assets.xcassets */; };
 		6F39C19C2A86893100B2403F /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F39C19B2A86893100B2403F /* SplashViewController.swift */; };
+		6F77EA752A9B860D003B2DB8 /* ArticleDetailsPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F77EA742A9B860D003B2DB8 /* ArticleDetailsPageViewController.swift */; };
+		6F77EA772A9B861B003B2DB8 /* ArticleDetailsPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F77EA762A9B861B003B2DB8 /* ArticleDetailsPageViewModel.swift */; };
+		6F77EA792A9B905B003B2DB8 /* ArticleDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F77EA782A9B905B003B2DB8 /* ArticleDetailsView.swift */; };
+		6F77EA7B2A9C8D9E003B2DB8 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F77EA7A2A9C8D9E003B2DB8 /* RoundedButton.swift */; };
 		6F7B551D2A8E361500C17ED8 /* AritcleRepositoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7B551C2A8E361500C17ED8 /* AritcleRepositoryMock.swift */; };
 		6F7B55202A91357800C17ED8 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 6F7B551F2A91357800C17ED8 /* Alamofire */; };
 		6F7B55252A92090E00C17ED8 /* ArticleRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7B55242A92090E00C17ED8 /* ArticleRepository.swift */; };
@@ -43,6 +47,10 @@
 		6F39C18B2A84E8E500B2403F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6F39C1902A84E8E500B2403F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6F39C19B2A86893100B2403F /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		6F77EA742A9B860D003B2DB8 /* ArticleDetailsPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailsPageViewController.swift; sourceTree = "<group>"; };
+		6F77EA762A9B861B003B2DB8 /* ArticleDetailsPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailsPageViewModel.swift; sourceTree = "<group>"; };
+		6F77EA782A9B905B003B2DB8 /* ArticleDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailsView.swift; sourceTree = "<group>"; };
+		6F77EA7A2A9C8D9E003B2DB8 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		6F7B551C2A8E361500C17ED8 /* AritcleRepositoryMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AritcleRepositoryMock.swift; sourceTree = "<group>"; };
 		6F7B55242A92090E00C17ED8 /* ArticleRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleRepository.swift; sourceTree = "<group>"; };
 		6F7B55352A94A2B300C17ED8 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
@@ -123,6 +131,24 @@
 				6F39C18B2A84E8E500B2403F /* Assets.xcassets */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		6F77EA732A9B85D2003B2DB8 /* ArticleDetailsPage */ = {
+			isa = PBXGroup;
+			children = (
+				6F77EA742A9B860D003B2DB8 /* ArticleDetailsPageViewController.swift */,
+				6F77EA762A9B861B003B2DB8 /* ArticleDetailsPageViewModel.swift */,
+				6F77EA782A9B905B003B2DB8 /* ArticleDetailsView.swift */,
+			);
+			path = ArticleDetailsPage;
+			sourceTree = "<group>";
+		};
+		6F77EA7C2A9CAD4A003B2DB8 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				6F77EA7A2A9C8D9E003B2DB8 /* RoundedButton.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		6F7B551B2A8E35E800C17ED8 /* ArticleRepository */ = {
@@ -215,6 +241,7 @@
 		6FB15C502A8D1F4800756F6A /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				6F77EA7C2A9CAD4A003B2DB8 /* Components */,
 				6FB15C522A8D220200756F6A /* CustomCells */,
 				6FB15C512A8D1F6D00756F6A /* Screens */,
 				6F39C1852A84E8E400B2403F /* Main.storyboard */,
@@ -227,6 +254,7 @@
 		6FB15C512A8D1F6D00756F6A /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				6F77EA732A9B85D2003B2DB8 /* ArticleDetailsPage */,
 				6F7B553B2A95001800C17ED8 /* SearchPage */,
 				6FB15C4B2A8D1D4000756F6A /* UserPage */,
 				6FB15C4C2A8D1D5C00756F6A /* FavoritePage */,
@@ -325,12 +353,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F77EA752A9B860D003B2DB8 /* ArticleDetailsPageViewController.swift in Sources */,
 				6F7B55482A9793AD00C17ED8 /* SearchPageView.swift in Sources */,
 				6FB15C462A8D1B9100756F6A /* Article.swift in Sources */,
 				6FD49B102A87FDB100BF85EB /* FavoritePageViewController.swift in Sources */,
 				6FD49B0E2A87FD7D00BF85EB /* UserPageViewController.swift in Sources */,
 				6FB15C582A8DF03D00756F6A /* HomePageViewModel.swift in Sources */,
 				6F7B553A2A94B1B800C17ED8 /* BaseViewController.swift in Sources */,
+				6F77EA792A9B905B003B2DB8 /* ArticleDetailsView.swift in Sources */,
 				6F7B55252A92090E00C17ED8 /* ArticleRepository.swift in Sources */,
 				6F39C1802A84E8E400B2403F /* AppDelegate.swift in Sources */,
 				6F7B551D2A8E361500C17ED8 /* AritcleRepositoryMock.swift in Sources */,
@@ -343,6 +373,8 @@
 				6F7B55412A95E24A00C17ED8 /* SearchCell.swift in Sources */,
 				6FD49B0C2A87FD6800BF85EB /* HomePageViewController.swift in Sources */,
 				6F7B55362A94A2B300C17ED8 /* NetworkManager.swift in Sources */,
+				6F77EA7B2A9C8D9E003B2DB8 /* RoundedButton.swift in Sources */,
+				6F77EA772A9B861B003B2DB8 /* ArticleDetailsPageViewModel.swift in Sources */,
 				6FD49B1F2A8A5E6500BF85EB /* ArticleCell.swift in Sources */,
 				6F39C1822A84E8E400B2403F /* SceneDelegate.swift in Sources */,
 			);

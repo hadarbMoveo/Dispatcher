@@ -12,7 +12,7 @@ class HomePageViewModel {
     let repository: ArticleRepositoryProtocol
     var articles: [Card] = []
     weak var delegate: HomePageViewControllerDelegate?
-    var page:Int
+    var page: Int
     var isFirstRun: Bool = true
     var isSearching: Bool = false
     
