@@ -9,6 +9,7 @@ struct Article: Card {
     var author: String
     var date: String
     var tag: String
+    var content: String
 }
 
 struct NewsResponse: Decodable {
@@ -23,5 +24,6 @@ struct NewsArticle: Decodable,Card {
     let description: String?
     let urlToImage: String?
     let publishedAt: String?
+    let content: String?
 }
 

@@ -81,6 +81,13 @@ extension HomePageViewController: UITableViewDataSource, UITableViewDelegate {
             }
         }
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let NewArticle = NewsArticle(author: "lala", title: "lala", description: "lala", urlToImage: "lala", publishedAt: "lala",
+                                     content: "laffffffrfdgdkgjdkgjdfgjgldfjgfkdgjdsklgjdkfljdlkfgjdfklfdlkgsdla")
+        let viewModelForDetails = ArticleDetailsPageViewModel(article: NewArticle)
+        navigationController?.pushViewController(ArticleDetailsPageViewController(viewModel: viewModelForDetails), animated: false)
+    }
 }
 
 
