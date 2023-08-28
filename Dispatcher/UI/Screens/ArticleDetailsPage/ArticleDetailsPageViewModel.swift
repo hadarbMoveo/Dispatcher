@@ -7,9 +7,9 @@
 
 import Foundation
 class ArticleDetailsPageViewModel {
-    let article: NewsArticle
+    let article: NewsArticle?
     
-    init(article: NewsArticle) {
+    init(article: NewsArticle?) {
         self.article = article
     }
 }

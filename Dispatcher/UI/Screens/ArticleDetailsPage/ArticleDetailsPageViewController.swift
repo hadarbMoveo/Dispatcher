@@ -31,5 +31,9 @@ class ArticleDetailsPageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        navigationController?.popViewController(animated: false)
+    }
 }
 
