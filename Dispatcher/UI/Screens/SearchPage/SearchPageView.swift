@@ -73,8 +73,8 @@ class SearchPageView : UIView {
         return clearButton
     }()
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init() {
+        super.init(frame: .zero)
         setUpUI()
         setUpConstraints()
     }

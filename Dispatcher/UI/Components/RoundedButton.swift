@@ -7,11 +7,7 @@
 
 import UIKit
 
-class CustomButton: UIButton {
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupButton()
-    }
+class RoundedButton: UIButton {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -19,11 +15,8 @@ class CustomButton: UIButton {
     }
     
     private func setupButton() {
-        let widthConstraint = widthAnchor.constraint(equalToConstant: 335)
-        let heightConstraint = heightAnchor.constraint(equalToConstant: 36)
-        
-        widthConstraint.isActive = true
-        heightConstraint.isActive = true
+        widthAnchor.constraint(equalToConstant: 335).isActive = true
+        heightAnchor.constraint(equalToConstant: 36).isActive = true
         
         backgroundColor = .blue
         setTitleColor(.white, for: .normal)

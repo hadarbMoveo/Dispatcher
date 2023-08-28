@@ -83,8 +83,8 @@ extension HomePageViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let Article = viewModel.articles[indexPath.row] as? NewsArticle
-        let viewModelForDetails = ArticleDetailsPageViewModel(article: Article)
+        let articleSelected = viewModel.articles[indexPath.row] as? NewsArticle
+        let viewModelForDetails = ArticleDetailsPageViewModel(article: articleSelected)
         navigationController?.pushViewController(ArticleDetailsPageViewController(viewModel: viewModelForDetails), animated: false)
     }
 }

@@ -52,14 +52,14 @@ class ArticleCell: UITableViewCell {
     }
     
     func setImage(urlImage:String){
-        if urlImage == ""{
+        if urlImage == "" {
             imageUrlCard.image = UIImage(named: "no-image")
-            imageUrlCard
         }
         else{
             let url = URL(string: urlImage)
             imageUrlCard.kf.setImage(with: url)
         }
     }
+
     
 }

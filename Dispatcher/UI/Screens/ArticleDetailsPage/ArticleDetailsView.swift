@@ -10,26 +10,18 @@ import Kingfisher
 
 class ArticleDetailsView: UIView {
     
-    let article: NewsArticle?
     let customColor = UIColor(named: "your-article-details-color")
-    
     
     lazy var image: UIImageView = {
         let image = UIImageView(image: UIImage(named: "metaData-img"))
         image.translatesAutoresizingMaskIntoConstraints = false
-        if(article?.urlToImage != nil) {
-            let url = URL(string: article?.urlToImage ?? "")
-            image.kf.setImage(with: url)
-            return image
-        }
-        image.image = UIImage(named: "no-image")
         return image
     }()
+    
     
     lazy var date: UILabel = {
         let dateLable = UILabel()
         dateLable.translatesAutoresizingMaskIntoConstraints = false
-        dateLable.text=convertDateString(article?.publishedAt ?? "")
         let customColor = UIColor(named: "date-color")
         dateLable.textColor = customColor
         dateLable.font = UIFont(name: "Roboto-Regular", size: 14)
@@ -40,7 +32,6 @@ class ArticleDetailsView: UIView {
     lazy var title: UILabel = {
         let titleLable = UILabel()
         titleLable.translatesAutoresizingMaskIntoConstraints = false
-        titleLable.text = article?.title
         titleLable.font = UIFont.boldSystemFont(ofSize: 18)
         titleLable.numberOfLines = 4
         return titleLable
@@ -50,7 +41,6 @@ class ArticleDetailsView: UIView {
     lazy var author: UILabel = {
         let authorLabel = UILabel()
         authorLabel.translatesAutoresizingMaskIntoConstraints = false
-        authorLabel.text = article?.author
         let customColor = UIColor(named: "date-color")
         authorLabel.textColor = customColor
         authorLabel.font = UIFont(name: "Roboto-Regular", size: 14)
@@ -59,10 +49,10 @@ class ArticleDetailsView: UIView {
         return authorLabel
     }()
     
+    
     lazy var content: UITextView = {
         let textView = UITextView()
         textView.translatesAutoresizingMaskIntoConstraints = false
-        textView.text = article?.content
         let customColor = UIColor(named: "content-color")
         textView.textColor = customColor
         textView.font = UIFont.systemFont(ofSize: 16)
@@ -72,10 +62,9 @@ class ArticleDetailsView: UIView {
     }()
     
     
-    init(frame: CGRect, article: NewsArticle?) {
-        self.article = article
-        super.init(frame: frame)
-        self.backgroundColor = .white
+     init() {
+        super.init(frame: .zero)
+        backgroundColor = .white
         setUpUI()
         setUpConstraints()
     }
@@ -98,8 +87,7 @@ class ArticleDetailsView: UIView {
             image.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor,constant: 0),
             image.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor,constant: 0),
             image.heightAnchor.constraint(equalToConstant: 183),
-            
-            
+                        
             date.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 16),
             date.topAnchor.constraint(equalTo: image.bottomAnchor ,constant: 12),
             
@@ -117,20 +105,6 @@ class ArticleDetailsView: UIView {
             content.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor ,constant: 8),
         
         ])
-
     }
-    
-    func convertDateString(_ dateString: String) -> String? {
-        let inputFormatter = DateFormatter()
-        inputFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
-        
-        if let date = inputFormatter.date(from: dateString) {
-            let outputFormatter = DateFormatter()
-            outputFormatter.dateFormat = "dd/MM/yy"
-            return outputFormatter.string(from: date)
-        }
-        return ""
-    }
-    
 }
 
