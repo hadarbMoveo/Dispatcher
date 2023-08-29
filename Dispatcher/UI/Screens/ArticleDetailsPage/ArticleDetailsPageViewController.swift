@@ -27,10 +27,10 @@ class ArticleDetailsPageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUI()()
+        setupUI()
     }
     
-    func setupUI()() {
+    func setupUI() {
         setImage()
         vcView.date.text = convertDateString(viewModel.article?.publishedAt ?? "")
         vcView.title.text = (viewModel.article?.title ?? "")
