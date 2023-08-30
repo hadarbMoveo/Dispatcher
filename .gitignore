@@ -2,6 +2,6 @@
 Pods/
 Podfile
 Podfile.lock
-.xcscheme
-.resolved
-.plist
+*.plist
+*.xcscheme
+*.resolved
