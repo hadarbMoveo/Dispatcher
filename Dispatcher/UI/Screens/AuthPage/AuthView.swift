@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct AuthView: View {
-    
-
+    @StateObject var viewModel: AuthPageViewModel = AuthPageViewModel(authRepository: AuthFireBaseRepository())
     
     var body: some View {
         GeometryReader { geo in
@@ -18,9 +17,9 @@ struct AuthView: View {
             let height = geo.size.height
             
             VStack (spacing: 0) {
-            
+                
                 topView().frame(width: width,height:height*0.35).background(Color("Primary"))
-                bottomView().background(Color("auth-color"))
+                bottomView(viewModel: viewModel).background(Color("auth-color"))
             }.frame(width: width, height: height)
         }
         
@@ -40,13 +39,24 @@ private func topView()-> some View {
 }
 
 @ViewBuilder
-private func bottomView()-> some View {
-    let inputPlaceholders = ["Email", "Password","Re-Enter-Password"]
+private func bottomView(viewModel: AuthPageViewModel)-> some View {
+    
+    
     GeometryReader { geo in
         VStack {
-            Text("Singup").frame(maxWidth: .infinity, alignment: .leading).bold().font(.title2).padding(.top,30).padding(.leading,20).foregroundColor(Color("auth"))
-            ForEach(0..<inputPlaceholders.count, id: \.self) { index in
-                TextField(inputPlaceholders[index], text: .constant("")).frame(width: geo.size.width*0.83, height: 50)
+            Text("Singup").frame(maxWidth: .infinity, alignment: .leading)
+                .bold()
+                .font(.title2)
+                .padding(.top,30)
+                .padding(.leading,20)
+                .foregroundColor(Color("auth"))
+            ForEach(0..<viewModel.inputPlaceholders.count, id: \.self) { index in
+                let binding = Binding(
+                    get: { viewModel.email },
+                    set: { newValue in viewModel.email = newValue }
+                )
+                TextField(viewModel.inputPlaceholders[index],text: binding)
+                    .frame(width: geo.size.width*0.83, height: 50)
                     .padding(.horizontal).background(.white)
                     .padding(.bottom,8)
             }
@@ -57,7 +67,7 @@ private func bottomView()-> some View {
                 .padding(.bottom,geo.size.height*0.06)
             
             Button(action: {
-
+                viewModel.register()
             }) {
                 Text("SIGNUP")
                     .frame(width: geo.size.width*0.8,height: 5)
@@ -70,7 +80,6 @@ private func bottomView()-> some View {
             }
             
             Button(action: {
-                // Your button action here
             }) {
                 Text("LOGIN")
                     .frame(width: geo.size.width*0.8,height: 5)
@@ -82,11 +91,11 @@ private func bottomView()-> some View {
                     .padding(.top)
             }
         }
-
+        
     }
 }
 
-func act(){
+func register(){
     print("hadar")
 }
 

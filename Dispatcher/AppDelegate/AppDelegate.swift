@@ -7,11 +7,31 @@
 
 import UIKit
 import CoreData
+import FirebaseCore
+import FirebaseAuth
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
+    private func setupFirebaseConfigFiles(fileName: String){
+        let filePath = Bundle.main.path(forResource: fileName, ofType: "plist")
+        guard let fileopts = FirebaseOptions(contentsOfFile: filePath ?? "") else {
+            print("Couldn't load firebase file")
+            return
+        }
+        
+        FirebaseApp.configure(options: fileopts)
+    }
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        #if DEBUG
+        print("DUBUG")
+        setupFirebaseConfigFiles(fileName: "GoogleService-Info")
+        #else
+        setupFirebaseConfigFiles(fileName: "GoogleService-Info-prod")
+        #endif
+        
         return true
     }
     
