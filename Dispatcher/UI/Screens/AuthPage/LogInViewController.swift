@@ -1,14 +1,18 @@
 //
-//  AuthPageViewController.swift
+//  LogInViewController.swift
 //  Dispatcher
 //
-//  Created by Hadar Basson on 29/08/2023.
+//  Created by Hadar Basson on 31/08/2023.
 //
+
+import Foundation
 
 import UIKit
 import SwiftUI
 
-class AuthPageViewController: UIViewController {
+class LogInPageViewController: UIViewController {
+    
+    var viewModel: LoginPageViewModel  = LoginPageViewModel(authRepository: AuthFireBaseRepository())
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -19,7 +23,7 @@ class AuthPageViewController: UIViewController {
         view.backgroundColor = .white
         navigationItem.hidesBackButton = true
         
-        let viewz = UIHostingController(rootView: AuthView())
+        let viewz = UIHostingController(rootView: AuthView(viewModel: viewModel,loginButtonTapped:navigateToLogInViewController))
         viewz.view?.translatesAutoresizingMaskIntoConstraints = false
         
         view.addSubview(viewz.view)
@@ -30,6 +34,10 @@ class AuthPageViewController: UIViewController {
             viewz.view.topAnchor.constraint(equalTo: view.topAnchor),
             viewz.view.bottomAnchor.constraint(equalTo: view.bottomAnchor),
         ])
+    }
+    
+    func navigateToLogInViewController() {
+        print("from login")
     }
     
     required init?(coder: NSCoder) {

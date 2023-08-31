@@ -8,11 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		50D5090BF22D833BD4A29439 /* Pods_Dispatcher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B819FBC77D36019FB25C75A /* Pods_Dispatcher.framework */; };
-		6F3574682A9F42AA0031988C /* AuthPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3574672A9F42AA0031988C /* AuthPageViewModel.swift */; };
+		6F3574682A9F42AA0031988C /* LoginPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3574672A9F42AA0031988C /* LoginPageViewModel.swift */; };
 		6F35746B2A9F4C6B0031988C /* AuthRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F35746A2A9F4C6B0031988C /* AuthRepositoryProtocol.swift */; };
 		6F35746D2A9F4CF60031988C /* AuthFireBaseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F35746C2A9F4CF60031988C /* AuthFireBaseRepository.swift */; };
 		6F3574732A9F8F320031988C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6F3574722A9F8F320031988C /* GoogleService-Info.plist */; };
 		6F3574752A9F94560031988C /* GoogleService-Info-prod.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6F3574742A9F94560031988C /* GoogleService-Info-prod.plist */; };
+		6F3574772AA07BA50031988C /* SignUpPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3574762AA07BA50031988C /* SignUpPageViewModel.swift */; };
+		6F3574792AA07FDC0031988C /* AuthViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3574782AA07FDC0031988C /* AuthViewModelProtocol.swift */; };
+		6F35747B2AA0A75C0031988C /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F35747A2AA0A75C0031988C /* LogInViewController.swift */; };
 		6F39C1802A84E8E400B2403F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F39C17F2A84E8E400B2403F /* AppDelegate.swift */; };
 		6F39C1822A84E8E400B2403F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F39C1812A84E8E400B2403F /* SceneDelegate.swift */; };
 		6F39C1872A84E8E400B2403F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F39C1852A84E8E400B2403F /* Main.storyboard */; };
@@ -23,7 +26,7 @@
 		6F77EA772A9B861B003B2DB8 /* ArticleDetailsPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F77EA762A9B861B003B2DB8 /* ArticleDetailsPageViewModel.swift */; };
 		6F77EA792A9B905B003B2DB8 /* ArticleDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F77EA782A9B905B003B2DB8 /* ArticleDetailsView.swift */; };
 		6F77EA7B2A9C8D9E003B2DB8 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F77EA7A2A9C8D9E003B2DB8 /* RoundedButton.swift */; };
-		6F77EA7F2A9DC588003B2DB8 /* AuthPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F77EA7E2A9DC588003B2DB8 /* AuthPageViewController.swift */; };
+		6F77EA7F2A9DC588003B2DB8 /* SingUpPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F77EA7E2A9DC588003B2DB8 /* SingUpPageViewController.swift */; };
 		6F77EA812A9DC6AC003B2DB8 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F77EA802A9DC6AC003B2DB8 /* AuthView.swift */; };
 		6F7B551D2A8E361500C17ED8 /* AritcleRepositoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7B551C2A8E361500C17ED8 /* AritcleRepositoryMock.swift */; };
 		6F7B55202A91357800C17ED8 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 6F7B551F2A91357800C17ED8 /* Alamofire */; };
@@ -49,11 +52,14 @@
 
 /* Begin PBXFileReference section */
 		3B819FBC77D36019FB25C75A /* Pods_Dispatcher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Dispatcher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		6F3574672A9F42AA0031988C /* AuthPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthPageViewModel.swift; sourceTree = "<group>"; };
+		6F3574672A9F42AA0031988C /* LoginPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPageViewModel.swift; sourceTree = "<group>"; };
 		6F35746A2A9F4C6B0031988C /* AuthRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepositoryProtocol.swift; sourceTree = "<group>"; };
 		6F35746C2A9F4CF60031988C /* AuthFireBaseRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthFireBaseRepository.swift; sourceTree = "<group>"; };
 		6F3574722A9F8F320031988C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6F3574742A9F94560031988C /* GoogleService-Info-prod.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-prod.plist"; sourceTree = "<group>"; };
+		6F3574762AA07BA50031988C /* SignUpPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPageViewModel.swift; sourceTree = "<group>"; };
+		6F3574782AA07FDC0031988C /* AuthViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModelProtocol.swift; sourceTree = "<group>"; };
+		6F35747A2AA0A75C0031988C /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		6F39C17F2A84E8E400B2403F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6F39C1812A84E8E400B2403F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		6F39C1862A84E8E400B2403F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -65,7 +71,7 @@
 		6F77EA762A9B861B003B2DB8 /* ArticleDetailsPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailsPageViewModel.swift; sourceTree = "<group>"; };
 		6F77EA782A9B905B003B2DB8 /* ArticleDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailsView.swift; sourceTree = "<group>"; };
 		6F77EA7A2A9C8D9E003B2DB8 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
-		6F77EA7E2A9DC588003B2DB8 /* AuthPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthPageViewController.swift; sourceTree = "<group>"; };
+		6F77EA7E2A9DC588003B2DB8 /* SingUpPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingUpPageViewController.swift; sourceTree = "<group>"; };
 		6F77EA802A9DC6AC003B2DB8 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
 		6F7B551C2A8E361500C17ED8 /* AritcleRepositoryMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AritcleRepositoryMock.swift; sourceTree = "<group>"; };
 		6F7B55242A92090E00C17ED8 /* ArticleRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleRepository.swift; sourceTree = "<group>"; };
@@ -203,9 +209,12 @@
 		6F77EA7D2A9DC535003B2DB8 /* AuthPage */ = {
 			isa = PBXGroup;
 			children = (
-				6F77EA7E2A9DC588003B2DB8 /* AuthPageViewController.swift */,
+				6F77EA7E2A9DC588003B2DB8 /* SingUpPageViewController.swift */,
 				6F77EA802A9DC6AC003B2DB8 /* AuthView.swift */,
-				6F3574672A9F42AA0031988C /* AuthPageViewModel.swift */,
+				6F3574672A9F42AA0031988C /* LoginPageViewModel.swift */,
+				6F3574762AA07BA50031988C /* SignUpPageViewModel.swift */,
+				6F3574782AA07FDC0031988C /* AuthViewModelProtocol.swift */,
+				6F35747A2AA0A75C0031988C /* LogInViewController.swift */,
 			);
 			path = AuthPage;
 			sourceTree = "<group>";
@@ -472,6 +481,8 @@
 				6F77EA792A9B905B003B2DB8 /* ArticleDetailsView.swift in Sources */,
 				6F7B55252A92090E00C17ED8 /* ArticleRepository.swift in Sources */,
 				6F39C1802A84E8E400B2403F /* AppDelegate.swift in Sources */,
+				6F35747B2AA0A75C0031988C /* LogInViewController.swift in Sources */,
+				6F3574772AA07BA50031988C /* SignUpPageViewModel.swift in Sources */,
 				6F7B551D2A8E361500C17ED8 /* AritcleRepositoryMock.swift in Sources */,
 				6F39C18A2A84E8E400B2403F /* Dispatcher.xcdatamodeld in Sources */,
 				6FB15C5A2A8DF45A00756F6A /* ArticleRepositoryProtocol .swift in Sources */,
@@ -479,11 +490,12 @@
 				6F39C19C2A86893100B2403F /* SplashViewController.swift in Sources */,
 				6FD49B182A890C0E00BF85EB /* NavigationBar.swift in Sources */,
 				6F77EA812A9DC6AC003B2DB8 /* AuthView.swift in Sources */,
-				6F3574682A9F42AA0031988C /* AuthPageViewModel.swift in Sources */,
+				6F3574682A9F42AA0031988C /* LoginPageViewModel.swift in Sources */,
 				6F7B55462A9660FA00C17ED8 /* SearchPageViewModel.swift in Sources */,
 				6F7B55412A95E24A00C17ED8 /* SearchCell.swift in Sources */,
-				6F77EA7F2A9DC588003B2DB8 /* AuthPageViewController.swift in Sources */,
+				6F77EA7F2A9DC588003B2DB8 /* SingUpPageViewController.swift in Sources */,
 				6FD49B0C2A87FD6800BF85EB /* HomePageViewController.swift in Sources */,
+				6F3574792AA07FDC0031988C /* AuthViewModelProtocol.swift in Sources */,
 				6F7B55362A94A2B300C17ED8 /* NetworkManager.swift in Sources */,
 				6F77EA7B2A9C8D9E003B2DB8 /* RoundedButton.swift in Sources */,
 				6F77EA772A9B861B003B2DB8 /* ArticleDetailsPageViewModel.swift in Sources */,
