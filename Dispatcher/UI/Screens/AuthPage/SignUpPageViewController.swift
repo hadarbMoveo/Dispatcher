@@ -37,12 +37,11 @@ class SignUpPageViewController: UIViewController {
     func navigateToLogInViewController() {
         let logInViewController = LogInPageViewController() // Instantiate your LogInViewController
         navigationController?.pushViewController(logInViewController, animated: false)
-        print("from signup")
     }
     
     func navigateToTabBarController(){
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let tabBarController = storyboard.instantiateViewController(withIdentifier: "TabBarController") as! UITabBarController
+        let storyboard = UIStoryboard(name: Strings.storyboardIdentifier, bundle: nil)
+        let tabBarController = storyboard.instantiateViewController(withIdentifier: Strings.tabBarControllerIdentifier) as! UITabBarController
         tabBarController.modalPresentationStyle = .fullScreen
         self.present(tabBarController, animated: false, completion: nil)
     }

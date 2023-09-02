@@ -11,15 +11,16 @@ class SignUpPageViewModel: ObservableObject, AuthViewModelProtocol {
 
     
     @Published var fields: [String: String] = [
-        "Email": "",
-        "Password": "",
-        "Re-Enter-Password": ""
+        Strings.emailPlaceholder: "",
+        Strings.passwordPlaceholder: "",
+        Strings.reEnterPasswordPlaceholder: ""
     ]
 
-    let inputPlaceholders = ["Email", "Password","Re-Enter-Password"]
+    let inputPlaceholders = [Strings.emailPlaceholder, Strings.passwordPlaceholder,Strings.reEnterPasswordPlaceholder]
     
-    let buttonText = ["SIGNUP", "LOGIN"]
-    let title = "Signup"
+    let buttonText = [Strings.signUpButton,Strings.logInButton]
+
+    let title = Strings.titleSignupScreen
     
     private let authRepository: AuthRepositoryProtocol
     
@@ -33,7 +34,7 @@ class SignUpPageViewModel: ObservableObject, AuthViewModelProtocol {
     
     func buttonTapped(action:(()->Void)) {
         if(isValid()) {
-            authRepository.register(email: fields["Email"]!, password: fields["Password"]!)
+            authRepository.register(email: fields[Strings.emailPlaceholder]!, password: fields[Strings.passwordPlaceholder]!)
             action()
         }
         else {
@@ -42,7 +43,7 @@ class SignUpPageViewModel: ObservableObject, AuthViewModelProtocol {
     }
     
     func isValid()->Bool{
-        return (isValidEmail(fields["Email"]) && isValidPassword(fields["Password"]) && isVaidRePassword(fields["Password"],fields["Re-Enter-Password"]) )
+        return (isValidEmail(fields[Strings.emailPlaceholder]) && isValidPassword(fields[Strings.passwordPlaceholder]) && isVaidRePassword(fields[Strings.passwordPlaceholder],fields[Strings.reEnterPasswordPlaceholder]) )
     }
     
 }

@@ -46,8 +46,8 @@ class LogInPageViewController: UIViewController {
     }
     
     func navigateToTabBarController(){
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let tabBarController = storyboard.instantiateViewController(withIdentifier: "TabBarController") as! UITabBarController
+        let storyboard = UIStoryboard(name: Strings.storyboardIdentifier, bundle: nil)
+        let tabBarController = storyboard.instantiateViewController(withIdentifier: Strings.tabBarControllerIdentifier) as! UITabBarController
         tabBarController.modalPresentationStyle = .fullScreen
         self.present(tabBarController, animated: false, completion: nil)
     }

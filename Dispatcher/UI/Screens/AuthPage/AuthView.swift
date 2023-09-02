@@ -12,8 +12,6 @@ struct AuthView: View {
     var viewModel: AuthViewModelProtocol
     var loginButtonTapped: (() -> Void)
     var moveToTabBar : (() -> Void)
-    @State private var showAlert = false
-    @State private var alertMessage = ""
     
     var body: some View {
         GeometryReader { geo in
@@ -21,22 +19,22 @@ struct AuthView: View {
             let height = geo.size.height
             
             VStack (spacing: 0) {
-                topView().frame(width: width,height:height*0.35).background(Color("Primary"))
-                middleView(viewModel: viewModel).background(Color("auth-color")).frame(width: width,height: height*0.40)
+                topView().frame(width: width,height:height*0.35).background(Color(Strings.topViewColorAuth))
+                middleView(viewModel: viewModel).background(Color(Strings.middleViewColorAuth)).frame(width: width,height: height*0.40)
                 bottomView(viewModel: viewModel, action: loginButtonTapped,navigateToTabBarController:moveToTabBar)
-                    .background(Color("auth-color"))
+                    .background(Color(Strings.middleViewColorAuth))
             }.frame(width: width, height: height)
             
             
         }
-    }    
+    }
 }
 
 @ViewBuilder
 private func topView()-> some View {
     GeometryReader { geo in
         
-        Image("logo")
+        Image(Strings.imageLogo)
             .resizable()
             .aspectRatio(contentMode: .fit)
             .frame(width: geo.size.width*0.45).position(x: geo.size.width*0.5,y: geo.size.height*0.5)
@@ -53,7 +51,7 @@ private func middleView(viewModel: AuthViewModelProtocol)-> some View {
                 .font(.title2)
                 .padding(.top,30)
                 .padding(.leading,20)
-                .foregroundColor(Color("auth"))
+                .foregroundColor(Color(Strings.titleColorAuthView))
             ForEach(viewModel.inputPlaceholders.indices, id: \.self) { index in
                 let key = viewModel.inputPlaceholders[index]
                 @State var input: String = ""
@@ -62,10 +60,10 @@ private func middleView(viewModel: AuthViewModelProtocol)-> some View {
                     set: { newValue in viewModel.setValue(key: key, value: newValue) }
                 )
                 
-                if key == "Password" || key == "Re-Enter-Password" {
+                if key == Strings.passwordPlaceholder || key == Strings.reEnterPasswordPlaceholder {
                     HStack {
                         SecureField(viewModel.inputPlaceholders[index], text: binding)
-                        Image("input-field-password").padding(.trailing, 10)
+                        Image(Strings.inputColorAuthView).padding(.trailing, 10)
                     }
                     .frame(width: geo.size.width * 0.83, height: 50)
                     .padding(.horizontal)
@@ -90,7 +88,7 @@ private func bottomView(viewModel: AuthViewModelProtocol,action:@escaping (() ->
     GeometryReader { geo in
         VStack {
             Rectangle()
-                .fill(Color("line-auth-page"))
+                .fill(Color(Strings.lineColorAuthView))
                 .frame(width: geo.size.width*0.9, height: 1).padding(.top,geo.size.height*0.1)
                 .padding(.bottom,geo.size.height*0.06)
             
@@ -99,13 +97,13 @@ private func bottomView(viewModel: AuthViewModelProtocol,action:@escaping (() ->
             }) {
                 HStack {
                     Text(viewModel.buttonText[0])
-                    Image("right-arrow")
+                    Image(Strings.rightArrowIconAuthView)
                 }
                 .frame(width: geo.size.width*0.8,height: 5)
                 .foregroundColor(.white)
                 .padding()
-                .font(.custom("signup", size: 12))
-                .background(Color("button1-auth-page"))
+                .font(.custom(Strings.button1Font, size: 12))
+                .background(Color(Strings.button1ColorAuthView))
                 .cornerRadius(10)
                 .padding(.top,30)
             }
@@ -113,10 +111,10 @@ private func bottomView(viewModel: AuthViewModelProtocol,action:@escaping (() ->
             Button(action: action) {
                 Text(viewModel.buttonText[1])
                     .frame(width: geo.size.width*0.8,height: 5)
-                    .foregroundColor(Color("auth"))
+                    .foregroundColor(Color(Strings.titleColorAuthView))
                     .padding()
-                    .font(.custom("login", size: 12))
-                    .background(Color("button2-auth-page"))
+                    .font(.custom(Strings.button2Font, size: 12))
+                    .background(Color(Strings.button2ColorAuthView))
                     .cornerRadius(10)
                     .padding(.top)
             }

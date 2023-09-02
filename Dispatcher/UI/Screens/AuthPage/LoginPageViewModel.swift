@@ -11,15 +11,15 @@ class LoginPageViewModel: ObservableObject, AuthViewModelProtocol {
 
     
     @Published var fields: [String: String] = [
-        "Email": "",
-        "Password": "",
+        Strings.emailPlaceholder: "",
+        Strings.passwordPlaceholder: "",
     ]
 
-    let inputPlaceholders = ["Email", "Password"]
+    let inputPlaceholders = [Strings.emailPlaceholder, Strings.passwordPlaceholder]
     
-    let buttonText = ["LOGIN", "SIGNUP"]
+    let buttonText = [Strings.logInButton, Strings.signUpButton]
 
-    let title = "Login"
+    let title = Strings.titleLoginScreen
     
 
     private let authRepository: AuthRepositoryProtocol
@@ -35,7 +35,7 @@ class LoginPageViewModel: ObservableObject, AuthViewModelProtocol {
     
     func buttonTapped(action:(()->Void)) {
         if(isValid()) {
-            authRepository.login(email: fields["Email"]!, password: fields["Password"]!)
+            authRepository.login(email: fields[Strings.emailPlaceholder]!, password: fields[Strings.passwordPlaceholder]!)
             action()
         }
         else {
@@ -44,7 +44,7 @@ class LoginPageViewModel: ObservableObject, AuthViewModelProtocol {
     }
     
     func isValid()->Bool{
-        return (isValidEmail(fields["Email"]) && isValidPassword(fields["Password"]))
+        return (isValidEmail(fields[Strings.emailPlaceholder]) && isValidPassword(fields[Strings.passwordPlaceholder]))
     }
     
 }
