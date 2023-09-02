@@ -13,7 +13,7 @@ protocol AuthViewModelProtocol {
     var buttonText: [String] { get }
     var title: String { get }
     func setValue(key:String,value:String)
-    func buttonTapped()
+    func buttonTapped(action:(()->Void))
 }
 
 extension AuthViewModelProtocol {

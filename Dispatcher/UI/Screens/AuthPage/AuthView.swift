@@ -11,9 +11,14 @@ struct AuthView: View {
 
     var viewModel: AuthViewModelProtocol
     var loginButtonTapped: (() -> Void)
+    var moveToTabBar : (() -> Void)
     
     private func navigateToOtherViewController() {
         loginButtonTapped()
+    }
+    
+    private func navigateToTabBarController() {
+        moveToTabBar()
     }
     
     var body: some View {
@@ -24,7 +29,7 @@ struct AuthView: View {
             VStack (spacing: 0) {
                 
                 topView().frame(width: width,height:height*0.35).background(Color("Primary"))
-                bottomView(viewModel: viewModel, action: navigateToOtherViewController).background(Color("auth-color"))
+                bottomView(viewModel: viewModel, action: navigateToOtherViewController,navigateToTabBarController:navigateToTabBarController).background(Color("auth-color"))
             }.frame(width: width, height: height)
         }
     }
@@ -43,7 +48,7 @@ private func topView()-> some View {
 }
 
 @ViewBuilder
-private func bottomView(viewModel: AuthViewModelProtocol,action:@escaping (() -> Void))-> some View {
+private func bottomView(viewModel: AuthViewModelProtocol,action:@escaping (() -> Void),navigateToTabBarController:@escaping(()->Void))-> some View {
     
     GeometryReader { geo in
         VStack {
@@ -86,7 +91,7 @@ private func bottomView(viewModel: AuthViewModelProtocol,action:@escaping (() ->
                 .padding(.bottom,geo.size.height*0.06)
 
             Button(action: {
-                viewModel.buttonTapped()
+                viewModel.buttonTapped(action:navigateToTabBarController)
             }) {
                 HStack {
                     Text(viewModel.buttonText[0])

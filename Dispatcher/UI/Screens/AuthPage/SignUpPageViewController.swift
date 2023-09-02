@@ -21,7 +21,7 @@ class SignUpPageViewController: UIViewController {
         view.backgroundColor = .white
         navigationItem.hidesBackButton = true
         
-        let viewz = UIHostingController(rootView:AuthView(viewModel: viewModel,loginButtonTapped:navigateToLogInViewController))
+        let viewz = UIHostingController(rootView:AuthView(viewModel: viewModel,loginButtonTapped:navigateToLogInViewController,moveToTabBar:navigateToTabBarController))
         viewz.view?.translatesAutoresizingMaskIntoConstraints = false
         
         view.addSubview(viewz.view)
@@ -38,6 +38,13 @@ class SignUpPageViewController: UIViewController {
         let logInViewController = LogInPageViewController() // Instantiate your LogInViewController
         navigationController?.pushViewController(logInViewController, animated: false)
         print("from signup")
+    }
+    
+    func navigateToTabBarController(){
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let tabBarController = storyboard.instantiateViewController(withIdentifier: "TabBarController") as! UITabBarController
+        tabBarController.modalPresentationStyle = .fullScreen
+        self.present(tabBarController, animated: false, completion: nil)
     }
     
     required init?(coder: NSCoder) {

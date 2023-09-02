@@ -13,24 +13,8 @@ import FirebaseAuth
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
-    private func setupFirebaseConfigFiles(fileName: String){
-//        let filePath = Bundle.main.path(forResource: fileName, ofType: "plist")
-//        guard let fileopts = FirebaseOptions(contentsOfFile: filePath ?? "") else {
-//            print("Couldn't load firebase file")
-//            return
-//        }
-        
-//        FirebaseApp.configure()
-    }
-    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
-//        #if DEBUG
-//        print("DUBUG")
-//        setupFirebaseConfigFiles(fileName: "GoogleService-Info")
-//        #else
-//        setupFirebaseConfigFiles(fileName: "GoogleService-Info-prod")
-//        #endif
         
         return true
     }

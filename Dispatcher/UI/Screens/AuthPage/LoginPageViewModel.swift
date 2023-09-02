@@ -28,22 +28,23 @@ class LoginPageViewModel: ObservableObject, AuthViewModelProtocol {
         self.authRepository = authRepository
     }
     
-    func login() {
-        if(isValidEmail(fields["Email"]) && isValidPassword(fields["Password"])) {
-            authRepository.login(email: fields["Email"]!, password: fields["Password"]!)
-        }
-        else {
-            print("Invalid email")
-        }
-        
-    }
     
     func setValue(key: String, value: String) {
         fields[key] = value
     }
     
-    func buttonTapped() {
-        login()
+    func buttonTapped(action:(()->Void)) {
+        if(isValid()) {
+            authRepository.login(email: fields["Email"]!, password: fields["Password"]!)
+            action()
+        }
+        else {
+            print("Invalid email")
+        }
+    }
+    
+    func isValid()->Bool{
+        return (isValidEmail(fields["Email"]) && isValidPassword(fields["Password"]))
     }
     
 }

@@ -17,6 +17,7 @@ class AuthFireBaseRepository: AuthRepositoryProtocol {
                 print("Registration failed: \(error)")
             } else {
                 print("Registration successful!")
+                
             }
         }
     }
@@ -34,7 +35,6 @@ class AuthFireBaseRepository: AuthRepositoryProtocol {
             
             if let user = authResult?.user {
                 print("Successfully signed in as user: \(user.uid)")
-
             }
         }
     }
