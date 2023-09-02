@@ -8,18 +8,12 @@
 import SwiftUI
 
 struct AuthView: View {
-
+    
     var viewModel: AuthViewModelProtocol
     var loginButtonTapped: (() -> Void)
     var moveToTabBar : (() -> Void)
-    
-    private func navigateToOtherViewController() {
-        loginButtonTapped()
-    }
-    
-    private func navigateToTabBarController() {
-        moveToTabBar()
-    }
+    @State private var showAlert = false
+    @State private var alertMessage = ""
     
     var body: some View {
         GeometryReader { geo in
@@ -27,13 +21,15 @@ struct AuthView: View {
             let height = geo.size.height
             
             VStack (spacing: 0) {
-                
                 topView().frame(width: width,height:height*0.35).background(Color("Primary"))
-                bottomView(viewModel: viewModel, action: navigateToOtherViewController,navigateToTabBarController:navigateToTabBarController).background(Color("auth-color"))
+                middleView(viewModel: viewModel).background(Color("auth-color")).frame(width: width,height: height*0.40)
+                bottomView(viewModel: viewModel, action: loginButtonTapped,navigateToTabBarController:moveToTabBar)
+                    .background(Color("auth-color"))
             }.frame(width: width, height: height)
+            
+            
         }
-    }
-    
+    }    
 }
 
 @ViewBuilder
@@ -48,7 +44,7 @@ private func topView()-> some View {
 }
 
 @ViewBuilder
-private func bottomView(viewModel: AuthViewModelProtocol,action:@escaping (() -> Void),navigateToTabBarController:@escaping(()->Void))-> some View {
+private func middleView(viewModel: AuthViewModelProtocol)-> some View {
     
     GeometryReader { geo in
         VStack {
@@ -83,13 +79,21 @@ private func bottomView(viewModel: AuthViewModelProtocol,action:@escaping (() ->
                         .padding(.bottom, 8)
                 }
             }
+        }
+        
+    }
+}
 
-            
+
+@ViewBuilder
+private func bottomView(viewModel: AuthViewModelProtocol,action:@escaping (() -> Void),navigateToTabBarController:@escaping(()->Void)) -> some View{
+    GeometryReader { geo in
+        VStack {
             Rectangle()
                 .fill(Color("line-auth-page"))
                 .frame(width: geo.size.width*0.9, height: 1).padding(.top,geo.size.height*0.1)
                 .padding(.bottom,geo.size.height*0.06)
-
+            
             Button(action: {
                 viewModel.buttonTapped(action:navigateToTabBarController)
             }) {
@@ -116,17 +120,19 @@ private func bottomView(viewModel: AuthViewModelProtocol,action:@escaping (() ->
                     .cornerRadius(10)
                     .padding(.top)
             }
-        }
-        
+        }.padding(.leading,20)
     }
 }
 
 
-//struct AuthView_Previews: PreviewProvider {
-//
-//    static var previews: some View {
-//        AuthView(viewModel: LoginPageViewModel(authRepository: AuthFireBaseRepository()), loginButtonTapped: hi)
-//    }
-//}
+struct AuthView_Previews: PreviewProvider {
+    
+    static var previews: some View {
+        AuthView(viewModel: LoginPageViewModel(authRepository: AuthFireBaseRepository()), loginButtonTapped: {
+            print("hello")}, moveToTabBar: {
+                print("moveToTabBar")
+            })
+    }
+}
 
 
