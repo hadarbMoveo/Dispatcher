@@ -8,6 +8,7 @@
 import Foundation
 
 class SignUpPageViewModel: ObservableObject, AuthViewModelProtocol {
+
     
     @Published var fields: [String: String] = [
         "Email": "",
@@ -19,7 +20,7 @@ class SignUpPageViewModel: ObservableObject, AuthViewModelProtocol {
     
     let buttonText = ["SIGNUP", "LOGIN"]
     let title = "Signup"
-
+    
     private let authRepository: AuthRepositoryProtocol
     
     init(authRepository: AuthRepositoryProtocol) {
@@ -39,5 +40,10 @@ class SignUpPageViewModel: ObservableObject, AuthViewModelProtocol {
     func setValue(key: String, value: String) {
         fields[key] = value
     }
+    
+    func buttonTapped() {
+        register()
+    }
+    
 }
 

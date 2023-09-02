@@ -8,7 +8,7 @@
 import UIKit
 import SwiftUI
 
-class SingUpPageViewController: UIViewController {
+class SignUpPageViewController: UIViewController {
     
     var viewModel: SignUpPageViewModel  = SignUpPageViewModel(authRepository: AuthFireBaseRepository())
     
@@ -21,7 +21,7 @@ class SingUpPageViewController: UIViewController {
         view.backgroundColor = .white
         navigationItem.hidesBackButton = true
         
-        let viewz = UIHostingController(rootView: AuthView(viewModel: viewModel,loginButtonTapped:navigateToLogInViewController))
+        let viewz = UIHostingController(rootView:AuthView(viewModel: viewModel,loginButtonTapped:navigateToLogInViewController))
         viewz.view?.translatesAutoresizingMaskIntoConstraints = false
         
         view.addSubview(viewz.view)

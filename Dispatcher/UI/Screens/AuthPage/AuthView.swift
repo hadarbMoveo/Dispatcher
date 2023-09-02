@@ -86,7 +86,7 @@ private func bottomView(viewModel: AuthViewModelProtocol,action:@escaping (() ->
                 .padding(.bottom,geo.size.height*0.06)
 
             Button(action: {
-                viewModel.register()
+                viewModel.buttonTapped()
             }) {
                 HStack {
                     Text(viewModel.buttonText[0])
@@ -118,8 +118,9 @@ private func bottomView(viewModel: AuthViewModelProtocol,action:@escaping (() ->
 
 
 //struct AuthView_Previews: PreviewProvider {
+//
 //    static var previews: some View {
-//        AuthView(viewModel: SignUpPageViewModel(authRepository: AuthFireBaseRepository(),))
+//        AuthView(viewModel: LoginPageViewModel(authRepository: AuthFireBaseRepository()), loginButtonTapped: hi)
 //    }
 //}
 

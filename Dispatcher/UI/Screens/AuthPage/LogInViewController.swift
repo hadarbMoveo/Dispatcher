@@ -37,7 +37,7 @@ class LogInPageViewController: UIViewController {
     }
     
     func navigateToLogInViewController() {
-        print("from login")
+        navigationController?.popViewController(animated: false)
     }
     
     required init?(coder: NSCoder) {

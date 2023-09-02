@@ -13,14 +13,14 @@ class LoginPageViewModel: ObservableObject, AuthViewModelProtocol {
     @Published var fields: [String: String] = [
         "Email": "",
         "Password": "",
-        "Re-Enter-Password": ""
     ]
 
-    let inputPlaceholders = ["Email", "Password","Re-Enter-Password"]
+    let inputPlaceholders = ["Email", "Password"]
     
     let buttonText = ["LOGIN", "SIGNUP"]
 
     let title = "Login"
+    
 
     private let authRepository: AuthRepositoryProtocol
     
@@ -28,9 +28,9 @@ class LoginPageViewModel: ObservableObject, AuthViewModelProtocol {
         self.authRepository = authRepository
     }
     
-    func register() {
-        if(isValidEmail(fields["Email"]) && isValidPassword(fields["Password"]) && isVaidRePassword(fields["Password"],fields["Re-Enter-Password"]) ) {
-            authRepository.register(email: fields["Email"]!, password: fields["Password"]!)
+    func login() {
+        if(isValidEmail(fields["Email"]) && isValidPassword(fields["Password"])) {
+            authRepository.login(email: fields["Email"]!, password: fields["Password"]!)
         }
         else {
             print("Invalid email")
@@ -41,4 +41,9 @@ class LoginPageViewModel: ObservableObject, AuthViewModelProtocol {
     func setValue(key: String, value: String) {
         fields[key] = value
     }
+    
+    func buttonTapped() {
+        login()
+    }
+    
 }

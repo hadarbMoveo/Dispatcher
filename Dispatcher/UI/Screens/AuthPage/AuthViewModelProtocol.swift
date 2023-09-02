@@ -12,9 +12,8 @@ protocol AuthViewModelProtocol {
     var inputPlaceholders: [String] { get }
     var buttonText: [String] { get }
     var title: String { get }
-    func register()
     func setValue(key:String,value:String)
-    
+    func buttonTapped()
 }
 
 extension AuthViewModelProtocol {
