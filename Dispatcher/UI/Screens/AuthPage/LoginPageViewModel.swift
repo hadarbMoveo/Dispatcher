@@ -8,7 +8,8 @@
 import Foundation
 
 class LoginPageViewModel: ObservableObject, AuthViewModelProtocol {
-
+    
+    @Published var isSecure: [String : Bool] = [Strings.passwordPlaceholder: true]
     
     @Published var fields: [String: String] = [
         Strings.emailPlaceholder: "",
@@ -33,10 +34,10 @@ class LoginPageViewModel: ObservableObject, AuthViewModelProtocol {
         fields[key] = value
     }
     
-    func buttonTapped(action:(()->Void)) {
+    func authentication(doWhenFinish:(()->Void)) {
         if(isValid()) {
             authRepository.login(email: fields[Strings.emailPlaceholder]!, password: fields[Strings.passwordPlaceholder]!)
-            action()
+            doWhenFinish()
         }
         else {
             print("Invalid email")
@@ -45,6 +46,10 @@ class LoginPageViewModel: ObservableObject, AuthViewModelProtocol {
     
     func isValid()->Bool{
         return (isValidEmail(fields[Strings.emailPlaceholder]) && isValidPassword(fields[Strings.passwordPlaceholder]))
+    }
+    
+    func changeSecureByField(field: String) {
+        isSecure[field] = !(isSecure[field] ?? true)
     }
     
 }

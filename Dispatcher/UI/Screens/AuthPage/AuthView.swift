@@ -10,7 +10,7 @@ import SwiftUI
 struct AuthView: View {
     
     var viewModel: AuthViewModelProtocol
-    var loginButtonTapped: (() -> Void)
+    var switchViewController: (() -> Void)
     var moveToTabBar : (() -> Void)
     
     var body: some View {
@@ -21,10 +21,9 @@ struct AuthView: View {
             VStack (spacing: 0) {
                 topView().frame(width: width,height:height*0.35).background(Color(Strings.topViewColorAuth))
                 middleView(viewModel: viewModel).background(Color(Strings.middleViewColorAuth)).frame(width: width,height: height*0.40)
-                bottomView(viewModel: viewModel, action: loginButtonTapped,navigateToTabBarController:moveToTabBar)
+                bottomView(viewModel: viewModel, action: switchViewController,navigateToTabBarController:moveToTabBar)
                     .background(Color(Strings.middleViewColorAuth))
             }.frame(width: width, height: height)
-            
             
         }
     }
@@ -33,7 +32,6 @@ struct AuthView: View {
 @ViewBuilder
 private func topView()-> some View {
     GeometryReader { geo in
-        
         Image(Strings.imageLogo)
             .resizable()
             .aspectRatio(contentMode: .fit)
@@ -53,17 +51,20 @@ private func middleView(viewModel: AuthViewModelProtocol)-> some View {
                 .padding(.leading,20)
                 .foregroundColor(Color(Strings.titleColorAuthView))
             ForEach(viewModel.inputPlaceholders.indices, id: \.self) { index in
-                let key = viewModel.inputPlaceholders[index]
-                @State var input: String = ""
+                let field = viewModel.inputPlaceholders[index]
                 let binding = Binding(
-                    get: { viewModel.fields[key] ?? "" },
-                    set: { newValue in viewModel.setValue(key: key, value: newValue) }
+                    get: { viewModel.fields[field] ?? "" },
+                    set: { newValue in viewModel.setValue(key: field, value: newValue) }
                 )
                 
-                if key == Strings.passwordPlaceholder || key == Strings.reEnterPasswordPlaceholder {
+                if ((field == Strings.passwordPlaceholder) || (field == Strings.reEnterPasswordPlaceholder)) {
                     HStack {
                         SecureField(viewModel.inputPlaceholders[index], text: binding)
-                        Image(Strings.inputColorAuthView).padding(.trailing, 10)
+                        Button(action: { viewModel.changeSecureByField(field: viewModel.inputPlaceholders[index])}) {
+                            Image(Strings.inputColorAuthView)
+                                .resizable()
+                                .frame(width: 30, height: 25)
+                        }
                     }
                     .frame(width: geo.size.width * 0.83, height: 50)
                     .padding(.horizontal)
@@ -93,7 +94,7 @@ private func bottomView(viewModel: AuthViewModelProtocol,action:@escaping (() ->
                 .padding(.bottom,geo.size.height*0.06)
             
             Button(action: {
-                viewModel.buttonTapped(action:navigateToTabBarController)
+                viewModel.authentication(doWhenFinish:navigateToTabBarController)
             }) {
                 HStack {
                     Text(viewModel.buttonText[0])
@@ -126,8 +127,8 @@ private func bottomView(viewModel: AuthViewModelProtocol,action:@escaping (() ->
 struct AuthView_Previews: PreviewProvider {
     
     static var previews: some View {
-        AuthView(viewModel: LoginPageViewModel(authRepository: AuthFireBaseRepository()), loginButtonTapped: {
-            print("hello")}, moveToTabBar: {
+        AuthView(viewModel: LoginPageViewModel(authRepository: AuthFireBaseRepository()), switchViewController: {
+            print("switchToSignUp")}, moveToTabBar: {
                 print("moveToTabBar")
             })
     }

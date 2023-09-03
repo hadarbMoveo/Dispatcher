@@ -12,7 +12,7 @@ import SwiftUI
 
 class LogInPageViewController: UIViewController {
     
-    var viewModel: LoginPageViewModel  = LoginPageViewModel(authRepository: AuthFireBaseRepository())
+    var viewModel: LoginPageViewModel = LoginPageViewModel(authRepository: AuthFireBaseRepository())
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -23,20 +23,22 @@ class LogInPageViewController: UIViewController {
         view.backgroundColor = .white
         navigationItem.hidesBackButton = true
         
-        let viewz = UIHostingController(rootView: AuthView(viewModel: viewModel,loginButtonTapped:navigateToLogInViewController,moveToTabBar:navigateToTabBarController))
-        viewz.view?.translatesAutoresizingMaskIntoConstraints = false
         
-        view.addSubview(viewz.view)
+        let authView = AuthView(viewModel: viewModel,switchViewController: switchViewController,moveToTabBar: navigateToTabBarController)
+        let viewLogInPage = UIHostingController(rootView: authView)
+        viewLogInPage.view?.translatesAutoresizingMaskIntoConstraints = false
+        
+        view.addSubview(viewLogInPage.view)
         
         NSLayoutConstraint.activate([
-            viewz.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            viewz.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            viewz.view.topAnchor.constraint(equalTo: view.topAnchor),
-            viewz.view.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            viewLogInPage.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            viewLogInPage.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            viewLogInPage.view.topAnchor.constraint(equalTo: view.topAnchor),
+            viewLogInPage.view.bottomAnchor.constraint(equalTo: view.bottomAnchor),
         ])
     }
     
-    func navigateToLogInViewController() {
+    func switchViewController() {
         navigationController?.popViewController(animated: false)
     }
     
@@ -45,7 +47,7 @@ class LogInPageViewController: UIViewController {
         
     }
     
-    func navigateToTabBarController(){
+    func navigateToTabBarController() {
         let storyboard = UIStoryboard(name: Strings.storyboardIdentifier, bundle: nil)
         let tabBarController = storyboard.instantiateViewController(withIdentifier: Strings.tabBarControllerIdentifier) as! UITabBarController
         tabBarController.modalPresentationStyle = .fullScreen

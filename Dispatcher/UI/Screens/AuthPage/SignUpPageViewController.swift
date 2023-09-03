@@ -20,22 +20,23 @@ class SignUpPageViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         navigationItem.hidesBackButton = true
+
+        let authView = AuthView(viewModel: viewModel,switchViewController: switchViewController,moveToTabBar: navigateToTabBarController)
+        let viewSignUpPage = UIHostingController(rootView: authView)
+        viewSignUpPage.view?.translatesAutoresizingMaskIntoConstraints = false
         
-        let viewz = UIHostingController(rootView:AuthView(viewModel: viewModel,loginButtonTapped:navigateToLogInViewController,moveToTabBar:navigateToTabBarController))
-        viewz.view?.translatesAutoresizingMaskIntoConstraints = false
-        
-        view.addSubview(viewz.view)
+        view.addSubview(viewSignUpPage.view)
         
         NSLayoutConstraint.activate([
-            viewz.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            viewz.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            viewz.view.topAnchor.constraint(equalTo: view.topAnchor),
-            viewz.view.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            viewSignUpPage.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            viewSignUpPage.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            viewSignUpPage.view.topAnchor.constraint(equalTo: view.topAnchor),
+            viewSignUpPage.view.bottomAnchor.constraint(equalTo: view.bottomAnchor),
         ])
     }
     
-    func navigateToLogInViewController() {
-        let logInViewController = LogInPageViewController() // Instantiate your LogInViewController
+    func switchViewController() {
+        let logInViewController = LogInPageViewController()
         navigationController?.pushViewController(logInViewController, animated: false)
     }
     

@@ -9,14 +9,14 @@ import Foundation
 
 class SignUpPageViewModel: ObservableObject, AuthViewModelProtocol {
 
-    
+    @Published var isSecure: [String : Bool] = [Strings.passwordPlaceholder: true,Strings.reEnterPasswordPlaceholder: true]
     @Published var fields: [String: String] = [
         Strings.emailPlaceholder: "",
         Strings.passwordPlaceholder: "",
         Strings.reEnterPasswordPlaceholder: ""
     ]
-
-    let inputPlaceholders = [Strings.emailPlaceholder, Strings.passwordPlaceholder,Strings.reEnterPasswordPlaceholder]
+    
+    let inputPlaceholders = [Strings.emailPlaceholder,Strings.passwordPlaceholder,Strings.reEnterPasswordPlaceholder]
     
     let buttonText = [Strings.signUpButton,Strings.logInButton]
 
@@ -32,18 +32,23 @@ class SignUpPageViewModel: ObservableObject, AuthViewModelProtocol {
         fields[key] = value
     }
     
-    func buttonTapped(action:(()->Void)) {
+    func authentication(doWhenFinish: (() -> Void)) {
         if(isValid()) {
             authRepository.register(email: fields[Strings.emailPlaceholder]!, password: fields[Strings.passwordPlaceholder]!)
-            action()
+            doWhenFinish()
         }
         else {
             print("Invalid email")
         }
     }
     
-    func isValid()->Bool{
+    func isValid() -> Bool {
         return (isValidEmail(fields[Strings.emailPlaceholder]) && isValidPassword(fields[Strings.passwordPlaceholder]) && isVaidRePassword(fields[Strings.passwordPlaceholder],fields[Strings.reEnterPasswordPlaceholder]) )
+    }
+    
+    func changeSecureByField(field: String) {
+        isSecure[field] = !(isSecure[field] ?? true)
+        print("\(field) changed to \(isSecure[field]!)")
     }
     
 }

@@ -12,8 +12,10 @@ protocol AuthViewModelProtocol {
     var inputPlaceholders: [String] { get }
     var buttonText: [String] { get }
     var title: String { get }
+    var isSecure: [String: Bool] { get set }
     func setValue(key:String,value:String)
-    func buttonTapped(action:(()->Void))
+    func authentication(doWhenFinish:(()->Void))
+    func changeSecureByField(field: String)
 }
 
 extension AuthViewModelProtocol {

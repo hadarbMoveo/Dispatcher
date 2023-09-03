@@ -13,7 +13,7 @@
 		6F35746D2A9F4CF60031988C /* AuthFireBaseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F35746C2A9F4CF60031988C /* AuthFireBaseRepository.swift */; };
 		6F3574772AA07BA50031988C /* SignUpPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3574762AA07BA50031988C /* SignUpPageViewModel.swift */; };
 		6F3574792AA07FDC0031988C /* AuthViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3574782AA07FDC0031988C /* AuthViewModelProtocol.swift */; };
-		6F35747B2AA0A75C0031988C /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F35747A2AA0A75C0031988C /* LogInViewController.swift */; };
+		6F35747B2AA0A75C0031988C /* LogInPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F35747A2AA0A75C0031988C /* LogInPageViewController.swift */; };
 		6F39C1802A84E8E400B2403F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F39C17F2A84E8E400B2403F /* AppDelegate.swift */; };
 		6F39C1822A84E8E400B2403F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F39C1812A84E8E400B2403F /* SceneDelegate.swift */; };
 		6F39C1872A84E8E400B2403F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F39C1852A84E8E400B2403F /* Main.storyboard */; };
@@ -56,7 +56,7 @@
 		6F35746C2A9F4CF60031988C /* AuthFireBaseRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthFireBaseRepository.swift; sourceTree = "<group>"; };
 		6F3574762AA07BA50031988C /* SignUpPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPageViewModel.swift; sourceTree = "<group>"; };
 		6F3574782AA07FDC0031988C /* AuthViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModelProtocol.swift; sourceTree = "<group>"; };
-		6F35747A2AA0A75C0031988C /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		6F35747A2AA0A75C0031988C /* LogInPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInPageViewController.swift; sourceTree = "<group>"; };
 		6F39C17F2A84E8E400B2403F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6F39C1812A84E8E400B2403F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		6F39C1862A84E8E400B2403F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -239,7 +239,7 @@
 				6F3574672A9F42AA0031988C /* LoginPageViewModel.swift */,
 				6F3574762AA07BA50031988C /* SignUpPageViewModel.swift */,
 				6F3574782AA07FDC0031988C /* AuthViewModelProtocol.swift */,
-				6F35747A2AA0A75C0031988C /* LogInViewController.swift */,
+				6F35747A2AA0A75C0031988C /* LogInPageViewController.swift */,
 			);
 			path = AuthPage;
 			sourceTree = "<group>";
@@ -524,7 +524,7 @@
 				6F77EA792A9B905B003B2DB8 /* ArticleDetailsView.swift in Sources */,
 				6F7B55252A92090E00C17ED8 /* ArticleRepository.swift in Sources */,
 				6F39C1802A84E8E400B2403F /* AppDelegate.swift in Sources */,
-				6F35747B2AA0A75C0031988C /* LogInViewController.swift in Sources */,
+				6F35747B2AA0A75C0031988C /* LogInPageViewController.swift in Sources */,
 				6F3574772AA07BA50031988C /* SignUpPageViewModel.swift in Sources */,
 				6F7B551D2A8E361500C17ED8 /* AritcleRepositoryMock.swift in Sources */,
 				6F39C18A2A84E8E400B2403F /* Dispatcher.xcdatamodeld in Sources */,
