@@ -10,8 +10,8 @@ import SwiftUI
 struct AuthView<Model>: View where Model: AuthViewModelProtocol {
     
     @ObservedObject var viewModel: Model
-    var switchViewController: (() -> Void)
-    var ChangeAuthView : (() -> Void)
+    var changeAuthView: (() -> Void)
+    var continueToHomePage : (() -> Void)
     
     var body: some View {
         GeometryReader { geo in
@@ -31,6 +31,9 @@ struct AuthView<Model>: View where Model: AuthViewModelProtocol {
                     .background(Color.middleViewColorAuth)
             }
             .frame(width: width, height: height)
+        }
+        .alert(isPresented: $viewModel.isError) {
+            Alert(title: Text("Authentication failed, please try again"))
         }
     }
     
@@ -87,7 +90,12 @@ struct AuthView<Model>: View where Model: AuthViewModelProtocol {
                     .padding(.bottom, height*0.06)
                 
                 Button(action: {
-                    
+                    Task {
+                        let isAuthenticated = try await viewModel.authentication()
+                        if isAuthenticated {
+                            continueToHomePage()
+                        }
+                    }
                 }) {
                     HStack {
                         Text(viewModel.titleButton1)
@@ -103,7 +111,7 @@ struct AuthView<Model>: View where Model: AuthViewModelProtocol {
                     
                 }
                 
-                Button(action: switchViewController) {
+                Button(action: changeAuthView) {
                     Text(viewModel.titleButton2)
                         .frame(width: width*0.8,height: 5)
                         .foregroundColor(Color.titleColorAuthView)
@@ -182,9 +190,9 @@ struct AuthView_Previews: PreviewProvider {
         let repo = AuthFireBaseRepository()
         let vm = LoginPageViewModel(authRepository: repo)
         AuthView(viewModel: vm,
-                 switchViewController: {
+                 changeAuthView: {
             print("switchToSignUp")},
-                 ChangeAuthView: {
+                 continueToHomePage: {
             print("moveToTabBar")}
         )
     }

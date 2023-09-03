@@ -24,7 +24,7 @@ class LogInPageViewController: UIViewController {
         navigationItem.hidesBackButton = true
         
         
-        let authView = AuthView(viewModel: viewModel,switchViewController: switchViewController,ChangeAuthView: navigateToTabBarController)
+        let authView = AuthView(viewModel: viewModel,changeAuthView: switchViewController,continueToHomePage: navigateToTabBarController)
         let viewLogInPage = UIHostingController(rootView: authView)
         viewLogInPage.view?.translatesAutoresizingMaskIntoConstraints = false
         

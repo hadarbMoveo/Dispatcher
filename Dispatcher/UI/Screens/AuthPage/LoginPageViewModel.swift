@@ -19,6 +19,8 @@ class LoginPageViewModel: ObservableObject, AuthViewModelProtocol {
     
     var titleButton1:String = Strings.logInButton
     var titleButton2:String = Strings.signUpButton
+    
+    @Published var isError = false
 
     let title = Strings.titleLoginScreen
     
@@ -34,16 +36,24 @@ class LoginPageViewModel: ObservableObject, AuthViewModelProtocol {
         fields[key] = value
     }
     
-    func authentication(doWhenFinish:(()->Void)) {
+    func authentication() async -> Bool {
         if(isValid()) {
-            if let email = fields[Strings.emailPlaceholder], let password = fields[Strings.emailPlaceholder] {
-                authRepository.login(email: email, password:password)
-                doWhenFinish()
+            if let email = fields[Strings.emailPlaceholder], let password = fields[Strings.passwordPlaceholder] {
+                do{
+                    try await authRepository.login(email: email, password:password)
+                    return true
+                }
+                catch {
+                    isError = true
+                }
             }
         }
-        else {
-            print("Invalid email")
+        
+        else{
+            isError = true
         }
+
+        return false
     }
     
     func isValid()->Bool{
