@@ -11,11 +11,11 @@ import FirebaseAuth
 class AuthFireBaseRepository: AuthRepositoryProtocol {
     
     func register(email: String, password: String) {
-        print(email)
         Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
             if let error = error {
                 print("Registration failed: \(error)")
             } else {
+                self.saveUserData(email: email, password: password)
                 print("Registration successful!")
                 
             }
@@ -23,6 +23,9 @@ class AuthFireBaseRepository: AuthRepositoryProtocol {
     }
     
     func login(email: String, password: String) {
+        
+//        let t: AuthDataResult = Auth.auth().signIn(withEmail: email, password: password)
+
         Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
             guard let strongSelf = self else {
                 return
@@ -51,4 +54,9 @@ class AuthFireBaseRepository: AuthRepositoryProtocol {
     }
     
     
+    func saveUserData(email: String, password: String) {
+        let defaults = UserDefaults.standard
+        defaults.set(email, forKey: "email")
+        defaults.set(password, forKey: "password")
+    }
 }

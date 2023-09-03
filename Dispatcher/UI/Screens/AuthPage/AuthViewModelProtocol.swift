@@ -7,10 +7,11 @@
 
 import Foundation
 
-protocol AuthViewModelProtocol {
+protocol AuthViewModelProtocol: ObservableObject {
     var fields: [String: String] { get set }
     var inputPlaceholders: [String] { get }
-    var buttonText: [String] { get }
+    var titleButton1: String { get }
+    var titleButton2: String { get }
     var title: String { get }
     var isSecure: [String: Bool] { get set }
     func setValue(key:String,value:String)
@@ -21,7 +22,7 @@ protocol AuthViewModelProtocol {
 extension AuthViewModelProtocol {
     
     func isValidEmail(_ email: String?) -> Bool {
-        let emailRegex = Strings.emailRegex
+        let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
         let emailPredicate = NSPredicate(format:"SELF MATCHES %@", emailRegex)
         return emailPredicate.evaluate(with: email)
     }

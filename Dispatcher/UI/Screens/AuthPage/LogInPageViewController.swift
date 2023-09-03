@@ -24,7 +24,7 @@ class LogInPageViewController: UIViewController {
         navigationItem.hidesBackButton = true
         
         
-        let authView = AuthView(viewModel: viewModel,switchViewController: switchViewController,moveToTabBar: navigateToTabBarController)
+        let authView = AuthView(viewModel: viewModel,switchViewController: switchViewController,ChangeAuthView: navigateToTabBarController)
         let viewLogInPage = UIHostingController(rootView: authView)
         viewLogInPage.view?.translatesAutoresizingMaskIntoConstraints = false
         
@@ -48,8 +48,10 @@ class LogInPageViewController: UIViewController {
     }
     
     func navigateToTabBarController() {
-        let storyboard = UIStoryboard(name: Strings.storyboardIdentifier, bundle: nil)
-        let tabBarController = storyboard.instantiateViewController(withIdentifier: Strings.tabBarControllerIdentifier) as! UITabBarController
+        let storyboardIdentifier = "Main"
+        let tabBarControllerIdentifier = "TabBarController"
+        let storyboard = UIStoryboard(name: storyboardIdentifier, bundle: nil)
+        let tabBarController = storyboard.instantiateViewController(withIdentifier: tabBarControllerIdentifier) as! UITabBarController
         tabBarController.modalPresentationStyle = .fullScreen
         self.present(tabBarController, animated: false, completion: nil)
     }

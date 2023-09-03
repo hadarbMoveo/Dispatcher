@@ -8,7 +8,6 @@
 import Foundation
 
 class LoginPageViewModel: ObservableObject, AuthViewModelProtocol {
-    
     @Published var isSecure: [String : Bool] = [Strings.passwordPlaceholder: true]
     
     @Published var fields: [String: String] = [
@@ -18,7 +17,8 @@ class LoginPageViewModel: ObservableObject, AuthViewModelProtocol {
 
     let inputPlaceholders = [Strings.emailPlaceholder, Strings.passwordPlaceholder]
     
-    let buttonText = [Strings.logInButton, Strings.signUpButton]
+    var titleButton1:String = Strings.logInButton
+    var titleButton2:String = Strings.signUpButton
 
     let title = Strings.titleLoginScreen
     
@@ -36,8 +36,10 @@ class LoginPageViewModel: ObservableObject, AuthViewModelProtocol {
     
     func authentication(doWhenFinish:(()->Void)) {
         if(isValid()) {
-            authRepository.login(email: fields[Strings.emailPlaceholder]!, password: fields[Strings.passwordPlaceholder]!)
-            doWhenFinish()
+            if let email = fields[Strings.emailPlaceholder], let password = fields[Strings.emailPlaceholder] {
+                authRepository.login(email: email, password:password)
+                doWhenFinish()
+            }
         }
         else {
             print("Invalid email")
@@ -45,7 +47,10 @@ class LoginPageViewModel: ObservableObject, AuthViewModelProtocol {
     }
     
     func isValid()->Bool{
-        return (isValidEmail(fields[Strings.emailPlaceholder]) && isValidPassword(fields[Strings.passwordPlaceholder]))
+        let email = fields[Strings.emailPlaceholder]
+        let password = fields[Strings.passwordPlaceholder]
+        
+        return (isValidEmail(email) && isValidPassword(password))
     }
     
     func changeSecureByField(field: String) {

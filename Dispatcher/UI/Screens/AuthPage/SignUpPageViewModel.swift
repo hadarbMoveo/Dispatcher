@@ -9,7 +9,11 @@ import Foundation
 
 class SignUpPageViewModel: ObservableObject, AuthViewModelProtocol {
 
-    @Published var isSecure: [String : Bool] = [Strings.passwordPlaceholder: true,Strings.reEnterPasswordPlaceholder: true]
+    @Published var isSecure: [String: Bool] = [
+        Strings.passwordPlaceholder: true,
+        Strings.reEnterPasswordPlaceholder: true
+    ]
+    
     @Published var fields: [String: String] = [
         Strings.emailPlaceholder: "",
         Strings.passwordPlaceholder: "",
@@ -17,8 +21,8 @@ class SignUpPageViewModel: ObservableObject, AuthViewModelProtocol {
     ]
     
     let inputPlaceholders = [Strings.emailPlaceholder,Strings.passwordPlaceholder,Strings.reEnterPasswordPlaceholder]
-    
-    let buttonText = [Strings.signUpButton,Strings.logInButton]
+    var titleButton1:String = Strings.signUpButton
+    var titleButton2:String = Strings.logInButton
 
     let title = Strings.titleSignupScreen
     
@@ -34,8 +38,11 @@ class SignUpPageViewModel: ObservableObject, AuthViewModelProtocol {
     
     func authentication(doWhenFinish: (() -> Void)) {
         if(isValid()) {
-            authRepository.register(email: fields[Strings.emailPlaceholder]!, password: fields[Strings.passwordPlaceholder]!)
-            doWhenFinish()
+            if let email = fields[Strings.emailPlaceholder], let password = fields[Strings.emailPlaceholder] {
+                authRepository.register(email: email, password:password)
+                doWhenFinish()
+            }
+
         }
         else {
             print("Invalid email")
@@ -43,12 +50,15 @@ class SignUpPageViewModel: ObservableObject, AuthViewModelProtocol {
     }
     
     func isValid() -> Bool {
-        return (isValidEmail(fields[Strings.emailPlaceholder]) && isValidPassword(fields[Strings.passwordPlaceholder]) && isVaidRePassword(fields[Strings.passwordPlaceholder],fields[Strings.reEnterPasswordPlaceholder]) )
+        let email = fields[Strings.emailPlaceholder]
+        let password = fields[Strings.passwordPlaceholder]
+        let repassword = fields[Strings.reEnterPasswordPlaceholder]
+        
+        return (isValidEmail(email) && isValidPassword(password) && isVaidRePassword(password,repassword))
     }
     
     func changeSecureByField(field: String) {
-        isSecure[field] = !(isSecure[field] ?? true)
-        print("\(field) changed to \(isSecure[field]!)")
+        isSecure[field]?.toggle()
     }
     
 }

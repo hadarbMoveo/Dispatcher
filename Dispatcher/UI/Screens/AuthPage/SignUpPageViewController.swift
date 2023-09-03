@@ -21,7 +21,7 @@ class SignUpPageViewController: UIViewController {
         view.backgroundColor = .white
         navigationItem.hidesBackButton = true
 
-        let authView = AuthView(viewModel: viewModel,switchViewController: switchViewController,moveToTabBar: navigateToTabBarController)
+        let authView = AuthView(viewModel: viewModel,switchViewController: switchViewController,ChangeAuthView: navigateToTabBarController)
         let viewSignUpPage = UIHostingController(rootView: authView)
         viewSignUpPage.view?.translatesAutoresizingMaskIntoConstraints = false
         
@@ -41,8 +41,10 @@ class SignUpPageViewController: UIViewController {
     }
     
     func navigateToTabBarController(){
-        let storyboard = UIStoryboard(name: Strings.storyboardIdentifier, bundle: nil)
-        let tabBarController = storyboard.instantiateViewController(withIdentifier: Strings.tabBarControllerIdentifier) as! UITabBarController
+        let storyboardIdentifier = "Main"
+        let tabBarControllerIdentifier = "TabBarController"
+        let storyboard = UIStoryboard(name: storyboardIdentifier, bundle: nil)
+        let tabBarController = storyboard.instantiateViewController(withIdentifier: tabBarControllerIdentifier) as! UITabBarController
         tabBarController.modalPresentationStyle = .fullScreen
         self.present(tabBarController, animated: false, completion: nil)
     }
