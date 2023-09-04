@@ -15,14 +15,14 @@ class LoginPageViewModel: ObservableObject, AuthViewModelProtocol {
         Strings.email: "",
         Strings.password: "",
     ]
+    
+    @Published var isError = false
 
     let inputPlaceholders = [Strings.email, Strings.password]
     
     var titleButton1:String = Strings.logInButton
     var titleButton2:String = Strings.signUpButton
     
-    @Published var isError = false
-
     let title = Strings.titleLoginScreen
 
     private let authRepository: AuthRepositoryProtocol
@@ -46,9 +46,7 @@ class LoginPageViewModel: ObservableObject, AuthViewModelProtocol {
                     isError = true
                 }
             }
-        }
-        
-        else {
+        } else {
             isError = true
         }
         return false

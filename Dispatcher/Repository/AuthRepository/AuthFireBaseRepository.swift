@@ -31,7 +31,7 @@ class AuthFireBaseRepository: AuthRepositoryProtocol {
     func logout() async throws {
         do {
             try Auth.auth().signOut()
-            CleanUserData()
+            RemoveUserData()
         } catch {
             throw error
         }
@@ -43,9 +43,10 @@ class AuthFireBaseRepository: AuthRepositoryProtocol {
         defaults.set(password, forKey: "password")
     }
     
-    func CleanUserData() {
+    func RemoveUserData() {
         let defaults = UserDefaults.standard
-        defaults.set("", forKey: "email")
-        defaults.set("", forKey: "password")
+        UserDefaults.standard.removeObject(forKey: "email")
+        UserDefaults.standard.removeObject(forKey: "password")
+        UserDefaults.standard.synchronize()
     }
 }

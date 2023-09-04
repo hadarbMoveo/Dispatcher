@@ -99,12 +99,12 @@ struct AuthView<Model>: View where Model: AuthViewModelProtocol {
                 }) {
                     HStack {
                         Text(viewModel.titleButton1)
-                        Image(Strings.rightArrowIconAuthView)
+                        Image("right-arrow")
                     }
                     .frame(width: width*0.8,height: 5)
                     .foregroundColor(.white)
                     .padding()
-                    .font(.custom(Strings.button1Font, size: 12))
+                    .font(.custom("font", size: 12))
                     .background(Color.button1ColorAuthView)
                     .cornerRadius(10)
                     .padding(.top,30)
@@ -116,7 +116,7 @@ struct AuthView<Model>: View where Model: AuthViewModelProtocol {
                         .frame(width: width*0.8,height: 5)
                         .foregroundColor(Color.titleColorAuthView)
                         .padding()
-                        .font(.custom(Strings.button2Font, size: 12))
+                        .font(.custom("font", size: 12))
                         .background(Color.button2ColorAuthView)
                         .cornerRadius(10)
                         .padding(.top)
@@ -162,7 +162,7 @@ struct AuthView<Model>: View where Model: AuthViewModelProtocol {
                     .background(Color.white)
             }
         }
-        else{
+        else {
             
             TextField(field, text: binding)
                 .frame(width: width * 0.83, height: 50)
@@ -172,16 +172,6 @@ struct AuthView<Model>: View where Model: AuthViewModelProtocol {
     }
 }
 
-extension Color {
-    
-    static let titleColorAuthView = Color("auth")
-    static let inputColorAuthView = Color("input-field-password")
-    static let topViewColorAuth = Color("Primary")
-    static let middleViewColorAuth = Color("auth-color")
-    static let lineColorAuthView = Color("line-auth-page")
-    static let button1ColorAuthView = Color("button1-auth-page")
-    static let button2ColorAuthView = Color("button2-auth-page")
-}
 
 #if DEBUG
 struct AuthView_Previews: PreviewProvider {
