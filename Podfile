@@ -7,4 +7,5 @@ target 'Dispatcher' do
 
   # Pods for Dispatcher
 pod 'FirebaseAuth'
+pod 'Firebase/Firestore'
 end
