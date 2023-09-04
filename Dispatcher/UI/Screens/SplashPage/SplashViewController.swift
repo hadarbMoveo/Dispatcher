@@ -33,7 +33,9 @@ class SplashViewController: UIViewController {
         
         if let savedEmail = defaults.string(forKey: "email"),
            let savedPassword = defaults.string(forKey: "password") {
-            return true
+            if(savedEmail != "" && savedPassword != "") {
+                return true
+            }
         }
         return false
     }

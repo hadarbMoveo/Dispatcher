@@ -22,6 +22,7 @@ class AuthFireBaseRepository: AuthRepositoryProtocol {
     func login(email: String, password: String) async throws {
         do {
             let user = try await Auth.auth().signIn(withEmail: email, password: password)
+            saveUserData(email: email, password: password)
         } catch {
             throw error
         }
@@ -30,6 +31,7 @@ class AuthFireBaseRepository: AuthRepositoryProtocol {
     func logout() async throws {
         do {
             try Auth.auth().signOut()
+            CleanUserData()
         } catch {
             throw error
         }
@@ -39,5 +41,11 @@ class AuthFireBaseRepository: AuthRepositoryProtocol {
         let defaults = UserDefaults.standard
         defaults.set(email, forKey: "email")
         defaults.set(password, forKey: "password")
+    }
+    
+    func CleanUserData() {
+        let defaults = UserDefaults.standard
+        defaults.set("", forKey: "email")
+        defaults.set("", forKey: "password")
     }
 }
