@@ -1,1 +1,5 @@
-
+# Cocoapods
+Pods/
+*.plist
+*.xcscheme
+*.resolved
