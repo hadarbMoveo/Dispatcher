@@ -8,14 +8,14 @@
 import Foundation
 
 protocol AuthViewModelProtocol: ObservableObject {
-    var fields: [String: String] { get set }
+    var inputs: [String: String] { get set }
     var inputPlaceholders: [String] { get }
     var titleButton1: String { get }
     var titleButton2: String { get }
     var isError: Bool { get set }
     var title: String { get }
     var isSecure: [String: Bool] { get set }
-    func setValue(key:String,value:String)
+    func setValueToInput(key:String,value:String)
     func changeSecureByField(field: String)
     func authentication() async throws -> Bool
 }

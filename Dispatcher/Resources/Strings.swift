@@ -10,9 +10,9 @@ struct Strings {
     
     static let titleSignupScreen = "Signup"
     static let titleLoginScreen = "Login"
-    static let emailPlaceholder = "Email"
-    static let passwordPlaceholder = "Password"
-    static let reEnterPasswordPlaceholder = "Re-Enter-Password"
+    static let email = "Email"
+    static let password = "Password"
+    static let rePassword = "Re-Enter-Password"
     static let signUpButton = "SIGNUP"
     static let logInButton = "LOGIN"
     static let rightArrowIconAuthView = "right-arrow"

@@ -21,7 +21,8 @@ class SplashViewController: UIViewController {
                 let tabBarController = storyboard.instantiateViewController(withIdentifier: tabBarControllerIdentifier) as! UITabBarController
                 tabBarController.modalPresentationStyle = .fullScreen
                 self.present(tabBarController, animated: false, completion: nil)
-            } else {
+                
+            }else {
                 self.navigationController?.pushViewController(SignUpPageViewController(), animated: false)
             }
         }

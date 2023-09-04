@@ -11,7 +11,7 @@ struct AuthView<Model>: View where Model: AuthViewModelProtocol {
     
     @ObservedObject var viewModel: Model
     var changeAuthView: (() -> Void)
-    var continueToHomePage : (() -> Void)
+    var continueToHomePage: (() -> Void)
     
     var body: some View {
         GeometryReader { geo in
@@ -38,7 +38,7 @@ struct AuthView<Model>: View where Model: AuthViewModelProtocol {
     }
     
     @ViewBuilder
-    private func logoSectionView()-> some View {
+    private func logoSectionView() -> some View {
         GeometryReader { geo in
             Image("logo")
                 .resizable()
@@ -50,7 +50,7 @@ struct AuthView<Model>: View where Model: AuthViewModelProtocol {
     
     
     @ViewBuilder
-    private func inputsSectionView()-> some View {
+    private func inputsSectionView() -> some View {
         
         GeometryReader { geo in
             VStack {
@@ -65,8 +65,8 @@ struct AuthView<Model>: View where Model: AuthViewModelProtocol {
                 ForEach(viewModel.inputPlaceholders, id: \.self) { placeHolder in
                     let field =  placeHolder
                     let binding = Binding(
-                        get: { viewModel.fields[field] ?? "" },
-                        set: { newValue in viewModel.setValue(key: field, value: newValue) }
+                        get: { viewModel.inputs[field] ?? "" },
+                        set: { newValue in viewModel.setValueToInput(key: field, value: newValue) }
                     )
                     
                     SetCustomInputText(field: field, binding: binding, width: geo.size.width).padding(.bottom, 8)
@@ -128,7 +128,7 @@ struct AuthView<Model>: View where Model: AuthViewModelProtocol {
     
     @ViewBuilder
     private func SetCustomInputText(field: String, binding: Binding<String>,width: CGFloat) -> some View {
-        if (field == Strings.passwordPlaceholder || field == Strings.reEnterPasswordPlaceholder) {
+        if (field == Strings.password || field == Strings.rePassword) {
             if viewModel.isSecure[field] == true {
                 HStack {
                     
