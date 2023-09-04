@@ -2,7 +2,7 @@ import UIKit
 
 class FavoritePageViewController: BaseViewController {
     
-    let viewModel: SearchPageViewModel = SearchPageViewModel()
+    let viewModel: FavoritePageViewModel = FavoritePageViewModel(repository: FavoriteFirestoreRepository())
 
     let vcView = FavoritePageView()
     override func loadView() {
@@ -17,7 +17,7 @@ class FavoritePageViewController: BaseViewController {
     func initTableView() {
         vcView.tableView.dataSource = self
         vcView.tableView.delegate = self
-        vcView.tableView.register(UINib(nibName:String(describing: SearchCell.self), bundle: nil), forCellReuseIdentifier: SearchCell.identifier)
+        vcView.tableView.register(UINib(nibName:String(describing: FavoriteCell.self), bundle: nil), forCellReuseIdentifier: FavoriteCell.identifier)
     }
     
 }
@@ -25,20 +25,25 @@ class FavoritePageViewController: BaseViewController {
 extension FavoritePageViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.recentSearches.count
+        return viewModel.favArticles.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: SearchCell.identifier, for: indexPath)
-        as? SearchCell
-        cell?.searchLable.text=viewModel.recentSearches[indexPath.row]
-        cell?.removeSearchButton.isEnabled=true
-        cell?.index = Int(indexPath.row)
+        let cell = tableView.dequeueReusableCell(withIdentifier: FavoriteCell.identifier, for: indexPath)
+        as? FavoriteCell
+        let favArticle = viewModel.favArticles[indexPath.row] as? NewsArticle
+        cell?.initCell(with: favArticle)
+        cell?.setImage(urlImage: favArticle?.urlToImage ?? "")
+//        cell?.searchLable.text=viewModel.recentSearches[indexPath.row]
+//        cell?.removeSearchButton.isEnabled=true
+//        cell?.index = Int(indexPath.row)
+    
+
         return cell ?? UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60
+        return 108
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

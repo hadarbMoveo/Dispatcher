@@ -43,9 +43,9 @@ class FavoritePageView: UIView {
         NSLayoutConstraint.activate([
             title.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 15),
             title.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 16),
-            title.leadingAnchor.constraint(equalTo: trailingAnchor,constant: 16),
+            title.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -16),
             
-            tableView.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 10),
+            tableView.topAnchor.constraint(equalTo: title.bottomAnchor,constant: 10),
             tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: bottomAnchor),

@@ -13,10 +13,14 @@ class ArticleCell: UITableViewCell {
     @IBOutlet weak var imageUrlCard: UIImageView!
     @IBOutlet weak var titleCard: UILabel!
     
+    @IBOutlet weak var iconFav: UIButton!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         viewcard.layer.cornerRadius = 30
         viewcard.layer.masksToBounds = true
+        iconFav.layer.cornerRadius = 17
+        iconFav.layer.masksToBounds = true
     }
     
     func initCell(article: Article?) {

@@ -59,17 +59,32 @@
                                 <color key="textColor" red="0.078431375319999996" green="0.078431375319999996" blue="0.1607843041" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="efg-Rc-IA7">
+                                <rect key="frame" x="289" y="19" width="35" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="35" id="HUa-Qw-kgr"/>
+                                    <constraint firstAttribute="height" constant="35" id="oSX-dM-oau"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="blank-star-icon">
+                                    <backgroundConfiguration key="background">
+                                        <color key="backgroundColor" red="0.50980395079999996" green="0.48235297199999999" blue="0.45490193369999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </backgroundConfiguration>
+                                </buttonConfiguration>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="NQj-8y-wWO" firstAttribute="top" secondItem="cro-ma-db1" secondAttribute="top" id="4Ae-z5-PYG"/>
                             <constraint firstItem="vWg-Ce-MO2" firstAttribute="top" secondItem="Igf-f7-LLL" secondAttribute="bottom" constant="8" id="8DD-yj-5gu"/>
                             <constraint firstItem="vWg-Ce-MO2" firstAttribute="leading" secondItem="cro-ma-db1" secondAttribute="leading" constant="12" id="EBG-of-QEe"/>
+                            <constraint firstAttribute="trailing" secondItem="efg-Rc-IA7" secondAttribute="trailing" constant="19" id="EQs-sJ-A6i"/>
                             <constraint firstAttribute="trailing" secondItem="NQj-8y-wWO" secondAttribute="trailing" id="JMI-Vl-392"/>
                             <constraint firstItem="Igf-f7-LLL" firstAttribute="top" secondItem="hW7-Z5-ngE" secondAttribute="bottom" constant="8" id="MFz-gU-GKs"/>
                             <constraint firstAttribute="bottom" secondItem="vWg-Ce-MO2" secondAttribute="bottom" constant="16" id="PBW-cY-5Qi"/>
                             <constraint firstItem="Igf-f7-LLL" firstAttribute="leading" secondItem="cro-ma-db1" secondAttribute="leading" constant="16" id="Q5C-Pb-yU2"/>
                             <constraint firstItem="dFb-1g-zDx" firstAttribute="leading" secondItem="cro-ma-db1" secondAttribute="leading" constant="16" id="S2z-U5-xH3"/>
+                            <constraint firstItem="efg-Rc-IA7" firstAttribute="top" secondItem="cro-ma-db1" secondAttribute="top" constant="19" id="WbC-YC-gN7"/>
                             <constraint firstAttribute="trailing" secondItem="hW7-Z5-ngE" secondAttribute="trailing" constant="16" id="fSm-lf-XcW"/>
                             <constraint firstAttribute="trailing" secondItem="ocP-Zu-j7Y" secondAttribute="trailing" constant="16" id="iXM-QT-Y7i"/>
                             <constraint firstItem="dFb-1g-zDx" firstAttribute="top" secondItem="NQj-8y-wWO" secondAttribute="bottom" constant="8" id="j1L-Ke-Zjs"/>
@@ -93,6 +108,7 @@
             <connections>
                 <outlet property="authorCard" destination="Igf-f7-LLL" id="ITX-3b-A6Q"/>
                 <outlet property="dateCard" destination="dFb-1g-zDx" id="ppQ-2v-hGR"/>
+                <outlet property="iconFav" destination="efg-Rc-IA7" id="N1e-08-Nks"/>
                 <outlet property="imageUrlCard" destination="NQj-8y-wWO" id="aOg-yc-qs2"/>
                 <outlet property="summaryCard" destination="vWg-Ce-MO2" id="y58-rS-sja"/>
                 <outlet property="tagCard" destination="ocP-Zu-j7Y" id="fQ6-ve-1wJ"/>
@@ -103,6 +119,7 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="blank-star-icon" width="24" height="24"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
