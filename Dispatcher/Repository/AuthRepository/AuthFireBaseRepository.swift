@@ -20,8 +20,6 @@ class AuthFireBaseRepository: AuthRepositoryProtocol {
     }
     
     func login(email: String, password: String) async throws {
-        print(email)
-        print(password)
         do {
             let user = try await Auth.auth().signIn(withEmail: email, password: password)
         } catch {
