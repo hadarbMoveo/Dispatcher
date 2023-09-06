@@ -61,9 +61,9 @@ class HomePageViewModel {
             reloadUI()
             return
         }
-            delegate?.stopLoading()
+        delegate?.stopLoading()
     }
-        
+    
     func search(word: String) async throws {
         isSearching = true
         self.articles = try await repository.getArticlesBySearch(word: word)
@@ -80,7 +80,7 @@ class HomePageViewModel {
                 if let newsArticle = articles[index] as? NewsArticle {
                     addFavoriteArticleToUserDefault(title:newsArticle.title ?? "" , documentID: newsArticle.documentID)
                 }
-
+                
             }
         } else {
             let documentID = articles[index].documentID
