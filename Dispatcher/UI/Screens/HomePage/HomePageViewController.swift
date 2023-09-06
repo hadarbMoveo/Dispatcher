@@ -93,6 +93,7 @@ extension HomePageViewController: UITableViewDataSource, UITableViewDelegate {
 
 
 extension HomePageViewController: HomePageViewControllerDelegate {
+    
     func reloadUI() {
         DispatchQueue.main.async {
             self.tableView?.reloadData()
@@ -120,9 +121,12 @@ extension HomePageViewController: HomePageViewControllerDelegate {
         }
     }
     
+    @MainActor
+    
     func setFevorite(index: Int) {
-        viewModel.setFavoriteByIndex(index: index)
-        print("\(index)")
+        Task {
+            await viewModel.setFavoriteByIndex(index: index)
+        }
     }
 }
 

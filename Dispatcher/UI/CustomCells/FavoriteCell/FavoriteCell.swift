@@ -7,14 +7,20 @@
 
 import UIKit
 
-class FavoriteCell: UITableViewCell {
-    
-    static let identifier = "FavoriteCell"
+protocol FavoriteViewControllerDelegate: AnyObject {
+    func reloadUI()
+    func stopLoading()
+    func remove(index: Int)
+}
 
+class FavoriteCell: UITableViewCell {
+    weak var delegate: FavoriteViewControllerDelegate?
+    static let identifier = "FavoriteCell"
     @IBOutlet weak var imageFavArticle: UIImageView!
     @IBOutlet weak var titleFavArticle: UILabel!
     @IBOutlet weak var iconFav: UIButton!
     var isFavorite: Bool = true
+    var index = 0
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -26,10 +32,9 @@ class FavoriteCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
     }
+    
     @IBAction func favButtonTapped(_ sender: UIButton) {
-        print("remove from fav")
-        isFavorite.toggle()
-        setIconFavorite()
+        delegate?.remove(index: index)
     }
     
     func setIconFavorite(){

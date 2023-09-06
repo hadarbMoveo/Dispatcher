@@ -1,8 +1,11 @@
 import Foundation
 
-protocol Card { var isFavorite: Bool { get set }}
+protocol Card { var isFavorite: Bool { get set }
+    var documentID: String { get set }
+}
 
 struct Article: Card {
+    var documentID: String
     var imgUrl: String
     var title: String
     var summary: String
@@ -11,7 +14,20 @@ struct Article: Card {
     var tag: String
     var content: String
     var isFavorite: Bool
+    
+    init(imgUrl: String, title: String, summary: String, author: String, date: String, tag: String, content: String, isFavorite: Bool) {
+        self.documentID = "documentID"
+        self.imgUrl = imgUrl
+        self.title = title
+        self.summary = summary
+        self.author = author
+        self.date = date
+        self.tag = tag
+        self.content = content
+        self.isFavorite = isFavorite
+    }
 }
+
 
 struct NewsResponse: Decodable {
     let status: String?
@@ -20,6 +36,7 @@ struct NewsResponse: Decodable {
 }
 
 struct NewsArticle: Decodable,Card {
+    var documentID: String
     let author: String?
     let title: String?
     let description: String?
@@ -46,9 +63,22 @@ struct NewsArticle: Decodable,Card {
         self.publishedAt = try container.decodeIfPresent(String.self, forKey: .publishedAt)
         self.content = try container.decodeIfPresent(String.self, forKey: .content)
         self.isFavorite = false
+        self.documentID = "documentID"
     }
     
     init(author:String,title:String,description:String,urlToImage:String,publishedAt:String,content:String,isFavorite:Bool) {
+        self.author = author
+        self.title = title
+        self.description = description
+        self.urlToImage = urlToImage
+        self.publishedAt = publishedAt
+        self.content = content
+        self.isFavorite = isFavorite
+        self.documentID = "documentID"
+    }
+    
+    init(documentID:String, author:String,title:String,description:String,urlToImage:String,publishedAt:String,content:String,isFavorite:Bool) {
+        self.documentID = documentID
         self.author = author
         self.title = title
         self.description = description

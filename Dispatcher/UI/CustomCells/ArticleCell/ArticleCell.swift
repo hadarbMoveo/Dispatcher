@@ -44,7 +44,6 @@ class ArticleCell: UITableViewCell {
     }
     
     @IBAction func favButtonTapped(_ sender: UIButton) {
-        print("insert to fav")
         delegate?.setFevorite(index: index)
     }
     
@@ -72,15 +71,13 @@ class ArticleCell: UITableViewCell {
         return ""
     }
     
-    func setImage(urlImage:String){
+    func setImage(urlImage:String) {
         if urlImage == "" {
             imageUrlCard.image = UIImage(named: "no-image")
         }
-        else{
+        else {
             let url = URL(string: urlImage)
             imageUrlCard.kf.setImage(with: url)
         }
     }
-
-    
 }

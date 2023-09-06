@@ -9,30 +9,37 @@ import Foundation
 import FirebaseFirestore
 
 class FavoriteFirestoreRepository: FavoriteRepositoryProtocol {
+    
     let db = Firestore.firestore()
 
-    func addNewUser() async {
+    func addNewFavoriteArticle(article: NewsArticle) async -> String {
         do {
-            let ref = try await db.collection("articles").addDocument(data: [
-                "first": "Ada",
-                "last": "Lovelace",
-                "born": 1815
-            ])
-            print("Document added with ID: \(ref.documentID)")
-        } catch {
-            print("Error adding document: \(error)")
+            let data: [String: Any] = [
+                "title": article.title ?? "",
+                "description": article.description ?? "",
+                "author": article.author ?? "",
+                "urlToImage": article.urlToImage ?? "",
+                "publishedAt": article.publishedAt ?? "",
+                "content": article.content ?? ""
+            ]
+            
+            let newDocument = db.collection("favoriteArticles").addDocument(data: data)
+            return newDocument.documentID
         }
     }
-
-
-     func getDocuments() async {
+    
+    
+    func removeFavoriteArticle(documentID: String) async {
         do {
-            let querySnapshot = try await db.collection("articles").getDocuments()
-            for document in querySnapshot.documents {
-                print("\(document.documentID) => \(document.data())")
-            }
+            try await db.collection("favoriteArticles").document(documentID).delete()
         } catch {
-            print("Error getting documents: \(error)")
+            print("Error removing document: \(error)")
         }
     }
+    
+    func getAllFavoriteArticles() async throws -> [QueryDocumentSnapshot] {
+        let querySnapshot = try await db.collection("favoriteArticles").getDocuments()
+        return querySnapshot.documents
+    }
+
 }

@@ -11,6 +11,7 @@ protocol HomePageViewControllerDelegate: AnyObject {
 class HomePageViewModel {
     
     let repository: ArticleRepositoryProtocol
+    let favoriteRepository : FavoriteRepositoryProtocol = FavoriteFirestoreRepository()
     var articles: [Card] = []
     weak var delegate: HomePageViewControllerDelegate?
     var page: Int
@@ -61,8 +62,20 @@ class HomePageViewModel {
         reloadUI()
     }
     
-    func setFavoriteByIndex(index: Int) {
+    func setFavoriteByIndex(index: Int) async {
         articles[index].isFavorite.toggle()
+        var isFavorite: Bool = articles[index].isFavorite
+        if isFavorite {
+            do {
+                let id = await favoriteRepository.addNewFavoriteArticle(article: articles[index] as! NewsArticle)
+                articles[index].documentID = id
+            }
+        } else {
+            
+            let documentID = articles[index].documentID
+            await favoriteRepository.removeFavoriteArticle(documentID: documentID)
+        }
+        
         delegate?.reloadUI()
     }
     

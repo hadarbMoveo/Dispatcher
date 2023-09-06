@@ -4,9 +4,7 @@
 //
 //  Created by Hadar Basson on 20/08/2023.
 //
-
 import Foundation
-
 class ArticleRepository: ArticleRepositoryProtocol {
 
     let manager: NetworkManager = NetworkManager()
