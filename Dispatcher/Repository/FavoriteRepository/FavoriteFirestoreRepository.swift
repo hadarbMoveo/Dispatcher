@@ -11,10 +11,13 @@ import FirebaseFirestore
 class FavoriteFirestoreRepository: FavoriteRepositoryProtocol {
     
     let db = Firestore.firestore()
+    let defaults = UserDefaults.standard
 
     func addNewFavoriteArticle(article: NewsArticle) async -> String {
+        let savedEmail = defaults.string(forKey: "email")
         do {
             let data: [String: Any] = [
+                "user":savedEmail,
                 "title": article.title ?? "",
                 "description": article.description ?? "",
                 "author": article.author ?? "",
@@ -32,6 +35,7 @@ class FavoriteFirestoreRepository: FavoriteRepositoryProtocol {
     func removeFavoriteArticle(documentID: String) async {
         do {
             try await db.collection("favoriteArticles").document(documentID).delete()
+            removeFavoriteArticleFromUserDefault(documentID:documentID)
         } catch {
             print("Error removing document: \(error)")
         }
@@ -40,6 +44,16 @@ class FavoriteFirestoreRepository: FavoriteRepositoryProtocol {
     func getAllFavoriteArticles() async throws -> [QueryDocumentSnapshot] {
         let querySnapshot = try await db.collection("favoriteArticles").getDocuments()
         return querySnapshot.documents
+    }
+    
+    func removeFavoriteArticleFromUserDefault(documentID: String) {
+        if let savedEmail = defaults.string(forKey: "email") {
+            var userFavorites = UserDefaults.standard.dictionary(forKey: "userFavorites") as? [String: [[String]]] ?? [:]
+            var favoritesForUser = userFavorites[savedEmail] ?? []
+            favoritesForUser = favoritesForUser.filter { $0[1] != documentID }
+            userFavorites[savedEmail] = favoritesForUser
+            UserDefaults.standard.set(userFavorites, forKey: "userFavorites")
+        }
     }
 
 }

@@ -69,14 +69,40 @@ class HomePageViewModel {
             do {
                 let id = await favoriteRepository.addNewFavoriteArticle(article: articles[index] as! NewsArticle)
                 articles[index].documentID = id
+                if let newsArticle = articles[index] as? NewsArticle {
+                    addFavoriteArticleToUserDefault(title:newsArticle.title ?? "" , documentID: newsArticle.documentID)
+                }
+
             }
         } else {
-            
             let documentID = articles[index].documentID
             await favoriteRepository.removeFavoriteArticle(documentID: documentID)
+            removeFavoriteArticle(documentID: documentID)
         }
         
         delegate?.reloadUI()
+    }
+    
+    func addFavoriteArticleToUserDefault(title: String, documentID: String) {
+        let defaults = UserDefaults.standard
+        if let savedEmail = defaults.string(forKey: "email") {
+            var userFavorites = UserDefaults.standard.dictionary(forKey: "userFavorites") as? [String: [[String]]] ?? [:]
+            var favoritesForUser = userFavorites[savedEmail] ?? []
+            favoritesForUser.append([title, documentID])
+            userFavorites[savedEmail] = favoritesForUser
+            UserDefaults.standard.set(userFavorites, forKey: "userFavorites")
+        }
+    }
+    
+    func removeFavoriteArticle(documentID: String) {
+        let defaults = UserDefaults.standard
+        if let savedEmail = defaults.string(forKey: "email") {
+            var userFavorites = UserDefaults.standard.dictionary(forKey: "userFavorites") as? [String: [[String]]] ?? [:]
+            var favoritesForUser = userFavorites[savedEmail] ?? []
+            favoritesForUser = favoritesForUser.filter { $0[1] != documentID }
+            userFavorites[savedEmail] = favoritesForUser
+            UserDefaults.standard.set(userFavorites, forKey: "userFavorites")
+        }
     }
     
 }

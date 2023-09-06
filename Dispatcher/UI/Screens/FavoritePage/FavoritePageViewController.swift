@@ -1,6 +1,6 @@
 import UIKit
 
-class FavoritePageViewController: BaseViewController, FavoriteViewControllerDelegate {
+class FavoritePageViewController: BaseViewController {
  
     let viewModel: FavoritePageViewModel = FavoritePageViewModel(repository: FavoriteFirestoreRepository())
 
@@ -37,30 +37,6 @@ class FavoritePageViewController: BaseViewController, FavoriteViewControllerDele
             self.stopLoading()
         }
     }
-    
-    func reloadUI() {
-        DispatchQueue.main.async {
-            self.vcView.tableView.reloadData()
-        }
-    }
-    
-    func startLoading() {
-        showActivityIndicator()
-    }
-    
-    func stopLoading() {
-        hideActivityIndicator()
-    }
-    
-    @MainActor
-    func remove(index: Int) {
-        Task {
-            await viewModel.removeFavoriteByIndex(index: index)
-            self.reloadUI()
-        }
-    }
-    
-    
 }
 
 
@@ -92,6 +68,30 @@ extension FavoritePageViewController: UITableViewDataSource, UITableViewDelegate
         let viewModelForDetails = ArticleDetailsPageViewModel(article: articleSelected)
         navigationController?.pushViewController(ArticleDetailsPageViewController(viewModel: viewModelForDetails), animated: false)
         
+    }
+}
+
+extension FavoritePageViewController: FavoriteViewControllerDelegate {
+    func reloadUI() {
+        DispatchQueue.main.async {
+            self.vcView.tableView.reloadData()
+        }
+    }
+    
+    func startLoading() {
+        showActivityIndicator()
+    }
+    
+    func stopLoading() {
+        hideActivityIndicator()
+    }
+    
+    @MainActor
+    func remove(index: Int) {
+        Task {
+            await viewModel.removeFavoriteByIndex(index: index)
+            self.reloadUI()
+        }
     }
 }
 

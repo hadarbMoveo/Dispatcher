@@ -37,14 +37,14 @@ class FavoriteCell: UITableViewCell {
         delegate?.remove(index: index)
     }
     
-    func setIconFavorite(){
-        if (isFavorite){
-            iconFav.setImage(UIImage(named:"full-star-icon"), for: .normal)
-        }
-        else{
-            iconFav.setImage(UIImage(named:"blank-star-icon"), for: .normal)
-        }
-    }
+//    func setIconFavorite(){
+//        if (isFavorite){
+//            iconFav.setImage(UIImage(named:"full-star-icon"), for: .normal)
+//        }
+//        else{
+//            iconFav.setImage(UIImage(named:"blank-star-icon"), for: .normal)
+//        }
+//    }
     
     func initCell(with article: NewsArticle?) {
         guard let article else { return }
