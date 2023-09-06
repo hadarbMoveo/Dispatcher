@@ -42,6 +42,9 @@
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="full-star-icon"/>
+                                <connections>
+                                    <action selector="favButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="1as-fh-3js"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>

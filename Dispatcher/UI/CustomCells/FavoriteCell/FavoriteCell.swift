@@ -13,8 +13,9 @@ class FavoriteCell: UITableViewCell {
 
     @IBOutlet weak var imageFavArticle: UIImageView!
     @IBOutlet weak var titleFavArticle: UILabel!
-    
     @IBOutlet weak var iconFav: UIButton!
+    var isFavorite: Bool = true
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         iconFav.layer.cornerRadius = 15
@@ -25,10 +26,25 @@ class FavoriteCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
     }
+    @IBAction func favButtonTapped(_ sender: UIButton) {
+        print("remove from fav")
+        isFavorite.toggle()
+        setIconFavorite()
+    }
+    
+    func setIconFavorite(){
+        if (isFavorite){
+            iconFav.setImage(UIImage(named:"full-star-icon"), for: .normal)
+        }
+        else{
+            iconFav.setImage(UIImage(named:"blank-star-icon"), for: .normal)
+        }
+    }
     
     func initCell(with article: NewsArticle?) {
         guard let article else { return }
         titleFavArticle.text = article.title
+        isFavorite = article.isFavorite
     }
     
     func convertDateString(_ dateString: String) -> String? {

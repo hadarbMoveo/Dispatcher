@@ -71,6 +71,9 @@
                                         <color key="backgroundColor" red="0.50980395079999996" green="0.48235297199999999" blue="0.45490193369999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     </backgroundConfiguration>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="favButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="UjO-Mg-fo3"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>

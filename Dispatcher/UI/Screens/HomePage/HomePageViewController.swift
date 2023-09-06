@@ -58,6 +58,8 @@ extension HomePageViewController: UITableViewDataSource, UITableViewDelegate {
         as? ArticleCell
         let newArticle = viewModel.articles[indexPath.row] as? NewsArticle
         cell?.initCell(with: newArticle)
+        cell?.delegate = self
+        cell?.index = Int(indexPath.row)
         cell?.setImage(urlImage: newArticle?.urlToImage ?? "")
 
         return cell ?? UITableViewCell()
@@ -116,6 +118,11 @@ extension HomePageViewController: HomePageViewControllerDelegate {
                 print(e)
             }
         }
+    }
+    
+    func setFevorite(index: Int) {
+        viewModel.setFavoriteByIndex(index: index)
+        print("\(index)")
     }
 }
 

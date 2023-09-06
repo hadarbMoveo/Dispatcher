@@ -3,7 +3,7 @@ import Alamofire
 import Kingfisher
 
 class ArticleCell: UITableViewCell {
-    
+    weak var delegate: HomePageViewControllerDelegate?
     static let identifier = "ArticleCell"
     @IBOutlet weak var viewcard: UIView!
     @IBOutlet weak var tagCard: UILabel!
@@ -12,8 +12,9 @@ class ArticleCell: UITableViewCell {
     @IBOutlet weak var dateCard: UILabel!
     @IBOutlet weak var imageUrlCard: UIImageView!
     @IBOutlet weak var titleCard: UILabel!
-    
     @IBOutlet weak var iconFav: UIButton!
+    var isFavorite: Bool = false
+    var index: Int = 0
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -21,6 +22,7 @@ class ArticleCell: UITableViewCell {
         viewcard.layer.masksToBounds = true
         iconFav.layer.cornerRadius = 17
         iconFav.layer.masksToBounds = true
+        setIconFavorite()
     }
     
     func initCell(article: Article?) {
@@ -32,6 +34,20 @@ class ArticleCell: UITableViewCell {
         titleCard.text = article.title
     }
     
+    func setIconFavorite(){
+        if (isFavorite){
+            iconFav.setImage(UIImage(named:"full-star-icon"), for: .normal)
+        }
+        else{
+            iconFav.setImage(UIImage(named:"blank-star-icon"), for: .normal)
+        }
+    }
+    
+    @IBAction func favButtonTapped(_ sender: UIButton) {
+        print("insert to fav")
+        delegate?.setFevorite(index: index)
+    }
+    
     func initCell(with article: NewsArticle?) {
         guard let article else { return }
         tagCard.text = "Sport"
@@ -39,7 +55,8 @@ class ArticleCell: UITableViewCell {
         authorCard.text = article.author
         dateCard.text = convertDateString(article.publishedAt ?? "")
         titleCard.text = article.title
-        
+        isFavorite = article.isFavorite
+        setIconFavorite()
     }
     
     func convertDateString(_ dateString: String) -> String? {

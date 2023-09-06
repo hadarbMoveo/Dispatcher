@@ -5,6 +5,7 @@ protocol HomePageViewControllerDelegate: AnyObject {
     func stopLoading()
     func search(word:String)
     func startLoading()
+    func setFevorite(index: Int)
 }
 
 class HomePageViewModel {
@@ -58,6 +59,11 @@ class HomePageViewModel {
         isSearching = true
         self.articles = try await repository.getArticlesBySearch(word: word)
         reloadUI()
+    }
+    
+    func setFavoriteByIndex(index: Int) {
+        articles[index].isFavorite.toggle()
+        delegate?.reloadUI()
     }
     
 }
