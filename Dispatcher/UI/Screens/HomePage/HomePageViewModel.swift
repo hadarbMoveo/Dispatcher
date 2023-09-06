@@ -14,6 +14,7 @@ class HomePageViewModel {
     let favoriteRepository : FavoriteRepositoryProtocol = FavoriteFirestoreRepository()
     var articles: [Card] = []
     weak var delegate: HomePageViewControllerDelegate?
+    let defaults = UserDefaults.standard
     var page: Int
     var isFirstRun: Bool = true
     var isSearching: Bool = false
@@ -46,8 +47,15 @@ class HomePageViewModel {
     }
     
     func getData() async throws {
-        let newsArticles = try await repository.getArticles(page: self.page)
+        var newsArticles = try await repository.getArticles(page: self.page)
         if !newsArticles.isEmpty {
+            let favoriteArticles = getFavoriteArticles()
+            for (index, article) in newsArticles.enumerated() {
+                if let favoriteInfo = favoriteArticles.first(where: { $0[0] == article.title}) {
+                    newsArticles[index].isFavorite = true
+                    newsArticles[index].documentID = favoriteInfo[1]
+                }
+            }
             self.articles.append(contentsOf: newsArticles)
             self.page += 1
             reloadUI()
@@ -77,14 +85,13 @@ class HomePageViewModel {
         } else {
             let documentID = articles[index].documentID
             await favoriteRepository.removeFavoriteArticle(documentID: documentID)
-            removeFavoriteArticle(documentID: documentID)
+            removeFavoriteArticleFromUserDefault(documentID: documentID)
         }
         
         delegate?.reloadUI()
     }
     
     func addFavoriteArticleToUserDefault(title: String, documentID: String) {
-        let defaults = UserDefaults.standard
         if let savedEmail = defaults.string(forKey: "email") {
             var userFavorites = UserDefaults.standard.dictionary(forKey: "userFavorites") as? [String: [[String]]] ?? [:]
             var favoritesForUser = userFavorites[savedEmail] ?? []
@@ -94,8 +101,7 @@ class HomePageViewModel {
         }
     }
     
-    func removeFavoriteArticle(documentID: String) {
-        let defaults = UserDefaults.standard
+    func removeFavoriteArticleFromUserDefault(documentID: String) {
         if let savedEmail = defaults.string(forKey: "email") {
             var userFavorites = UserDefaults.standard.dictionary(forKey: "userFavorites") as? [String: [[String]]] ?? [:]
             var favoritesForUser = userFavorites[savedEmail] ?? []
@@ -103,6 +109,14 @@ class HomePageViewModel {
             userFavorites[savedEmail] = favoritesForUser
             UserDefaults.standard.set(userFavorites, forKey: "userFavorites")
         }
+    }
+    
+    func getFavoriteArticles() -> [[String]] {
+        if let savedEmail = defaults.string(forKey: "email") {
+            let userFavorites = UserDefaults.standard.dictionary(forKey: "userFavorites") as? [String: [[String]]] ?? [:]
+            return userFavorites[savedEmail] ?? []
+        }
+        return []
     }
     
 }

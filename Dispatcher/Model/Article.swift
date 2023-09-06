@@ -2,12 +2,13 @@ import Foundation
 
 protocol Card { var isFavorite: Bool { get set }
     var documentID: String { get set }
+    var title: String? { get }
 }
 
 struct Article: Card {
     var documentID: String
     var imgUrl: String
-    var title: String
+    var title: String?
     var summary: String
     var author: String
     var date: String
