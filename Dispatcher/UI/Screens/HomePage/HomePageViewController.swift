@@ -6,6 +6,7 @@ class HomePageViewController: BaseViewController {
     let viewModel: HomePageViewModel = HomePageViewModel(repository: ArticleRepository())
     
     @IBOutlet weak var tableView: UITableView?
+    @IBOutlet weak var notFoundImage: UIImageView!
     
     override var isSearchHidden: Bool {
         return false
@@ -93,7 +94,6 @@ extension HomePageViewController: UITableViewDataSource, UITableViewDelegate {
 
 
 extension HomePageViewController: HomePageViewControllerDelegate {
-    
     func reloadUI() {
         DispatchQueue.main.async {
             self.tableView?.reloadData()
@@ -115,6 +115,9 @@ extension HomePageViewController: HomePageViewControllerDelegate {
             do {
                 self.startLoading()
                 try await viewModel.search(word: word)
+                if (viewModel.articles.isEmpty){
+                    notFoundImage.isHidden = false
+                }
             } catch let e {
                 print(e)
             }
@@ -126,6 +129,12 @@ extension HomePageViewController: HomePageViewControllerDelegate {
     func setFevorite(index: Int) {
         Task {
             await viewModel.setFavoriteByIndex(index: index)
+        }
+    }
+    
+    func hideNotFound() {
+        DispatchQueue.main.async {
+            self.notFoundImage.isHidden = true
         }
     }
 }

@@ -6,6 +6,7 @@ protocol HomePageViewControllerDelegate: AnyObject {
     func search(word:String)
     func startLoading()
     func setFevorite(index: Int)
+    func hideNotFound()
 }
 
 class HomePageViewModel {
@@ -26,6 +27,7 @@ class HomePageViewModel {
     
     func prepareForDisplay() async throws {
         if !isFirstRun && !isSearching {
+            delegate?.hideNotFound()
             delegate?.startLoading()
             resetNewsList()
             try await getData()

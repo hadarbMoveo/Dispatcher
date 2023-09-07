@@ -58,6 +58,7 @@ class ArticleDetailsView: UIView {
         textView.font = UIFont.systemFont(ofSize: 16)
         textView.isScrollEnabled = true
         textView.textAlignment = .left
+        textView.isEditable = false
         return textView
     }()
     
