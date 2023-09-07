@@ -56,8 +56,9 @@ class SearchPageViewController: BaseViewController, UISearchBarDelegate, SearchP
     @objc
     override func searchButtonTapped() {
         if let searchText = vcView.searchBar.text, !searchText.isEmpty {
-            viewModel.addSearchEntry(keyword: searchText)
-            search(word: searchText)
+            let encodedSearchText = searchText.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+            viewModel.addUserSearchEntry(keyword: searchText)
+            search(word: encodedSearchText ?? "")
         }
     }
     

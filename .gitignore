@@ -1,4 +1,5 @@
 # Cocoapods
 Pods/
-Podfile
-Podfile.lock
+*.plist
+*.xcscheme
+*.resolved

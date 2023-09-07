@@ -6,39 +6,72 @@
 //
 
 import Foundation
+
 class SearchPageViewModel {
-    
     let maxSearchesCount = 10
+    let defaults = UserDefaults.standard
     
     var recentSearches: [String] {
         get {
-            return UserDefaults.standard.array(forKey: "RecentSearches") as? [String] ?? []
-        }
-        set {
-            UserDefaults.standard.set(newValue, forKey: "RecentSearches")
+            return getUserSearchesForCurrentUser()
         }
     }
     
-    func addSearchEntry(keyword: String) {
-        var searches = recentSearches
-        if let index = searches.firstIndex(of: keyword) {
-            searches.remove(at: index)
+    func addUserSearchEntry(keyword: String) {
+        var userSearches = getUserSearches()
+        if let currentUser = defaults.string(forKey: "email") {
+            var searches = userSearches[currentUser] ?? []
+            if let index = searches.firstIndex(of: keyword) {
+                searches.remove(at: index)
+            }
+            searches.insert(keyword, at: 0)
+            
+            if searches.count > maxSearchesCount {
+                searches.removeLast()
+            }
+            userSearches[currentUser] = searches
+            saveUserSearches(userSearches)
         }
-        searches.insert(keyword, at: 0)
-        if searches.count > maxSearchesCount {
-            searches.removeLast()
+ 
+    }
+    
+    func getUserSearches() -> [String: [String]] {
+        return UserDefaults.standard.dictionary(forKey: "UserSearches") as? [String: [String]] ?? [:]
+    }
+    
+    func saveUserSearches(_ searches: [String: [String]]) {
+        UserDefaults.standard.set(searches, forKey: "UserSearches")
+    }
+    
+    func getUserSearchesForCurrentUser() -> [String] {
+        if let currentUserEmail = UserDefaults.standard.string(forKey: "email") {
+            let userSearches = getUserSearches()
+            return userSearches[currentUserEmail] ?? []
+        } else {
+            return []
         }
-        recentSearches = searches
     }
     
     @objc func removeSearchEntry(at index: Int) {
-        var searches = recentSearches
-        searches.remove(at: index)
-        recentSearches = searches
+        var userSearches = getUserSearches()
+        
+        if let currentUserEmail = UserDefaults.standard.string(forKey: "email") {
+            var currentUserSearches = userSearches[currentUserEmail] ?? []
+            
+            if index < currentUserSearches.count {
+                currentUserSearches.remove(at: index)
+                userSearches[currentUserEmail] = currentUserSearches
+                saveUserSearches(userSearches)
+            }
+        }
     }
     
-    
     func clearAll() {
-        recentSearches = []
+        var userSearches = getUserSearches()
+        
+        if let currentUserEmail = UserDefaults.standard.string(forKey: "email") {
+            userSearches[currentUserEmail] = []
+            saveUserSearches(userSearches)
+        }
     }
 }

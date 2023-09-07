@@ -6,6 +6,7 @@ class HomePageViewController: BaseViewController {
     let viewModel: HomePageViewModel = HomePageViewModel(repository: ArticleRepository())
     
     @IBOutlet weak var tableView: UITableView?
+    @IBOutlet weak var notFoundImage: UIImageView!
     
     override var isSearchHidden: Bool {
         return false
@@ -58,6 +59,8 @@ extension HomePageViewController: UITableViewDataSource, UITableViewDelegate {
         as? ArticleCell
         let newArticle = viewModel.articles[indexPath.row] as? NewsArticle
         cell?.initCell(with: newArticle)
+        cell?.delegate = self
+        cell?.index = Int(indexPath.row)
         cell?.setImage(urlImage: newArticle?.urlToImage ?? "")
 
         return cell ?? UITableViewCell()
@@ -80,6 +83,12 @@ extension HomePageViewController: UITableViewDataSource, UITableViewDelegate {
                 try await viewModel.getData()
             }
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let articleSelected = viewModel.articles[indexPath.row] as? NewsArticle
+        let viewModelForDetails = ArticleDetailsPageViewModel(article: articleSelected)
+        navigationController?.pushViewController(ArticleDetailsPageViewController(viewModel: viewModelForDetails), animated: false)
     }
 }
 
@@ -106,9 +115,26 @@ extension HomePageViewController: HomePageViewControllerDelegate {
             do {
                 self.startLoading()
                 try await viewModel.search(word: word)
+                if (viewModel.articles.isEmpty){
+                    notFoundImage.isHidden = false
+                }
             } catch let e {
                 print(e)
             }
+        }
+    }
+    
+    @MainActor
+    
+    func setFevorite(index: Int) {
+        Task {
+            await viewModel.setFavoriteByIndex(index: index)
+        }
+    }
+    
+    func hideNotFound() {
+        DispatchQueue.main.async {
+            self.notFoundImage.isHidden = true
         }
     }
 }
