@@ -129,41 +129,27 @@ struct AuthView<Model>: View where Model: AuthViewModelProtocol {
     @ViewBuilder
     private func SetCustomInputText(field: String, binding: Binding<String>,width: CGFloat) -> some View {
         if (field == Strings.password || field == Strings.rePassword) {
-            if viewModel.isSecure[field] == true {
-                HStack {
-                    
-                    SecureField(field, text: binding)
-                    
-                    Button(action: {
-                        viewModel.changeSecureByField(field: field)
-                    }) {
-                        Image("input-field-password")
-                            .resizable()
-                            .frame(width: 30, height: 25)
-                    }
-                }   .frame(width: width * 0.83, height: 50)
-                    .padding(.horizontal)
-                    .background(Color.white)
+            HStack {
                 
-            } else {
-                HStack {
-                    
+                if viewModel.isSecure[field] == true {
+                    SecureField(field, text: binding)
+                } else {
                     TextField(field, text: binding)
-                    
-                    Button(action: {
-                        viewModel.changeSecureByField(field: field)
-                    }) {
-                        Image("input-field-password")
-                            .resizable()
-                            .frame(width: 30, height: 25)
-                    }
-                }   .frame(width: width * 0.83, height: 50)
-                    .padding(.horizontal)
-                    .background(Color.white)
-            }
+                }
+                
+                Button(action: {
+                    viewModel.changeSecureByField(field: field)
+                }) {
+                    Image("input-field-password")
+                        .resizable()
+                        .frame(width: 30, height: 25)
+                }
+            }   .frame(width: width * 0.83, height: 50)
+                .padding(.horizontal)
+                .background(Color.white)
+                
         }
         else {
-            
             TextField(field, text: binding)
                 .frame(width: width * 0.83, height: 50)
                 .padding(.horizontal)
