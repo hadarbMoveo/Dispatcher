@@ -69,7 +69,7 @@ struct AuthView<Model>: View where Model: AuthViewModelProtocol {
                     SetCustomInputText(field: field,
                                        binding: binding,
                                        width: geo.size.width)
-                    .padding(.bottom, 14)
+                    .padding(.bottom, 4)
                 }
             }
             
@@ -128,53 +128,61 @@ struct AuthView<Model>: View where Model: AuthViewModelProtocol {
     
     @ViewBuilder
     private func SetCustomInputText(field: String, binding: Binding<String>,width: CGFloat) -> some View {
-        let isSecure = field == Strings.password || field == Strings.rePassword
-        
-        if isSecure {
-            HStack {
-                
-                if viewModel.isSecure[field] == true {
-                    SecureField(field, text: binding)
-                        .onChange(of: viewModel.inputs[field]) { newValue in
-                            viewModel.clearErrors()
-                        }
-                } else {
-                    TextField(field, text: binding)
-                        .onChange(of: viewModel.inputs[field]) { newValue in
-                            viewModel.clearErrors()
-                        }
-                }
-                
-                Button(action: {
-                    viewModel.changeSecureByField(field: field)
-                }) {
-                    Image("input-field-password")
-                        .resizable()
-                        .frame(width: 30, height: 25)
-                }
-            }
-            .frame(width: width * 0.83, height: 50)
-            .padding(.horizontal)
-            .background(Color.white)
-                
-        } else {
+
+        ZStack {
+            let isSecure = field == Strings.password || field == Strings.rePassword
             
-            TextField(field, text: binding)
-                .frame(width: width * 0.83, height: 50)
+            if isSecure {
+                HStack {
+                    
+                    if viewModel.isSecure[field] == true {
+                        SecureField(field, text: binding)
+                            .onChange(of: viewModel.inputs[field]) { newValue in
+                                viewModel.clearErrors()
+                            }
+                    } else {
+                        TextField(field, text: binding)
+                            .onChange(of: viewModel.inputs[field]) { newValue in
+                                viewModel.clearErrors()
+                            }
+                    }
+                    
+                    Button(action: {
+                        viewModel.changeSecureByField(field: field)
+                    }) {
+                        Image("input-field-password")
+                            .resizable()
+                            .frame(width: 30, height: 25)
+                    }
+                }
+                .frame(width: width * 0.83, height: 48)
                 .padding(.horizontal)
                 .background(Color.white)
-                .onChange(of: viewModel.inputs[field]) { newValue in
-                    viewModel.clearErrors()
-                }
+                    
+            } else {
+                
+                TextField(field, text: binding)
+                    .frame(width: width * 0.83, height: 48)
+                    .padding(.horizontal)
+                    .background(Color.white)
+                    .onChange(of: viewModel.inputs[field]) { newValue in
+                        viewModel.clearErrors()
+                    }
+                
+            }
+
             
+            let isFieldError = viewModel.isError[field] == true
+            if isFieldError {
+                let errorMsg = viewModel.errorMessages[field] ?? ""
+                Text(isFieldError ? errorMsg : "")
+                    .frame(width: width * 0.88, height: 2, alignment: .leading)
+                    .foregroundColor(.red)
+                    .padding(.top, 72)
+            }
         }
-        
-        if viewModel.isError[field] == true {
-            Text(viewModel.errorMessages[field] ?? "")
-                .frame(width: width * 0.88, height: 2, alignment: .leading)
-                .foregroundColor(.red)
-                .padding(.top, -8)
-        }
+        .frame(height: 66)
+
     }
 }
 
