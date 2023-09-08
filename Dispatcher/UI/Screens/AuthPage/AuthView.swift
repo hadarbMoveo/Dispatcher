@@ -32,9 +32,6 @@ struct AuthView<Model>: View where Model: AuthViewModelProtocol {
             }
             .frame(width: width, height: height)
         }
-        .alert(isPresented: $viewModel.isError) {
-            Alert(title: Text("Authentication failed, please try again"))
-        }
     }
     
     @ViewBuilder
@@ -51,9 +48,9 @@ struct AuthView<Model>: View where Model: AuthViewModelProtocol {
     
     @ViewBuilder
     private func inputsSectionView() -> some View {
-        
         GeometryReader { geo in
             VStack {
+                
                 Text(viewModel.title)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .bold()
@@ -63,13 +60,16 @@ struct AuthView<Model>: View where Model: AuthViewModelProtocol {
                     .foregroundColor(Color.titleColorAuthView)
                 
                 ForEach(viewModel.inputPlaceholders, id: \.self) { placeHolder in
-                    let field =  placeHolder
+                    let field = placeHolder
                     let binding = Binding(
                         get: { viewModel.inputs[field] ?? "" },
                         set: { newValue in viewModel.setValueToInput(key: field, value: newValue) }
                     )
                     
-                    SetCustomInputText(field: field, binding: binding, width: geo.size.width).padding(.bottom, 8)
+                    SetCustomInputText(field: field,
+                                       binding: binding,
+                                       width: geo.size.width)
+                    .padding(.bottom, 14)
                 }
             }
             
@@ -128,13 +128,21 @@ struct AuthView<Model>: View where Model: AuthViewModelProtocol {
     
     @ViewBuilder
     private func SetCustomInputText(field: String, binding: Binding<String>,width: CGFloat) -> some View {
-        if (field == Strings.password || field == Strings.rePassword) {
+        let isSecure = field == Strings.password || field == Strings.rePassword
+        
+        if isSecure {
             HStack {
                 
                 if viewModel.isSecure[field] == true {
                     SecureField(field, text: binding)
+                        .onChange(of: viewModel.inputs[field]) { newValue in
+                            viewModel.clearErrors()
+                        }
                 } else {
                     TextField(field, text: binding)
+                        .onChange(of: viewModel.inputs[field]) { newValue in
+                            viewModel.clearErrors()
+                        }
                 }
                 
                 Button(action: {
@@ -144,16 +152,28 @@ struct AuthView<Model>: View where Model: AuthViewModelProtocol {
                         .resizable()
                         .frame(width: 30, height: 25)
                 }
-            }   .frame(width: width * 0.83, height: 50)
-                .padding(.horizontal)
-                .background(Color.white)
+            }
+            .frame(width: width * 0.83, height: 50)
+            .padding(.horizontal)
+            .background(Color.white)
                 
-        }
-        else {
+        } else {
+            
             TextField(field, text: binding)
                 .frame(width: width * 0.83, height: 50)
                 .padding(.horizontal)
                 .background(Color.white)
+                .onChange(of: viewModel.inputs[field]) { newValue in
+                    viewModel.clearErrors()
+                }
+            
+        }
+        
+        if viewModel.isError[field] == true {
+            Text(viewModel.errorMessages[field] ?? "")
+                .frame(width: width * 0.88, height: 2, alignment: .leading)
+                .foregroundColor(.red)
+                .padding(.top, -8)
         }
     }
 }

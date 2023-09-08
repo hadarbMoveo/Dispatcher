@@ -12,12 +12,15 @@ protocol AuthViewModelProtocol: ObservableObject {
     var inputPlaceholders: [String] { get }
     var titleButton1: String { get }
     var titleButton2: String { get }
-    var isError: Bool { get set }
+//    var isError: Bool { get set }
     var title: String { get }
     var isSecure: [String: Bool] { get set }
+    var isError: [String: Bool] { get set }
+    var errorMessages: [String: String] { get set }
     func setValueToInput(key:String,value:String)
     func changeSecureByField(field: String)
     func authentication() async throws -> Bool
+    func clearErrors()
 }
 
 extension AuthViewModelProtocol {

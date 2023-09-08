@@ -8,6 +8,18 @@
 import Foundation
 
 class SignUpPageViewModel: ObservableObject, AuthViewModelProtocol {
+    
+    @Published var isError: [String: Bool] = [
+        Strings.email: false,
+        Strings.password: false,
+        Strings.rePassword: false
+    ]
+    
+    var errorMessages: [String: String] = [
+        Strings.email: "invalid email",
+        Strings.password: "invalid password",
+        Strings.rePassword: "passwords dont match"
+    ]
 
     @Published var isSecure: [String: Bool] = [
         Strings.password: true,
@@ -19,9 +31,7 @@ class SignUpPageViewModel: ObservableObject, AuthViewModelProtocol {
         Strings.password: "",
         Strings.rePassword: ""
     ]
-    
-    @Published var isError = false
-    
+
     let inputPlaceholders = [Strings.email,Strings.password,Strings.rePassword]
     
     var titleButton1:String = Strings.signUpButton
@@ -39,6 +49,7 @@ class SignUpPageViewModel: ObservableObject, AuthViewModelProtocol {
         inputs[key] = value
     }
     
+    @MainActor
     func authentication() async -> Bool {
         if(isValid()) {
             if let email = inputs[Strings.email], let password = inputs[Strings.password] {
@@ -46,20 +57,29 @@ class SignUpPageViewModel: ObservableObject, AuthViewModelProtocol {
                     try await authRepository.register(email: email, password:password)
                     return true
                 }
-                catch {
-                    isError = true
+                catch let error {
+                    print(error)
                 }
             }
         }
         
-        isError = true
         return false
+    }
+    
+    func clearErrors() {
+        isError[Strings.email] = false
+        isError[Strings.password] = false
+        isError[Strings.rePassword] = false
     }
     
     func isValid() -> Bool {
         let email = inputs[Strings.email]
         let password = inputs[Strings.password]
         let repassword = inputs[Strings.rePassword]
+        
+        isError[Strings.email] = !isValidEmail(email)
+        isError[Strings.password] = !isValidPassword(password)
+        isError[Strings.rePassword] = !isVaidRePassword(password,repassword)
         
         return (isValidEmail(email) && isValidPassword(password) && isVaidRePassword(password,repassword))
     }
