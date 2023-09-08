@@ -55,8 +55,6 @@
 		6FD49B182A890C0E00BF85EB /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FD49B172A890C0E00BF85EB /* NavigationBar.swift */; };
 		6FD49B1F2A8A5E6500BF85EB /* ArticleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FD49B1D2A8A5E6500BF85EB /* ArticleCell.swift */; };
 		6FD49B202A8A5E6500BF85EB /* ArticleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FD49B1E2A8A5E6500BF85EB /* ArticleCell.xib */; };
-		F42FDBE22AAB6BED00528EF2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F42FDBDF2AAB6BED00528EF2 /* GoogleService-Info.plist */; };
-		F42FDBE32AAB6BED00528EF2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F42FDBE12AAB6BED00528EF2 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -492,8 +490,6 @@
 				6FD49B202A8A5E6500BF85EB /* ArticleCell.xib in Resources */,
 				6F39C1872A84E8E400B2403F /* Main.storyboard in Resources */,
 				6F971E002AA604F7009674EE /* FavoriteCell.xib in Resources */,
-				F42FDBE22AAB6BED00528EF2 /* GoogleService-Info.plist in Resources */,
-				F42FDBE32AAB6BED00528EF2 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
