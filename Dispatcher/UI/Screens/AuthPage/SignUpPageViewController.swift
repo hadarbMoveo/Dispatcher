@@ -36,6 +36,7 @@ class SignUpPageViewController: UIViewController {
     }
     
     func switchViewController() {
+        self.dismiss(animated: false)
         let logInViewController = LogInPageViewController()
         navigationController?.pushViewController(logInViewController, animated: false)
     }

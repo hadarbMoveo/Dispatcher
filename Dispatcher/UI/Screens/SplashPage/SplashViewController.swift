@@ -31,8 +31,8 @@ class SplashViewController: UIViewController {
     func isAutomaticLogin() -> Bool {
         let defaults = UserDefaults.standard
         
-        if let savedEmail = defaults.string(forKey: "email"),
-           let savedPassword = defaults.string(forKey: "password") {
+        if let _ = defaults.string(forKey: "email"),
+           let _ = defaults.string(forKey: "password") {
                 return true
         }
         return false

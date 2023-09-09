@@ -27,18 +27,7 @@ class UserPageViewController: BaseViewController {
     }
         
     func LogOutToAuthPage() {
-        
-        let storyboardIdentifier = "Main"
-        let navControllerIdentifier = "AuthNavController"
-        
-        let storyboard = UIStoryboard(name: storyboardIdentifier, bundle: nil)
-        let navController = storyboard.instantiateViewController(withIdentifier: navControllerIdentifier) as! UINavigationController
-        navController.pushViewController(SignUpPageViewController(), animated: false)
-        navController.modalPresentationStyle = .fullScreen
-        self.present(navController, animated: false, completion: nil)
+        self.dismiss(animated: false)
+        self.navigationController?.pushViewController(SignUpPageViewController(), animated: false)
     }
-    
-    
-
-
 }
