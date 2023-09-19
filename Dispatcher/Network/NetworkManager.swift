@@ -11,7 +11,7 @@ class NetworkManager {
     
     static let apiKey = "ef5133dd364c41719494a74ce614d679"
     
-    let baseUrl = "https://newsapi.org/v2"
+    let baseUrl = "http://localhost:3000/api/v1"
     func request<T: Decodable>(url: String, method:String, completion: @escaping (T) -> Void) {
         let finalUrl = String("\(baseUrl)\(url)")
         AF.request(finalUrl,method:HTTPMethod(rawValue: method))
