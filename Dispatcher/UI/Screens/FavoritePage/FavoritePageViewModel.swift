@@ -21,21 +21,20 @@ class FavoritePageViewModel {
     func loadFavoriteArticles() async throws {
         let currentUser = defaults.string(forKey: "email")
         do {
-            let documents = try await repository.getAllFavoriteArticles()
+            let documents = try await repository.getAllFavoriteArticles().articles
             var favoriteArticles: [NewsArticle] = []
-            
+
             for document in documents {
                 do {
-                    let documentData = document.data()
-                    if(documentData["user"] as? String ?? "" == currentUser) {
+                    if(document.user == currentUser) {
                         let newsArticle = NewsArticle(
-                            documentID: document.documentID,
-                            author: documentData["author"] as? String ?? "",
-                            title: documentData["title"] as? String ?? "",
-                            description: documentData["description"] as? String ?? "",
-                            urlToImage: documentData["urlToImage"] as? String ?? "",
-                            publishedAt: documentData["publishedAt"] as? String ?? "",
-                            content: documentData["content"] as? String ?? "",
+                            documentID: document._id,
+                            author: document.author,
+                            title: document.title,
+                            description: document.description,
+                            urlToImage: document.urlToImage,
+                            publishedAt: document.publishedAt,
+                            content: document.content,
                             isFavorite: true
                         )
                         favoriteArticles.append(newsArticle)

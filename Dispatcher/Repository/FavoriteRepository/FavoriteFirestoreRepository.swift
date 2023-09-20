@@ -13,7 +13,7 @@ class FavoriteFirestoreRepository: FavoriteRepositoryProtocol {
     let db = Firestore.firestore()
     let defaults = UserDefaults.standard
 
-    func addNewFavoriteArticle(article: NewsArticle) async -> String {
+    func addNewFavoriteArticle(article: NewsArticle) async throws -> String {
         let savedEmail = defaults.string(forKey: "email")
         do {
             let data: [String: Any] = [
@@ -31,6 +31,9 @@ class FavoriteFirestoreRepository: FavoriteRepositoryProtocol {
         }
     }
     
+    func getAllFavoriteArticles() async throws -> getFavoriteArticlesResponse {
+        return getFavoriteArticlesResponse(articles: [])
+    }
     
     func removeFavoriteArticle(documentID: String) async {
         do {

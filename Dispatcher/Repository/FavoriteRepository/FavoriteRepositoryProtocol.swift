@@ -8,7 +8,7 @@ import FirebaseFirestore
 import Foundation
 
 protocol FavoriteRepositoryProtocol {
-    func addNewFavoriteArticle(article:NewsArticle) async -> String
+    func addNewFavoriteArticle(article:NewsArticle) async throws-> String
     func removeFavoriteArticle(documentID: String) async -> Void
-    func getAllFavoriteArticles() async throws -> [QueryDocumentSnapshot]
+    func getAllFavoriteArticles() async throws -> getFavoriteArticlesResponse
 }

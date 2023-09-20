@@ -12,7 +12,7 @@ protocol HomePageViewControllerDelegate: AnyObject {
 class HomePageViewModel {
     
     let repository: ArticleRepositoryProtocol
-    let favoriteRepository : FavoriteRepositoryProtocol = FavoriteFirestoreRepository()
+    let favoriteRepository : FavoriteRepositoryProtocol = FavoriteRepository()
     var articles: [Card] = []
     weak var delegate: HomePageViewControllerDelegate?
     let defaults = UserDefaults.standard
@@ -75,22 +75,24 @@ class HomePageViewModel {
     func setFavoriteByIndex(index: Int) async {
         articles[index].isFavorite.toggle()
         var isFavorite: Bool = articles[index].isFavorite
-        if isFavorite {
-            do {
-                let id = await favoriteRepository.addNewFavoriteArticle(article: articles[index] as! NewsArticle)
+        
+        do {
+            if isFavorite {
+                let id = try await favoriteRepository.addNewFavoriteArticle(article: articles[index] as! NewsArticle)
                 articles[index].documentID = id
                 if let newsArticle = articles[index] as? NewsArticle {
-                    addFavoriteArticleToUserDefault(title:newsArticle.title ?? "" , documentID: newsArticle.documentID)
+                    addFavoriteArticleToUserDefault(title: newsArticle.title ?? "", documentID: newsArticle.documentID)
                 }
-                
+            } else {
+                let documentID = articles[index].documentID
+                try await favoriteRepository.removeFavoriteArticle(documentID: documentID)
+                removeFavoriteArticleFromUserDefault(documentID: documentID)
             }
-        } else {
-            let documentID = articles[index].documentID
-            await favoriteRepository.removeFavoriteArticle(documentID: documentID)
-            removeFavoriteArticleFromUserDefault(documentID: documentID)
+            
+            delegate?.reloadUI()
+        } catch {
+            print("Error: \(error)")
         }
-        
-        delegate?.reloadUI()
     }
     
     func addFavoriteArticleToUserDefault(title: String, documentID: String) {
