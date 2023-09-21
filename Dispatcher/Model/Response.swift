@@ -30,3 +30,8 @@ struct getFavoriteArticlesResponse: Decodable {
 struct removeFavoriteResponse: Decodable {
     let message: String
 }
+
+struct authResponse: Decodable {
+    let token: String
+}
+

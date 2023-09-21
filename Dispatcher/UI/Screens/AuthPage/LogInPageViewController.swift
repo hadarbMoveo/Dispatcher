@@ -12,7 +12,7 @@ import SwiftUI
 
 class LogInPageViewController: UIViewController {
     
-    var viewModel: LoginPageViewModel = LoginPageViewModel(authRepository: AuthFireBaseRepository())
+    var viewModel: LoginPageViewModel = LoginPageViewModel(authRepository: AuthRepository())
     
     init() {
         super.init(nibName: nil, bundle: nil)

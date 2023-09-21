@@ -39,6 +39,7 @@
 		6F7B55482A9793AD00C17ED8 /* SearchPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7B55472A9793AD00C17ED8 /* SearchPageView.swift */; };
 		6F8252D42AB9CBCF00A7CDA4 /* FavoriteRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8252D32AB9CBCF00A7CDA4 /* FavoriteRepository.swift */; };
 		6F8252D62ABACFAA00A7CDA4 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8252D52ABACFAA00A7CDA4 /* Response.swift */; };
+		6F8252D82ABB603B00A7CDA4 /* AuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8252D72ABB603B00A7CDA4 /* AuthRepository.swift */; };
 		6F971DEA2AA37F0F009674EE /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F971DE92AA37F0F009674EE /* Strings.swift */; };
 		6F971DEC2AA5BAC0009674EE /* UserPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F971DEB2AA5BAC0009674EE /* UserPageViewModel.swift */; };
 		6F971DEF2AA5C987009674EE /* Color+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F971DEE2AA5C987009674EE /* Color+Ext.swift */; };
@@ -91,6 +92,7 @@
 		6F7B55472A9793AD00C17ED8 /* SearchPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPageView.swift; sourceTree = "<group>"; };
 		6F8252D32AB9CBCF00A7CDA4 /* FavoriteRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteRepository.swift; sourceTree = "<group>"; };
 		6F8252D52ABACFAA00A7CDA4 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		6F8252D72ABB603B00A7CDA4 /* AuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepository.swift; sourceTree = "<group>"; };
 		6F971DE92AA37F0F009674EE /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		6F971DEB2AA5BAC0009674EE /* UserPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPageViewModel.swift; sourceTree = "<group>"; };
 		6F971DEE2AA5C987009674EE /* Color+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Ext.swift"; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 			children = (
 				6F35746A2A9F4C6B0031988C /* AuthRepositoryProtocol.swift */,
 				6F35746C2A9F4CF60031988C /* AuthFireBaseRepository.swift */,
+				6F8252D72ABB603B00A7CDA4 /* AuthRepository.swift */,
 			);
 			path = AuthRepository;
 			sourceTree = "<group>";
@@ -572,6 +575,7 @@
 				6FB15C462A8D1B9100756F6A /* Article.swift in Sources */,
 				6F35746B2A9F4C6B0031988C /* AuthRepositoryProtocol.swift in Sources */,
 				6FD49B102A87FDB100BF85EB /* FavoritePageViewController.swift in Sources */,
+				6F8252D82ABB603B00A7CDA4 /* AuthRepository.swift in Sources */,
 				6FD49B0E2A87FD7D00BF85EB /* UserPageViewController.swift in Sources */,
 				6FB15C582A8DF03D00756F6A /* HomePageViewModel.swift in Sources */,
 				6F7B553A2A94B1B800C17ED8 /* BaseViewController.swift in Sources */,

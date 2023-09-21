@@ -10,7 +10,7 @@ import SwiftUI
 
 class SignUpPageViewController: UIViewController {
     
-    var viewModel: SignUpPageViewModel  = SignUpPageViewModel(authRepository: AuthFireBaseRepository())
+    var viewModel: SignUpPageViewModel  = SignUpPageViewModel(authRepository: AuthRepository())
     
     init() {
         super.init(nibName: nil, bundle: nil)

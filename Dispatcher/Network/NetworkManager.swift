@@ -35,36 +35,27 @@ class NetworkManager {
     
     func request<T: Decodable>(url: String, method: String, type: T.Type, params: [String: Any] = [:]) async throws -> T {
         let finalUrl = "\(baseUrl)\(url)"
-        print(finalUrl)
-        var requestParams : [String: Any] = [:]
-        if(method == "post"){
-             requestParams = params.isEmpty ? [:] : ["article": params]
-            let response = AF.request(finalUrl, method: HTTPMethod(rawValue: method), parameters: requestParams)
-                .serializingDecodable(T.self)
-            do {
-                let jsonData: T = try await response.value
-                print(jsonData)
-                return jsonData
-            } catch {
-                throw error
+        var requestParams : [String: Any] = params
+        if(type == addFavoriteResponse.self) {
+            requestParams = params.isEmpty ? [:] : ["article": params]
+        }
+        var headers: HTTPHeaders = [:]
+        if let jwtToken = UserDefaults.standard.string(forKey: "token") {
+            if (type != authResponse.self) {
+                headers["Authorization"] = "Bearer \(jwtToken)"
             }
+        }
+        let response = AF.request(finalUrl, method: HTTPMethod(rawValue: method), parameters: requestParams,headers: headers)
+            .serializingDecodable(T.self)
+        do {
+            let jsonData: T = try await response.value
+            return jsonData
+        } catch {
+            throw error
         }
         
-        else{
-            print("hi from delete")
-            let response = AF.request(finalUrl, method: HTTPMethod(rawValue: method), parameters: params)
-                .serializingDecodable(T.self)
-            do {
-                let jsonData: T = try await response.value
-                print(jsonData)
-                return jsonData
-            } catch {
-                throw error
-            }
-        }
-
+        
+        
     }
+
 }
-
-
-
