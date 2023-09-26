@@ -10,5 +10,5 @@ import Foundation
 protocol FavoriteRepositoryProtocol {
     func addNewFavoriteArticle(article:NewsArticle) async throws-> String
     func removeFavoriteArticle(documentID: String) async -> Void
-    func getAllFavoriteArticles() async throws -> getFavoriteArticlesResponse
+    func getAllFavoriteArticles() async throws -> GetFavoriteArticlesResponse
 }

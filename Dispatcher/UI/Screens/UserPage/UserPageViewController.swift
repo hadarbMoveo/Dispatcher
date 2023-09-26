@@ -2,7 +2,7 @@ import UIKit
 
 class UserPageViewController: BaseViewController {
     
-    let viewModel: UserPageViewModel = UserPageViewModel(repository: AuthFireBaseRepository())
+    let viewModel: UserPageViewModel = UserPageViewModel(repository: AuthRepository())
     
     @IBOutlet weak var logOutButton: UIButton!
 

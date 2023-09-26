@@ -19,14 +19,12 @@ class FavoritePageViewModel {
     
 
     func loadFavoriteArticles() async throws {
-        let currentUser = defaults.string(forKey: "email")
         do {
             let documents = try await repository.getAllFavoriteArticles().articles
             var favoriteArticles: [NewsArticle] = []
 
             for document in documents {
                 do {
-                    if(document.user == currentUser) {
                         let newsArticle = NewsArticle(
                             documentID: document._id,
                             author: document.author,
@@ -38,7 +36,6 @@ class FavoritePageViewModel {
                             isFavorite: true
                         )
                         favoriteArticles.append(newsArticle)
-                    }
                 }
             }
             self.favArticles = favoriteArticles

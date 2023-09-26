@@ -11,7 +11,7 @@ class NetworkManager {
     
     static let apiKey = "ef5133dd364c41719494a74ce614d679"
     
-    let baseUrl = "http://localhost:3000/api/v1"
+    let baseUrl = "http://dispatcheraws-env.eba-pc7kxpww.eu-central-1.elasticbeanstalk.com/api/v1"
     func request<T: Decodable>(url: String, method:String, completion: @escaping (T) -> Void) {
         let finalUrl = String("\(baseUrl)\(url)")
         AF.request(finalUrl,method:HTTPMethod(rawValue: method))
@@ -36,12 +36,12 @@ class NetworkManager {
     func request<T: Decodable>(url: String, method: String, type: T.Type, params: [String: Any] = [:]) async throws -> T {
         let finalUrl = "\(baseUrl)\(url)"
         var requestParams : [String: Any] = params
-        if(type == addFavoriteResponse.self) {
+        if(type == AddFavoriteResponse.self) {
             requestParams = params.isEmpty ? [:] : ["article": params]
         }
         var headers: HTTPHeaders = [:]
         if let jwtToken = UserDefaults.standard.string(forKey: "token") {
-            if (type != authResponse.self) {
+            if (type != AuthResponse.self) {
                 headers["Authorization"] = "Bearer \(jwtToken)"
             }
         }

@@ -32,6 +32,9 @@ struct AuthView<Model>: View where Model: AuthViewModelProtocol {
             }
             .frame(width: width, height: height)
         }
+        .alert(isPresented: $viewModel.isAlert) {
+            Alert(title: Text(viewModel.alertMessage))
+        }
     }
     
     @ViewBuilder

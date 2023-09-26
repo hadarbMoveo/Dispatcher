@@ -16,10 +16,15 @@ class AuthRepository: AuthRepositoryProtocol {
         do {
             let userData: [String:String] = ["email": email, "password": password ]
             let url = "/auth/register"
-            let res = try await manager.request(url: url, method: "post", type: authResponse.self,params: userData)
-            let token = res.token
-            print(token)
-            saveUserData(email: email, password: password,token:token)
+            let res = try await manager.request(url: url, method: "post", type: AuthResponse.self,params: userData)
+            if(res.status == "success") {
+                let token = res.token
+                saveUserData(email: email, password: password,token:token)
+            }
+            else {
+                throw MyError(message: res.message)
+            }
+
         } catch {
             throw error
         }
@@ -29,9 +34,14 @@ class AuthRepository: AuthRepositoryProtocol {
         do {
             let userData: [String:String] = ["email": email, "password": password ]
             let url = "/auth/login"
-            let res = try await manager.request(url: url, method: "post", type: authResponse.self,params: userData)
-            let token = res.token
-            saveUserData(email: email, password: password,token: token)
+            let res = try await manager.request(url: url, method: "post", type: AuthResponse.self,params: userData)
+            if(res.status == "success") {
+                let token = res.token
+                saveUserData(email: email, password: password,token: token)
+            }
+            else {
+                throw MyError(message: res.message)
+            }
         } catch {
             throw error
         }
@@ -39,10 +49,14 @@ class AuthRepository: AuthRepositoryProtocol {
     
     func logout() async throws {
         do {
-//            try Auth.auth().signOut()
-            RemoveUserData()
-        } catch {
-            throw error
+         let url = "/auth/logout"
+         let res = try await manager.request(url: url, method: "post", type: LogoutResponse.self)
+            if(res.message == "Logout successful") {
+                RemoveUserData()
+            }
+            else {
+                throw MyError(message: res.message)
+            }
         }
     }
     
@@ -51,13 +65,14 @@ class AuthRepository: AuthRepositoryProtocol {
         defaults.set(email, forKey: "email")
         defaults.set(password, forKey: "password")
         defaults.set(token, forKey: "token")
+        defaults.synchronize()
     }
     
     func RemoveUserData() {
         let defaults = UserDefaults.standard
-        UserDefaults.standard.removeObject(forKey: "email")
-        UserDefaults.standard.removeObject(forKey: "password")
-        UserDefaults.standard.removeObject(forKey: "token")
-        UserDefaults.standard.synchronize()
+        defaults.removeObject(forKey: "email")
+        defaults.removeObject(forKey: "password")
+        defaults.removeObject(forKey: "token")
+        defaults.synchronize()
     }
 }

@@ -6,13 +6,12 @@
 //
 
 import Foundation
-protocol Response {}
 
-struct addFavoriteResponse: Decodable, Response {
+struct AddFavoriteResponse: Decodable{
     let ID: String
 }
 
-struct favoriteArticle: Decodable {
+struct FavoriteArticle: Decodable {
     let _id: String
     let author: String
     let content: String
@@ -23,15 +22,25 @@ struct favoriteArticle: Decodable {
     let user: String
 }
 
-struct getFavoriteArticlesResponse: Decodable {
-    let articles: [favoriteArticle]
+struct GetFavoriteArticlesResponse: Decodable {
+    let articles: [FavoriteArticle]
 }
 
-struct removeFavoriteResponse: Decodable {
+struct RemoveFavoriteResponse: Decodable {
     let message: String
 }
 
-struct authResponse: Decodable {
+struct AuthResponse: Decodable {
+    let status: String
     let token: String
+    let message: String
+}
+
+struct LogoutResponse: Decodable {
+    let message: String
+}
+
+struct MyError: Error {
+    let message: String
 }
 

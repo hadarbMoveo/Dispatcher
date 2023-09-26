@@ -8,10 +8,14 @@
 import Foundation
 
 class LoginPageViewModel: ObservableObject, AuthViewModelProtocol {
+
     @Published var isError: [String: Bool] = [
         Strings.email: false,
         Strings.password: false,
     ]
+    
+    @Published var isAlert: Bool = false
+    @Published var alertMessage: String = ""
     
     var errorMessages: [String: String] = [
         Strings.email: "invalid email",
@@ -50,8 +54,11 @@ class LoginPageViewModel: ObservableObject, AuthViewModelProtocol {
                     try await authRepository.login(email: email, password:password)
                     return true
                 }
-                catch let error {
-                    print(error)
+                catch {
+                    if let customError = error as? MyError {
+                        isAlert = true
+                        alertMessage = customError.message
+                    }
                 }
             }
         }

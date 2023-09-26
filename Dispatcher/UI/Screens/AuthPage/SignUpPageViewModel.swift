@@ -8,18 +8,21 @@
 import Foundation
 
 class SignUpPageViewModel: ObservableObject, AuthViewModelProtocol {
-    
+
     @Published var isError: [String: Bool] = [
         Strings.email: false,
         Strings.password: false,
         Strings.rePassword: false
     ]
-    
+
     var errorMessages: [String: String] = [
         Strings.email: "invalid email",
         Strings.password: "invalid password",
         Strings.rePassword: "passwords dont match"
     ]
+    
+    @Published var isAlert: Bool = false
+    @Published var alertMessage: String = ""
 
     @Published var isSecure: [String: Bool] = [
         Strings.password: true,
@@ -57,8 +60,11 @@ class SignUpPageViewModel: ObservableObject, AuthViewModelProtocol {
                     try await authRepository.register(email: email, password:password)
                     return true
                 }
-                catch let error {
-                    print(error)
+                catch {
+                    if let customError = error as? MyError {
+                        isAlert = true
+                        alertMessage = customError.message
+                    }
                 }
             }
         }

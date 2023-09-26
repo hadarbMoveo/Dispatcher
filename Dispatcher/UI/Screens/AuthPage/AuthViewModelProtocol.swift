@@ -15,6 +15,8 @@ protocol AuthViewModelProtocol: ObservableObject {
     var title: String { get }
     var isSecure: [String: Bool] { get set }
     var isError: [String: Bool] { get set }
+    var isAlert: Bool { get set }
+    var alertMessage: String { get set }
     var errorMessages: [String: String] { get set }
     func setValueToInput(key:String,value:String)
     func changeSecureByField(field: String)

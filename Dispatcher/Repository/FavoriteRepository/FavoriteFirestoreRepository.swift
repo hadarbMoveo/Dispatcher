@@ -31,8 +31,8 @@ class FavoriteFirestoreRepository: FavoriteRepositoryProtocol {
         }
     }
     
-    func getAllFavoriteArticles() async throws -> getFavoriteArticlesResponse {
-        return getFavoriteArticlesResponse(articles: [])
+    func getAllFavoriteArticles() async throws -> GetFavoriteArticlesResponse {
+        return GetFavoriteArticlesResponse(articles: [])
     }
     
     func removeFavoriteArticle(documentID: String) async {

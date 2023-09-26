@@ -25,7 +25,7 @@ class FavoriteRepository: FavoriteRepositoryProtocol {
         
         let url = "/articles/addFavorite"
           do {
-              let response = try await manager.request(url: url, method: "post", type: addFavoriteResponse.self, params: article)
+              let response = try await manager.request(url: url, method: "post", type: AddFavoriteResponse.self, params: article)
     
               return response.ID
           } catch {
@@ -36,7 +36,7 @@ class FavoriteRepository: FavoriteRepositoryProtocol {
     func removeFavoriteArticle(documentID: String) async {
         let url = "/articles/removeFavorite/\(documentID)"
           do {
-              let response = try await manager.request(url: url, method: "delete", type: removeFavoriteResponse.self)
+              let response = try await manager.request(url: url, method: "delete", type: RemoveFavoriteResponse.self)
               
           } catch {
               print("Error removing document: \(error)")
@@ -44,14 +44,14 @@ class FavoriteRepository: FavoriteRepositoryProtocol {
     }
     
     
-    func getAllFavoriteArticles() async throws -> getFavoriteArticlesResponse {
+    func getAllFavoriteArticles() async throws -> GetFavoriteArticlesResponse {
           let url = "/articles/getFavorites"
 
           do {
-              let articles: getFavoriteArticlesResponse = try await manager.request(
+              let articles: GetFavoriteArticlesResponse = try await manager.request(
                   url: url,
                   method: "get",
-                  type: getFavoriteArticlesResponse.self
+                  type: GetFavoriteArticlesResponse.self
               )
               print(articles)
               return articles

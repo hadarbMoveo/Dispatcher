@@ -1,5 +1,5 @@
 import UIKit
-import FirebaseAuth
+
 
 class SplashViewController: UIViewController {
     
