@@ -65,6 +65,8 @@ class AuthRepository: AuthRepositoryProtocol {
         defaults.set(email, forKey: "email")
         defaults.set(password, forKey: "password")
         defaults.set(token, forKey: "token")
+        let currentDate = Date()
+        defaults.set(currentDate, forKey: "date")
         defaults.synchronize()
     }
     
@@ -73,6 +75,7 @@ class AuthRepository: AuthRepositoryProtocol {
         defaults.removeObject(forKey: "email")
         defaults.removeObject(forKey: "password")
         defaults.removeObject(forKey: "token")
+        defaults.removeObject(forKey: "date")
         defaults.synchronize()
     }
 }

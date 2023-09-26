@@ -47,9 +47,10 @@ class HomePageViewModel {
         self.articles = []
         self.page = 1
     }
-    
+        
     func getData() async throws {
         var newsArticles = try await repository.getArticles(page: self.page)
+        newsArticles = filterArticles(articles: newsArticles as? [NewsArticle] ?? [])
         if !newsArticles.isEmpty {
             let favoriteArticles = getFavoriteArticles()
             for (index, article) in newsArticles.enumerated() {
@@ -64,6 +65,16 @@ class HomePageViewModel {
             return
         }
         delegate?.stopLoading()
+    }
+    
+    func filterArticles(articles: [NewsArticle]) -> [NewsArticle] {
+        return articles.filter { article in
+            return article.author != "[Removed]"
+                && article.title != "[Removed]"
+                && article.description != "[Removed]"
+                && article.publishedAt != "[Removed]"
+                && article.content != "[Removed]"
+        }
     }
     
     func search(word: String) async throws {

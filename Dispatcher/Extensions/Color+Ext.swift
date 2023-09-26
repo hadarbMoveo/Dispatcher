@@ -14,4 +14,5 @@ extension Color {
     static let lineColorAuthView = Color("line-auth-page")
     static let button1ColorAuthView = Color("button1-auth-page")
     static let button2ColorAuthView = Color("button2-auth-page")
+    static let borderTableView = Color("border-table")
 }

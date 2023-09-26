@@ -18,8 +18,6 @@ class ArticleCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        viewcard.layer.cornerRadius = 30
-        viewcard.layer.masksToBounds = true
         iconFav.layer.cornerRadius = 17
         iconFav.layer.masksToBounds = true
         setIconFavorite()
@@ -58,16 +56,30 @@ class ArticleCell: UITableViewCell {
         setIconFavorite()
     }
     
+//    func convertDateString(_ dateString: String) -> String? {
+//        let inputFormatter = DateFormatter()
+//        inputFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+//
+//        if let date = inputFormatter.date(from: dateString) {
+//            let outputFormatter = DateFormatter()
+//            outputFormatter.dateFormat = "dd/MM/yy"
+//            return outputFormatter.string(from: date)
+//        }
+//
+//        return ""
+//    }
     func convertDateString(_ dateString: String) -> String? {
         let inputFormatter = DateFormatter()
         inputFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
-        
+        inputFormatter.timeZone = TimeZone.current // Set the time zone to the system's time zone
+
         if let date = inputFormatter.date(from: dateString) {
             let outputFormatter = DateFormatter()
             outputFormatter.dateFormat = "dd/MM/yy"
+            outputFormatter.timeZone = TimeZone.current // Set the time zone to the system's time zone
             return outputFormatter.string(from: date)
         }
-        
+
         return ""
     }
     
