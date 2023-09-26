@@ -37,7 +37,7 @@ class FavoriteRepository: FavoriteRepositoryProtocol {
         let url = "/articles/removeFavorite/\(documentID)"
           do {
               let response = try await manager.request(url: url, method: "delete", type: RemoveFavoriteResponse.self)
-              
+              removeFavoriteArticleFromUserDefault(documentID: documentID)
           } catch {
               print("Error removing document: \(error)")
           }

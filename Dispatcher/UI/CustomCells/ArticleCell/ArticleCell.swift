@@ -20,7 +20,6 @@ class ArticleCell: UITableViewCell {
         super.awakeFromNib()
         iconFav.layer.cornerRadius = 17
         iconFav.layer.masksToBounds = true
-        setIconFavorite()
     }
     
     func initCell(article: Article?) {
@@ -30,10 +29,11 @@ class ArticleCell: UITableViewCell {
         authorCard.text = article.author
         dateCard.text = article.date
         titleCard.text = article.title
+        setIconFavorite()
     }
     
-    func setIconFavorite(){
-        if (isFavorite){
+    func setIconFavorite() {
+        if (isFavorite) {
             iconFav.setImage(UIImage(named:"full-star-icon"), for: .normal)
         }
         else{
