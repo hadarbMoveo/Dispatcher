@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 protocol AuthViewModelProtocol: ObservableObject {
     var inputs: [String: String] { get set }
@@ -17,6 +18,8 @@ protocol AuthViewModelProtocol: ObservableObject {
     var isError: [String: Bool] { get set }
     var isAlert: Bool { get set }
     var alertMessage: String { get set }
+    var ColorBorderInputes: [String: Color] { get set }
+    var ColorTextInputes: [String: Color] { get set }
     var errorMessages: [String: String] { get set }
     func setValueToInput(key:String,value:String)
     func changeSecureByField(field: String)

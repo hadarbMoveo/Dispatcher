@@ -161,6 +161,8 @@ struct AuthView<Model>: View where Model: AuthViewModelProtocol {
                 .frame(width: width * 0.83, height: 48)
                 .padding(.horizontal)
                 .background(Color.white)
+                .border(viewModel.ColorBorderInputes[field] ?? Color.clear)
+                .foregroundColor(viewModel.ColorTextInputes[field] ?? Color.black)
                     
             } else {
                 
@@ -168,6 +170,8 @@ struct AuthView<Model>: View where Model: AuthViewModelProtocol {
                     .frame(width: width * 0.83, height: 48)
                     .padding(.horizontal)
                     .background(Color.white)
+                    .border(viewModel.ColorBorderInputes[field] ?? Color.borderTextField)
+                    .foregroundColor(viewModel.ColorTextInputes[field] ?? Color.black)
                     .onChange(of: viewModel.inputs[field]) { newValue in
                         viewModel.clearErrors()
                     }

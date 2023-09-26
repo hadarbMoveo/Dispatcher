@@ -18,6 +18,10 @@ class LogInPageViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        viewModel.clearInputs()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -54,5 +58,9 @@ class LogInPageViewController: UIViewController {
         let tabBarController = storyboard.instantiateViewController(withIdentifier: tabBarControllerIdentifier) as! UITabBarController
         tabBarController.modalPresentationStyle = .fullScreen
         self.present(tabBarController, animated: false, completion: nil)
+    }
+    
+    func clearInputs() {
+        viewModel.clearInputs()
     }
 }

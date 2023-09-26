@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 class SignUpPageViewModel: ObservableObject, AuthViewModelProtocol {
 
@@ -13,6 +14,18 @@ class SignUpPageViewModel: ObservableObject, AuthViewModelProtocol {
         Strings.email: false,
         Strings.password: false,
         Strings.rePassword: false
+    ]
+    
+    @Published var ColorBorderInputes: [String: Color] = [
+        Strings.email: Color.borderTextField,
+        Strings.password: Color.borderTextField,
+        Strings.rePassword: Color.borderTextField,
+    ]
+    
+    @Published var ColorTextInputes: [String: Color] = [
+        Strings.email: Color.black,
+        Strings.password: Color.black,
+        Strings.rePassword: Color.black,
     ]
 
     var errorMessages: [String: String] = [
@@ -34,6 +47,12 @@ class SignUpPageViewModel: ObservableObject, AuthViewModelProtocol {
         Strings.password: "",
         Strings.rePassword: ""
     ]
+    
+    func clearInputs() {
+        inputs[Strings.email] = ""
+        inputs[Strings.password] = ""
+        inputs[Strings.rePassword] = ""
+    }
 
     let inputPlaceholders = [Strings.email,Strings.password,Strings.rePassword]
     
@@ -76,6 +95,12 @@ class SignUpPageViewModel: ObservableObject, AuthViewModelProtocol {
         isError[Strings.email] = false
         isError[Strings.password] = false
         isError[Strings.rePassword] = false
+        ColorBorderInputes[Strings.email] = Color.borderTextField
+        ColorBorderInputes[Strings.password] = Color.borderTextField
+        ColorBorderInputes[Strings.rePassword] = Color.borderTextField
+        ColorTextInputes[Strings.email] = Color.black
+        ColorTextInputes[Strings.password] = Color.black
+        ColorTextInputes[Strings.rePassword] = Color.black
     }
     
     func isValid() -> Bool {
@@ -86,6 +111,21 @@ class SignUpPageViewModel: ObservableObject, AuthViewModelProtocol {
         isError[Strings.email] = !isValidEmail(email)
         isError[Strings.password] = !isValidPassword(password)
         isError[Strings.rePassword] = !isVaidRePassword(password,repassword)
+        
+        if(isError[Strings.email] == true) {
+            ColorBorderInputes[Strings.email] = Color.red
+            ColorTextInputes[Strings.email] = Color.red
+        }
+        
+        if(isError[Strings.password] == true) {
+            ColorBorderInputes[Strings.password] = Color.red
+            ColorTextInputes[Strings.password] = Color.red
+        }
+        
+        if(isError[Strings.rePassword] == true) {
+            ColorBorderInputes[Strings.rePassword] = Color.red
+            ColorTextInputes[Strings.rePassword] = Color.red
+        }
         
         return (isValidEmail(email) && isValidPassword(password) && isVaidRePassword(password,repassword))
     }

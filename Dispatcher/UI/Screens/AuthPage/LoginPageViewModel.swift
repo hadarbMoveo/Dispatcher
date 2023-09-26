@@ -6,12 +6,23 @@
 //
 
 import Foundation
+import SwiftUI
 
 class LoginPageViewModel: ObservableObject, AuthViewModelProtocol {
 
     @Published var isError: [String: Bool] = [
         Strings.email: false,
         Strings.password: false,
+    ]
+    
+    @Published var ColorBorderInputes: [String: Color] = [
+        Strings.email: Color.borderTextField,
+        Strings.password: Color.borderTextField,
+    ]
+    
+    @Published var ColorTextInputes: [String: Color] = [
+        Strings.email: Color.black,
+        Strings.password: Color.black,
     ]
     
     @Published var isAlert: Bool = false
@@ -28,7 +39,7 @@ class LoginPageViewModel: ObservableObject, AuthViewModelProtocol {
         Strings.email: "",
         Strings.password: "",
     ]
-    
+        
     let inputPlaceholders = [Strings.email, Strings.password]
     
     var titleButton1:String = Strings.logInButton
@@ -44,6 +55,11 @@ class LoginPageViewModel: ObservableObject, AuthViewModelProtocol {
     
     func setValueToInput(key: String, value: String) {
         inputs[key] = value
+    }
+    
+    func clearInputs() {
+        inputs[Strings.email] = ""
+        inputs[Strings.password] = ""
     }
     
     @MainActor
@@ -69,6 +85,10 @@ class LoginPageViewModel: ObservableObject, AuthViewModelProtocol {
     func clearErrors() {
         isError[Strings.email] = false
         isError[Strings.password] = false
+        ColorBorderInputes[Strings.email] = Color.borderTextField
+        ColorBorderInputes[Strings.password] = Color.borderTextField
+        ColorTextInputes[Strings.email] = Color.black
+        ColorTextInputes[Strings.password] = Color.black
     }
     
     func isValid()->Bool {
@@ -77,6 +97,16 @@ class LoginPageViewModel: ObservableObject, AuthViewModelProtocol {
         
         isError[Strings.email] = !isValidEmail(email)
         isError[Strings.password] = !isValidPassword(password)
+        
+        if(isError[Strings.email] == true) {
+            ColorBorderInputes[Strings.email] = Color.red
+            ColorTextInputes[Strings.email] = Color.red
+        }
+        
+        if(isError[Strings.password] == true) {
+            ColorBorderInputes[Strings.password] = Color.red
+            ColorTextInputes[Strings.password] = Color.red
+        }
         
         return (isValidEmail(email) && isValidPassword(password))
     }

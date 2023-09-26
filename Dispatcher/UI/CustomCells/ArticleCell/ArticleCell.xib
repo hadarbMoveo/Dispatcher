@@ -47,7 +47,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="tag" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="6" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ocP-Zu-j7Y">
-                                <rect key="frame" x="300" y="191" width="43" height="14.333333333333343"/>
+                                <rect key="frame" x="290" y="191" width="43" height="14.333333333333343"/>
                                 <color key="backgroundColor" red="0.9529411793" green="0.9529411793" blue="0.99607843159999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="43" id="hDu-yT-1SV"/>
@@ -92,7 +92,7 @@
                             <constraint firstItem="dFb-1g-zDx" firstAttribute="leading" secondItem="cro-ma-db1" secondAttribute="leading" constant="16" id="S2z-U5-xH3"/>
                             <constraint firstItem="efg-Rc-IA7" firstAttribute="top" secondItem="cro-ma-db1" secondAttribute="top" constant="19" id="WbC-YC-gN7"/>
                             <constraint firstAttribute="trailing" secondItem="hW7-Z5-ngE" secondAttribute="trailing" constant="16" id="fSm-lf-XcW"/>
-                            <constraint firstAttribute="trailing" secondItem="ocP-Zu-j7Y" secondAttribute="trailing" id="iXM-QT-Y7i"/>
+                            <constraint firstAttribute="trailing" secondItem="ocP-Zu-j7Y" secondAttribute="trailing" constant="10" id="iXM-QT-Y7i"/>
                             <constraint firstItem="dFb-1g-zDx" firstAttribute="top" secondItem="NQj-8y-wWO" secondAttribute="bottom" constant="8" id="j1L-Ke-Zjs"/>
                             <constraint firstItem="ocP-Zu-j7Y" firstAttribute="top" secondItem="NQj-8y-wWO" secondAttribute="bottom" constant="8" id="oxw-rd-BAh"/>
                             <constraint firstItem="hW7-Z5-ngE" firstAttribute="leading" secondItem="cro-ma-db1" secondAttribute="leading" constant="16" id="rwH-3U-eo5"/>

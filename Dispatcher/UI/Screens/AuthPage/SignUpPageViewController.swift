@@ -16,6 +16,10 @@ class SignUpPageViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        viewModel.clearInputs()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -53,5 +57,9 @@ class SignUpPageViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
         
+    }
+    
+    func clearInputs() {
+        viewModel.clearInputs()
     }
 }

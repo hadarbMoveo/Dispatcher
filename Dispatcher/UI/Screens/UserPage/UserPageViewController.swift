@@ -25,9 +25,10 @@ class UserPageViewController: BaseViewController {
         }
         
     }
-        
+            
     func LogOutToAuthPage() {
         self.dismiss(animated: false)
-        self.navigationController?.pushViewController(SignUpPageViewController(), animated: false)
     }
+
+
 }
