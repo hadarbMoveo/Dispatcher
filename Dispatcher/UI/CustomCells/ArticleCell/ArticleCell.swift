@@ -18,11 +18,8 @@ class ArticleCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        viewcard.layer.cornerRadius = 30
-        viewcard.layer.masksToBounds = true
         iconFav.layer.cornerRadius = 17
         iconFav.layer.masksToBounds = true
-        setIconFavorite()
     }
     
     func initCell(article: Article?) {
@@ -32,10 +29,11 @@ class ArticleCell: UITableViewCell {
         authorCard.text = article.author
         dateCard.text = article.date
         titleCard.text = article.title
+        setIconFavorite()
     }
     
-    func setIconFavorite(){
-        if (isFavorite){
+    func setIconFavorite() {
+        if (isFavorite) {
             iconFav.setImage(UIImage(named:"full-star-icon"), for: .normal)
         }
         else{
@@ -61,13 +59,13 @@ class ArticleCell: UITableViewCell {
     func convertDateString(_ dateString: String) -> String? {
         let inputFormatter = DateFormatter()
         inputFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
-        
+
         if let date = inputFormatter.date(from: dateString) {
             let outputFormatter = DateFormatter()
             outputFormatter.dateFormat = "dd/MM/yy"
             return outputFormatter.string(from: date)
         }
-        
+
         return ""
     }
     

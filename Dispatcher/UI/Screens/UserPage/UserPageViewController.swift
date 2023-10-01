@@ -2,7 +2,7 @@ import UIKit
 
 class UserPageViewController: BaseViewController {
     
-    let viewModel: UserPageViewModel = UserPageViewModel(repository: AuthFireBaseRepository())
+    let viewModel: UserPageViewModel = UserPageViewModel(repository: AuthRepository())
     
     @IBOutlet weak var logOutButton: UIButton!
 
@@ -25,9 +25,10 @@ class UserPageViewController: BaseViewController {
         }
         
     }
-        
+            
     func LogOutToAuthPage() {
         self.dismiss(animated: false)
-        self.navigationController?.pushViewController(SignUpPageViewController(), animated: false)
     }
+
+
 }

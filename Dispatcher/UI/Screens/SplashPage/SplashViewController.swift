@@ -1,5 +1,5 @@
 import UIKit
-import FirebaseAuth
+
 
 class SplashViewController: UIViewController {
     
@@ -33,6 +33,8 @@ class SplashViewController: UIViewController {
         
         if let _ = defaults.string(forKey: "email"),
            let _ = defaults.string(forKey: "password") {
+            defaults.synchronize()
+            
                 return true
         }
         return false

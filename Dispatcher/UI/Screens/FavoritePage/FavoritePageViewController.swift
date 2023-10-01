@@ -2,7 +2,7 @@ import UIKit
 
 class FavoritePageViewController: BaseViewController {
  
-    let viewModel: FavoritePageViewModel = FavoritePageViewModel(repository: FavoriteFirestoreRepository())
+    let viewModel: FavoritePageViewModel = FavoritePageViewModel(repository: FavoriteRepository())
 
     let vcView = FavoritePageView()
     override func loadView() {

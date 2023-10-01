@@ -10,10 +10,14 @@ import SwiftUI
 
 class SignUpPageViewController: UIViewController {
     
-    var viewModel: SignUpPageViewModel  = SignUpPageViewModel(authRepository: AuthFireBaseRepository())
+    var viewModel: SignUpPageViewModel  = SignUpPageViewModel(authRepository: AuthRepository())
     
     init() {
         super.init(nibName: nil, bundle: nil)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        viewModel.clearInputs()
     }
     
     override func viewDidLoad() {
@@ -53,5 +57,9 @@ class SignUpPageViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
         
+    }
+    
+    func clearInputs() {
+        viewModel.clearInputs()
     }
 }

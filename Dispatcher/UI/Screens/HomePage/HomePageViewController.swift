@@ -1,4 +1,5 @@
 import UIKit
+import SwiftUI
 import Kingfisher
 
 class HomePageViewController: BaseViewController {
@@ -7,6 +8,8 @@ class HomePageViewController: BaseViewController {
     
     @IBOutlet weak var tableView: UITableView?
     @IBOutlet weak var notFoundImage: UIImageView!
+    @IBOutlet weak var loginDate: UILabel!
+    let defaults = UserDefaults.standard
     
     override var isSearchHidden: Bool {
         return false
@@ -21,6 +24,8 @@ class HomePageViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        defaults.synchronize()
+        displayStoredDate()
         Task {
             try await viewModel.prepareForDisplay()
         }
@@ -30,6 +35,11 @@ class HomePageViewController: BaseViewController {
         tableView?.dataSource = self
         tableView?.delegate = self
         tableView?.register(UINib(nibName:String(describing: ArticleCell.self), bundle: nil), forCellReuseIdentifier: ArticleCell.identifier)
+        tableView?.layer.borderColor = UIColor(Color.borderTableView).cgColor
+        tableView?.layer.borderWidth = 1.0
+        let cornerRadius: CGFloat = 20.0
+        tableView?.layer.cornerRadius = cornerRadius
+        tableView?.clipsToBounds = true
     }
     
     func initViewModel() {
@@ -38,6 +48,19 @@ class HomePageViewController: BaseViewController {
         
         Task {
             try await viewModel.getData()
+        }
+    }
+    
+    func displayStoredDate() {
+        if let storedDate = defaults.object(forKey: "date") as? Date {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "hh:mm a, dd.MM.yyyy"
+            dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+            let dateString = dateFormatter.string(from: storedDate)
+            
+            loginDate.text = dateString
+        } else {
+            loginDate.text = "03:50 PM, 09.03.2022"
         }
     }
     
@@ -76,7 +99,7 @@ extension HomePageViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func loadMoreDataIfNeeded(for index: Int) {
-        let didReachPaginationCell = index == viewModel.articles.count-1
+        let didReachPaginationCell = index == viewModel.articles.count-2
         if didReachPaginationCell && !viewModel.isSearching {
             self.startLoading()
             Task {
