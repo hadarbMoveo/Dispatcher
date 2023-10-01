@@ -18,13 +18,14 @@ protocol AuthViewModelProtocol: ObservableObject {
     var isError: [String: Bool] { get set }
     var isAlert: Bool { get set }
     var alertMessage: String { get set }
-    var ColorBorderInputes: [String: Color] { get set }
-    var ColorTextInputes: [String: Color] { get set }
+    var colorBorderInputes: [String: Color] { get set }
+    var colorTextInputes: [String: Color] { get set }
     var errorMessages: [String: String] { get set }
     func setValueToInput(key:String,value:String)
     func changeSecureByField(field: String)
     func authentication() async throws -> Bool
     func clearErrors()
+    func validWhileLoseFocuse(field: String) -> Void
 }
 
 extension AuthViewModelProtocol {

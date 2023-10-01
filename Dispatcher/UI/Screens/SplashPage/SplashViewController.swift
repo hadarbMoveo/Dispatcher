@@ -33,8 +33,6 @@ class SplashViewController: UIViewController {
         
         if let _ = defaults.string(forKey: "email"),
            let _ = defaults.string(forKey: "password") {
-            let currentDate = Date()
-            defaults.set(currentDate, forKey: "date")
             defaults.synchronize()
             
                 return true

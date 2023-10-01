@@ -9,20 +9,19 @@ import Foundation
 import SwiftUI
 
 class SignUpPageViewModel: ObservableObject, AuthViewModelProtocol {
-
     @Published var isError: [String: Bool] = [
         Strings.email: false,
         Strings.password: false,
         Strings.rePassword: false
     ]
     
-    @Published var ColorBorderInputes: [String: Color] = [
+    @Published var colorBorderInputes: [String: Color] = [
         Strings.email: Color.borderTextField,
         Strings.password: Color.borderTextField,
         Strings.rePassword: Color.borderTextField,
     ]
     
-    @Published var ColorTextInputes: [String: Color] = [
+    @Published var colorTextInputes: [String: Color] = [
         Strings.email: Color.black,
         Strings.password: Color.black,
         Strings.rePassword: Color.black,
@@ -95,12 +94,12 @@ class SignUpPageViewModel: ObservableObject, AuthViewModelProtocol {
         isError[Strings.email] = false
         isError[Strings.password] = false
         isError[Strings.rePassword] = false
-        ColorBorderInputes[Strings.email] = Color.borderTextField
-        ColorBorderInputes[Strings.password] = Color.borderTextField
-        ColorBorderInputes[Strings.rePassword] = Color.borderTextField
-        ColorTextInputes[Strings.email] = Color.black
-        ColorTextInputes[Strings.password] = Color.black
-        ColorTextInputes[Strings.rePassword] = Color.black
+        colorBorderInputes[Strings.email] = Color.borderTextField
+        colorBorderInputes[Strings.password] = Color.borderTextField
+        colorBorderInputes[Strings.rePassword] = Color.borderTextField
+        colorTextInputes[Strings.email] = Color.black
+        colorTextInputes[Strings.password] = Color.black
+        colorTextInputes[Strings.rePassword] = Color.black
     }
     
     func isValid() -> Bool {
@@ -113,18 +112,18 @@ class SignUpPageViewModel: ObservableObject, AuthViewModelProtocol {
         isError[Strings.rePassword] = !isVaidRePassword(password,repassword)
         
         if(isError[Strings.email] == true) {
-            ColorBorderInputes[Strings.email] = Color.red
-            ColorTextInputes[Strings.email] = Color.red
+            colorBorderInputes[Strings.email] = Color.red
+            colorTextInputes[Strings.email] = Color.red
         }
         
         if(isError[Strings.password] == true) {
-            ColorBorderInputes[Strings.password] = Color.red
-            ColorTextInputes[Strings.password] = Color.red
+            colorBorderInputes[Strings.password] = Color.red
+            colorTextInputes[Strings.password] = Color.red
         }
         
         if(isError[Strings.rePassword] == true) {
-            ColorBorderInputes[Strings.rePassword] = Color.red
-            ColorTextInputes[Strings.rePassword] = Color.red
+            colorBorderInputes[Strings.rePassword] = Color.red
+            colorTextInputes[Strings.rePassword] = Color.red
         }
         
         return (isValidEmail(email) && isValidPassword(password) && isVaidRePassword(password,repassword))
@@ -132,6 +131,56 @@ class SignUpPageViewModel: ObservableObject, AuthViewModelProtocol {
     
     func changeSecureByField(field: String) {
         isSecure[field]?.toggle()
+    }
+    
+    func validWhileLoseFocuse(field: String) {
+        let email = inputs[Strings.email]
+        let password = inputs[Strings.password]
+        let rePassword = inputs[Strings.rePassword]
+        
+        if field == Strings.email {
+            validPasswordWhileLoseFocuse(password: password)
+            validRePasswordWhileLoseFocuse(password: password, rePassword: rePassword)
+        }
+        else if field == Strings.password {
+            validEmailWhileLoseFocuse(email: email)
+            validRePasswordWhileLoseFocuse(password: password, rePassword: rePassword)
+        }
+        
+        else {
+            validEmailWhileLoseFocuse(email: email)
+            validPasswordWhileLoseFocuse(password: password)
+        }
+    }
+    
+    func validEmailWhileLoseFocuse(email: String?) {
+        if email != "" {
+            isError[Strings.email] = !isValidEmail(email)
+            if(isError[Strings.email] == true) {
+                colorBorderInputes[Strings.email] = Color.red
+                colorTextInputes[Strings.email] = Color.red
+            }
+        }
+    }
+    
+    func validPasswordWhileLoseFocuse(password: String?) {
+        if password != "" {
+            isError[Strings.password] = !isValidPassword(password)
+            if(isError[Strings.password] == true) {
+                colorBorderInputes[Strings.password] = Color.red
+                colorTextInputes[Strings.password] = Color.red
+            }
+        }
+    }
+    
+    func validRePasswordWhileLoseFocuse(password: String?, rePassword: String?) {
+            if rePassword != "" {
+                isError[Strings.rePassword] = !isVaidRePassword(password, rePassword)
+                if(isError[Strings.rePassword] == true) {
+                    colorBorderInputes[Strings.rePassword] = Color.red
+                    colorTextInputes[Strings.rePassword] = Color.red
+            }
+        }
     }
     
 }

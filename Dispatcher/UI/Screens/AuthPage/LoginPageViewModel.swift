@@ -15,12 +15,12 @@ class LoginPageViewModel: ObservableObject, AuthViewModelProtocol {
         Strings.password: false,
     ]
     
-    @Published var ColorBorderInputes: [String: Color] = [
+    @Published var colorBorderInputes: [String: Color] = [
         Strings.email: Color.borderTextField,
         Strings.password: Color.borderTextField,
     ]
     
-    @Published var ColorTextInputes: [String: Color] = [
+    @Published var colorTextInputes: [String: Color] = [
         Strings.email: Color.black,
         Strings.password: Color.black,
     ]
@@ -85,10 +85,10 @@ class LoginPageViewModel: ObservableObject, AuthViewModelProtocol {
     func clearErrors() {
         isError[Strings.email] = false
         isError[Strings.password] = false
-        ColorBorderInputes[Strings.email] = Color.borderTextField
-        ColorBorderInputes[Strings.password] = Color.borderTextField
-        ColorTextInputes[Strings.email] = Color.black
-        ColorTextInputes[Strings.password] = Color.black
+        colorBorderInputes[Strings.email] = Color.borderTextField
+        colorBorderInputes[Strings.password] = Color.borderTextField
+        colorTextInputes[Strings.email] = Color.black
+        colorTextInputes[Strings.password] = Color.black
     }
     
     func isValid()->Bool {
@@ -99,13 +99,13 @@ class LoginPageViewModel: ObservableObject, AuthViewModelProtocol {
         isError[Strings.password] = !isValidPassword(password)
         
         if(isError[Strings.email] == true) {
-            ColorBorderInputes[Strings.email] = Color.red
-            ColorTextInputes[Strings.email] = Color.red
+            colorBorderInputes[Strings.email] = Color.red
+            colorTextInputes[Strings.email] = Color.red
         }
         
         if(isError[Strings.password] == true) {
-            ColorBorderInputes[Strings.password] = Color.red
-            ColorTextInputes[Strings.password] = Color.red
+            colorBorderInputes[Strings.password] = Color.red
+            colorTextInputes[Strings.password] = Color.red
         }
         
         return (isValidEmail(email) && isValidPassword(password))
@@ -114,5 +114,40 @@ class LoginPageViewModel: ObservableObject, AuthViewModelProtocol {
     func changeSecureByField(field: String) {
         isSecure[field] = !(isSecure[field] ?? true)
     }
+    
+    func validWhileLoseFocuse(field: String) {
+        let email = inputs[Strings.email]
+        let password = inputs[Strings.password]
+        
+        if field == Strings.email {
+        validPasswordWhileLoseFocuse(password: password)
+        }
+        else {
+        validEmailWhileLoseFocuse(email: email)
+        }
+    }
+    
+    func validEmailWhileLoseFocuse(email: String?) {
+        if email != "" {
+            isError[Strings.email] = !isValidEmail(email)
+            if(isError[Strings.email] == true) {
+                colorBorderInputes[Strings.email] = Color.red
+                colorTextInputes[Strings.email] = Color.red
+            }
+        }
+    }
+    
+    func validPasswordWhileLoseFocuse(password: String?) {
+        if password != "" {
+            isError[Strings.password] = !isValidPassword(password)
+            if(isError[Strings.password] == true) {
+                colorBorderInputes[Strings.password] = Color.red
+                colorTextInputes[Strings.password] = Color.red
+            }
+        }
+    }
+    
+    
+    
     
 }

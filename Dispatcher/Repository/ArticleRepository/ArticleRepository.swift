@@ -8,7 +8,7 @@ import Foundation
 class ArticleRepository: ArticleRepositoryProtocol {
 
     let manager: NetworkManager = NetworkManager()
-    let articlesNumber = 5
+    let articlesNumber = 15
 
     
     func getArticles() async throws -> [Card] {
@@ -18,16 +18,16 @@ class ArticleRepository: ArticleRepositoryProtocol {
     
     
     func getArticles(page: Int) async throws -> [Card] {
-        let url = "/articles/getAll?pageSize=\(self.articlesNumber)?page=\(page)"
+        let url = "/articles/getAll/\(self.articlesNumber)/\(page)"
         let res = try await manager.request(url: url, method: "get", type: NewsResponse.self)
-        if(shouldFetchMoreArticles(currentPage: page, totalResults: res.totalResults)){
+        if(shouldFetchMoreArticles(currentPage: page, totalResults: res.totalResults)) {
             return res.articles
         }
         return []
     }
     
     func getArticlesBySearch(word: String) async throws -> [Card] {
-        let url = "/articles/getSearch?q=\(word)"
+        let url = "/articles/getSearch/\(word)"
 
         return try await manager.request(url: url, method: "get", type: NewsResponse.self).articles
     }

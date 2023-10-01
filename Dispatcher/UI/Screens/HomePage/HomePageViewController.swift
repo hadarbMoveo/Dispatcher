@@ -99,7 +99,7 @@ extension HomePageViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func loadMoreDataIfNeeded(for index: Int) {
-        let didReachPaginationCell = index == viewModel.articles.count-1
+        let didReachPaginationCell = index == viewModel.articles.count-2
         if didReachPaginationCell && !viewModel.isSearching {
             self.startLoading()
             Task {

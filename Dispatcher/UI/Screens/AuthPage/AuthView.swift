@@ -130,26 +130,30 @@ struct AuthView<Model>: View where Model: AuthViewModelProtocol {
     }
     
     @ViewBuilder
-    private func SetCustomInputText(field: String, binding: Binding<String>,width: CGFloat) -> some View {
-
+    private func SetCustomInputText(field: String, binding: Binding<String>, width: CGFloat) -> some View {
         ZStack {
             let isSecure = field == Strings.password || field == Strings.rePassword
-            
+
             if isSecure {
                 HStack {
-                    
                     if viewModel.isSecure[field] == true {
                         SecureField(field, text: binding)
+                            .onTapGesture(perform: {
+                                viewModel.validWhileLoseFocuse(field: field)
+                            })
                             .onChange(of: viewModel.inputs[field]) { newValue in
                                 viewModel.clearErrors()
                             }
                     } else {
                         TextField(field, text: binding)
+                            .onTapGesture(perform: {
+                                viewModel.validWhileLoseFocuse(field: field)
+                            })
                             .onChange(of: viewModel.inputs[field]) { newValue in
                                 viewModel.clearErrors()
                             }
                     }
-                    
+
                     Button(action: {
                         viewModel.changeSecureByField(field: field)
                     }) {
@@ -161,24 +165,24 @@ struct AuthView<Model>: View where Model: AuthViewModelProtocol {
                 .frame(width: width * 0.83, height: 48)
                 .padding(.horizontal)
                 .background(Color.white)
-                .border(viewModel.ColorBorderInputes[field] ?? Color.clear)
-                .foregroundColor(viewModel.ColorTextInputes[field] ?? Color.black)
-                    
+                .border(viewModel.colorBorderInputes[field] ?? Color.clear)
+                .foregroundColor(viewModel.colorTextInputes[field] ?? Color.black)
+
             } else {
-                
                 TextField(field, text: binding)
                     .frame(width: width * 0.83, height: 48)
                     .padding(.horizontal)
                     .background(Color.white)
-                    .border(viewModel.ColorBorderInputes[field] ?? Color.borderTextField)
-                    .foregroundColor(viewModel.ColorTextInputes[field] ?? Color.black)
+                    .border(viewModel.colorBorderInputes[field] ?? Color.borderTextField)
+                    .foregroundColor(viewModel.colorTextInputes[field] ?? Color.black)
+                    .onTapGesture(perform: {
+                        viewModel.validWhileLoseFocuse(field: field)
+                    })
                     .onChange(of: viewModel.inputs[field]) { newValue in
                         viewModel.clearErrors()
                     }
-                
             }
 
-            
             let isFieldError = viewModel.isError[field] == true
             if isFieldError {
                 let errorMsg = viewModel.errorMessages[field] ?? ""
